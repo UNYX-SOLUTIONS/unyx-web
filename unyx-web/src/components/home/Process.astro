@@ -1,0 +1,474 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Entendemos",
+    description:
+      "Analizamos la operación, los procesos y las necesidades antes de proponer tecnología.",
+  },
+  {
+    number: "02",
+    title: "Diseñamos",
+    description:
+      "Definimos una solución clara, viable y adaptada a la realidad de cada empresa.",
+  },
+  {
+    number: "03",
+    title: "Implementamos",
+    description:
+      "Configuramos, desarrollamos e integramos los componentes necesarios para poner la solución en funcionamiento.",
+  },
+  {
+    number: "04",
+    title: "Acompañamos",
+    description:
+      "Apoyamos la adopción, evolución y mejora de la solución después de su implementación.",
+  },
+];
+---
+
+<section class="process" id="como-trabajamos">
+  <div class="process__container">
+
+    <header class="process__header">
+      <div class="process__heading">
+        <span class="process__eyebrow">
+          CÓMO TRABAJAMOS
+        </span>
+
+        <h2>
+          Primero entendemos.<br />
+          Después construimos.
+        </h2>
+      </div>
+
+      <div class="process__intro">
+        <p>
+          Cada proyecto comienza entendiendo la operación, sus necesidades y sus
+          restricciones. A partir de ahí definimos la tecnología que realmente
+          aporta valor.
+        </p>
+      </div>
+    </header>
+
+    <div class="process__flow">
+
+      <div
+        class="process__track"
+        aria-hidden="true"
+      >
+        <span class="process__track-progress"></span>
+      </div>
+
+      {
+        steps.map((step, index) => (
+          <article class="process-step">
+
+            <div
+              class:list={[
+                "process-step__node",
+                index === 0 && "is-active",
+              ]}
+              aria-hidden="true"
+            ></div>
+
+            <div class="process-step__heading">
+              <span class="process-step__number">
+                {step.number}
+              </span>
+
+              <span class="process-step__separator">
+                —
+              </span>
+
+              <h3>
+                {step.title}
+              </h3>
+            </div>
+
+            <p>
+              {step.description}
+            </p>
+
+          </article>
+        ))
+      }
+
+    </div>
+
+    <div class="process__statement">
+
+      <div
+        class="process__statement-line"
+        aria-hidden="true"
+      ></div>
+
+      <p>
+        La tecnología es el medio.
+        La solución empieza por entender el problema.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .process {
+    width: 100%;
+
+    background: #ffffff;
+    color: #0a0a0c;
+  }
+
+  .process__container {
+    width: min(100%, 1440px);
+
+    margin: 0 auto;
+
+    padding:
+      46px
+      clamp(32px, 5vw, 64px)
+      72px;
+  }
+
+  /* =========================================================
+     HEADER
+     ========================================================= */
+
+  .process__header {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1.55fr)
+      minmax(300px, 0.65fr);
+
+    gap: 80px;
+
+    align-items: end;
+
+    margin-bottom: 52px;
+  }
+
+  .process__heading {
+    max-width: 760px;
+  }
+
+  .process__eyebrow {
+    display: block;
+
+    margin-bottom: 22px;
+
+    color: #075cff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+  }
+
+  .process h2 {
+    margin: 0;
+
+    color: #0a0a0c;
+
+    font-size: clamp(40px, 3.8vw, 58px);
+
+    font-weight: 700;
+
+    line-height: 1.04;
+
+    letter-spacing: -0.045em;
+  }
+
+  .process__intro {
+    max-width: 400px;
+
+    padding-bottom: 4px;
+  }
+
+  .process__intro p {
+    margin: 0;
+
+    color: #4d5460;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+  }
+
+  /* =========================================================
+     FLOW
+     ========================================================= */
+
+  .process__flow {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+
+    gap: 32px;
+  }
+
+  .process__track {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 7px;
+
+    height: 1px;
+
+    background: #dfe3e8;
+  }
+
+  .process__track-progress {
+    display: block;
+
+    width: 2%;
+
+    height: 100%;
+
+    background: #075cff;
+  }
+
+  .process-step {
+    position: relative;
+
+    z-index: 2;
+  }
+
+  .process-step__node {
+    width: 14px;
+    height: 14px;
+
+    margin-bottom: 24px;
+
+    border: 1px solid #d7dbe2;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+  }
+
+  .process-step__node.is-active {
+    border: 4px solid #075cff;
+  }
+
+  .process-step__heading {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-bottom: 18px;
+  }
+
+  .process-step__number {
+    color: #0a0a0c;
+
+    font-size: 11px;
+
+    font-weight: 700;
+  }
+
+  .process-step:first-of-type
+  .process-step__number {
+    color: #075cff;
+  }
+
+  .process-step__separator {
+    color: #9ba1aa;
+
+    font-size: 10px;
+  }
+
+  .process-step h3 {
+    margin: 0;
+
+    color: #0a0a0c;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.02em;
+  }
+
+  .process-step p {
+    max-width: 280px;
+
+    margin: 0;
+
+    color: #4f5662;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+  /* =========================================================
+     STATEMENT
+     ========================================================= */
+
+  .process__statement {
+    display: grid;
+
+    grid-template-columns:
+      1fr
+      minmax(420px, 0.8fr);
+
+    gap: 30px;
+
+    align-items: center;
+
+    margin-top: 58px;
+  }
+
+  .process__statement-line {
+    height: 1px;
+
+    background: #e2e5e9;
+  }
+
+  .process__statement p {
+    max-width: 540px;
+
+    margin: 0;
+
+    color: #0a0a0c;
+
+    font-size: clamp(20px, 1.8vw, 26px);
+
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    letter-spacing: -0.025em;
+  }
+
+  /* =========================================================
+     TABLET
+     ========================================================= */
+
+  @media (max-width: 900px) {
+    .process__container {
+      padding:
+        44px
+        28px
+        68px;
+    }
+
+    .process__header {
+      grid-template-columns: 1fr;
+
+      gap: 28px;
+
+      margin-bottom: 48px;
+    }
+
+    .process__intro {
+      max-width: 520px;
+    }
+
+    .process__flow {
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 46px;
+    }
+
+    .process__track {
+      display: none;
+    }
+
+    .process__statement {
+      grid-template-columns: 1fr;
+
+      margin-top: 54px;
+    }
+
+    .process__statement-line {
+      width: 100%;
+    }
+  }
+
+  /* =========================================================
+     MOBILE
+     ========================================================= */
+
+  @media (max-width: 620px) {
+    .process__container {
+      padding:
+        42px
+        20px
+        62px;
+    }
+
+    .process h2 br {
+      display: none;
+    }
+
+    .process__header {
+      margin-bottom: 44px;
+    }
+
+    .process__flow {
+      grid-template-columns: 1fr;
+
+      gap: 34px;
+    }
+
+    .process-step {
+      padding-left: 34px;
+    }
+
+    .process-step::before {
+      content: "";
+
+      position: absolute;
+
+      left: 7px;
+
+      top: 14px;
+      bottom: -34px;
+
+      width: 1px;
+
+      background: #e0e3e8;
+    }
+
+    .process-step:last-child::before {
+      display: none;
+    }
+
+    .process-step__node {
+      position: absolute;
+
+      left: 0;
+      top: 0;
+
+      margin: 0;
+    }
+
+    .process__statement {
+      margin-top: 48px;
+    }
+
+    .process__statement-line {
+      width: 44px;
+    }
+
+    .process__statement p {
+      font-size: 21px;
+    }
+  }
+</style>

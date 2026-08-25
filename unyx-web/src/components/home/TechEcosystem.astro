@@ -1,0 +1,972 @@
+---
+const groups = [
+  {
+    number: "01",
+    title: "NEGOCIO Y CRM",
+    tools: [
+      {
+        name: "Kommo",
+        logo: "/logos/tech/kommo.svg",
+        emphasis: true,
+        badge: "PARTNER",
+      },
+      {
+        name: "Meta",
+        logo: "/logos/tech/Meta.svg",
+      },
+      {
+        name: "WhatsApp Business",
+        logo: "/logos/tech/WhatsApp.svg",
+      },
+    ],
+  },
+  {
+    number: "02",
+    title: "CLOUD Y PRODUCTIVIDAD",
+    tools: [
+      {
+        name: "Microsoft 365",
+        logo: "/logos/tech/Microsoft 365.svg",
+        emphasis: true,
+      },
+      {
+        name: "Google Workspace",
+        logo: "/logos/tech/Google.svg",
+        emphasis: true,
+      },
+      {
+        name: "Firebase",
+        logo: "/logos/tech/Firebase.svg",
+      },
+    ],
+  },
+  {
+    number: "03",
+    title: "DESARROLLO E INTEGRACIÓN",
+    tools: [
+      {
+        name: "Astro",
+        logo: "/logos/tech/Astro.svg",
+      },
+      {
+        name: "React",
+        logo: "/logos/tech/React.svg",
+      },
+      {
+        name: "Next.js",
+        logo: "/logos/tech/Next.js.svg",
+      },
+      {
+        name: "Node.js",
+        logo: "/logos/tech/Node.js.svg",
+      },
+      {
+        name: "Python",
+        logo: "/logos/tech/Python.svg",
+      },
+      {
+        name: "Flutter",
+        logo: "/logos/tech/Flutter.svg",
+      },
+    ],
+  },
+  {
+    number: "04",
+    title: "AUTOMATIZACIÓN Y DATOS",
+    tools: [
+      {
+        name: "n8n",
+        logo: "/logos/tech/n8n.svg",
+      },
+      {
+        name: "PostgreSQL",
+        logo: "/logos/tech/PostgreSQL.svg",
+      },
+      {
+        name: "Supabase",
+        logo: "/logos/tech/supabase.svg",
+      },
+      {
+        name: "OpenAI",
+        logo: "/logos/tech/OpenAI.svg",
+      },
+    ],
+  },
+];
+---
+
+<section class="tech" id="ecosistema-tecnologico">
+  <div class="tech__container">
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header class="tech__header">
+
+      <div class="tech__heading">
+        <span class="tech__eyebrow">
+          ECOSISTEMA TECNOLÓGICO
+        </span>
+
+        <h2>
+          Trabajamos con la tecnología que
+          mejor encaja con cada solución.
+        </h2>
+      </div>
+
+      <p class="tech__intro">
+        Integramos plataformas, servicios y herramientas de distintos
+        ecosistemas para construir soluciones adaptadas a cada operación.
+      </p>
+
+    </header>
+
+
+    <!-- =====================================================
+         TECHNOLOGY GROUPS
+         ===================================================== -->
+
+    <div class="tech__map">
+
+      {
+        groups.map((group) => (
+
+          <section class="tech-group">
+
+            <!-- Category -->
+
+            <div class="tech-group__category">
+
+              <span class="tech-group__number">
+                {group.number}
+              </span>
+
+              <h3>
+                {group.title}
+              </h3>
+
+            </div>
+
+
+            <!-- Connection -->
+
+            <div
+              class="tech-group__connection"
+              aria-hidden="true"
+            >
+              <span class="tech-group__origin"></span>
+              <span class="tech-group__line"></span>
+            </div>
+
+
+            <!-- Technologies -->
+
+            <div class="tech-group__tools">
+
+              {
+                group.tools.map((tool) => (
+
+                  <div
+                    class:list={[
+                      "tool",
+                      tool.emphasis && "tool--emphasis",
+                    ]}
+                  >
+
+                    <div class="tool__logo">
+
+                      <img
+                        src={tool.logo}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+
+                    </div>
+
+
+                    <span class="tool__name">
+                      {tool.name}
+                    </span>
+
+
+                    {
+                      tool.badge && (
+
+                        <span class="tool__badge">
+
+                          <span
+                            class="tool__badge-dot"
+                            aria-hidden="true"
+                          ></span>
+
+                          {tool.badge}
+
+                        </span>
+
+                      )
+                    }
+
+                  </div>
+
+                ))
+              }
+
+            </div>
+
+          </section>
+
+        ))
+      }
+
+    </div>
+
+
+    <!-- =====================================================
+         FINAL STATEMENT
+         ===================================================== -->
+
+    <div class="tech__statement">
+
+      <p>
+        La herramienta no define la solución.
+        La necesidad define la tecnología.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+
+  /* =========================================================
+     SECTION
+     ========================================================= */
+
+  .tech {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    color: #0a0a0c;
+  }
+
+
+  .tech__container {
+    width: min(100%, 1440px);
+
+    margin: 0 auto;
+
+    padding:
+      56px
+      clamp(32px, 5vw, 64px)
+      44px;
+  }
+
+
+  /* =========================================================
+     HEADER
+     ========================================================= */
+
+  .tech__header {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1.55fr)
+      minmax(280px, 0.65fr);
+
+    gap: clamp(60px, 8vw, 120px);
+
+    align-items: end;
+
+    padding-bottom: 34px;
+
+    border-bottom: 1px solid #e1e5ea;
+  }
+
+
+  .tech__heading {
+    max-width: 780px;
+  }
+
+
+  .tech__eyebrow {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: #075cff;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: 0.08em;
+  }
+
+
+  .tech__heading h2 {
+    margin: 0;
+
+    color: #0a0a0c;
+
+    font-size: clamp(
+      36px,
+      3.2vw,
+      50px
+    );
+
+    font-weight: 700;
+
+    line-height: 1.04;
+
+    letter-spacing: -0.043em;
+  }
+
+
+  .tech__intro {
+    max-width: 380px;
+
+    margin: 0;
+
+    color: #505762;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+
+
+  /* =========================================================
+     TECHNOLOGY MAP
+     ========================================================= */
+
+  .tech__map {
+    width: 100%;
+  }
+
+
+  .tech-group {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+      170px
+      100px
+      minmax(0, 1fr);
+
+    align-items: center;
+
+    min-height: 105px;
+
+    border-bottom: 1px solid #e1e5ea;
+  }
+
+
+
+  /* =========================================================
+     CATEGORY
+     ========================================================= */
+
+  .tech-group__category {
+    align-self: center;
+  }
+
+
+  .tech-group__number {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #858b95;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    line-height: 1;
+  }
+
+
+  .tech-group__category h3 {
+    margin: 0;
+
+    color: #0a0a0c;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    letter-spacing: 0.025em;
+  }
+
+
+
+  /* =========================================================
+     CONNECTION
+     ========================================================= */
+
+  .tech-group__connection {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    padding-right: 2px;
+  }
+
+
+  .tech-group__origin {
+    width: 5px;
+    height: 5px;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    background: #075cff;
+  }
+
+
+  .tech-group__line {
+    height: 1px;
+
+    flex: 1;
+
+    background:
+      linear-gradient(
+        90deg,
+        #075cff 0%,
+        #8eb5ff 42%,
+        #dce2eb 100%
+      );
+  }
+
+
+
+  /* =========================================================
+     TECHNOLOGIES
+     ========================================================= */
+
+  .tech-group__tools {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap:
+      12px
+      28px;
+
+    min-width: 0;
+
+    padding-left: 24px;
+  }
+
+
+  .tool {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    min-height: 44px;
+
+    color: #0a0a0c;
+
+    transition:
+      transform 180ms ease,
+      opacity 180ms ease;
+  }
+
+
+  /* =========================================================
+     LOGOS
+     ========================================================= */
+
+  .tool__logo {
+    width: 29px;
+    height: 29px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex: 0 0 29px;
+  }
+
+
+  .tool__logo img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+  }
+
+
+
+  /* =========================================================
+     TOOL NAMES
+     ========================================================= */
+
+  .tool__name {
+    white-space: nowrap;
+
+    color: #0a0a0c;
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    line-height: 1;
+  }
+
+
+  .tool--emphasis .tool__name {
+    font-size: 18px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.02em;
+  }
+
+
+
+  /* =========================================================
+     KOMMO PARTNER BADGE
+     ========================================================= */
+
+  .tool__badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-left: 2px;
+
+    padding:
+      5px
+      8px;
+
+    border: 1px solid #cbd8fa;
+
+    border-radius: 4px;
+
+    background: #eef3ff;
+
+    color: #34518f;
+
+    white-space: nowrap;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: 0.06em;
+  }
+
+
+  .tool__badge-dot {
+    display: block;
+
+    width: 6px;
+    height: 6px;
+
+    flex: 0 0 6px;
+
+    border-radius: 50%;
+
+    background: #075cff;
+  }
+
+
+
+  /* =========================================================
+     HOVER
+     ========================================================= */
+
+  @media (hover: hover) {
+
+    .tech-group__tools:hover .tool {
+      opacity: 0.48;
+    }
+
+
+    .tech-group__tools .tool:hover {
+      opacity: 1;
+
+      transform: translateY(-2px);
+    }
+
+  }
+
+
+
+  /* =========================================================
+     FINAL STATEMENT
+     ========================================================= */
+
+  .tech__statement {
+    display: flex;
+
+    align-items: flex-start;
+
+    padding-top: 28px;
+  }
+
+
+  .tech__statement p {
+    max-width: 480px;
+
+    margin: 0;
+
+    color: #0a0a0c;
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+    line-height: 1.45;
+
+    letter-spacing: -0.02em;
+  }
+
+
+
+  /* =========================================================
+     SHORT DESKTOP
+     Optimized to fit inside smaller laptop screens
+     ========================================================= */
+
+  @media (min-width: 901px) and (max-height: 900px) {
+
+    .tech__container {
+      padding-top: 42px;
+      padding-bottom: 34px;
+    }
+
+
+    .tech__header {
+      padding-bottom: 28px;
+    }
+
+
+    .tech__eyebrow {
+      margin-bottom: 14px;
+    }
+
+
+    .tech-group {
+      min-height: 94px;
+    }
+
+
+    .tech__statement {
+      padding-top: 22px;
+    }
+
+  }
+
+
+
+  /* =========================================================
+     VERY SHORT DESKTOP
+     ========================================================= */
+
+  @media (min-width: 901px) and (max-height: 760px) {
+
+    .tech__container {
+      padding-top: 30px;
+      padding-bottom: 28px;
+    }
+
+
+    .tech__header {
+      padding-bottom: 22px;
+    }
+
+
+    .tech__heading h2 {
+      font-size: clamp(
+        34px,
+        2.8vw,
+        44px
+      );
+    }
+
+
+    .tech-group {
+      min-height: 82px;
+    }
+
+
+    .tool {
+      min-height: 38px;
+    }
+
+
+    .tool__logo {
+      width: 26px;
+      height: 26px;
+
+      flex-basis: 26px;
+    }
+
+
+    .tech__statement {
+      padding-top: 18px;
+    }
+
+
+    .tech__statement p {
+      font-size: 16px;
+    }
+
+  }
+
+
+
+  /* =========================================================
+     TABLET
+     ========================================================= */
+
+  @media (max-width: 900px) {
+
+    .tech__container {
+      padding:
+        58px
+        28px;
+    }
+
+
+    .tech__header {
+      grid-template-columns: 1fr;
+
+      gap: 24px;
+    }
+
+
+    .tech__intro {
+      max-width: 520px;
+    }
+
+
+    .tech-group {
+      grid-template-columns:
+        140px
+        70px
+        minmax(0, 1fr);
+    }
+
+
+    .tech-group__tools {
+      gap:
+        12px
+        22px;
+
+      padding-left: 18px;
+    }
+
+
+    .tool__name {
+      font-size: 14px;
+    }
+
+
+    .tool--emphasis .tool__name {
+      font-size: 16px;
+    }
+
+  }
+
+
+
+  /* =========================================================
+     MOBILE
+     ========================================================= */
+
+  @media (max-width: 620px) {
+
+    .tech__container {
+      padding:
+        54px
+        20px;
+    }
+
+
+    .tech__header {
+      padding-bottom: 28px;
+    }
+
+
+    .tech__heading h2 {
+      font-size:
+        clamp(
+          34px,
+          10vw,
+          44px
+        );
+    }
+
+
+    .tech__intro {
+      font-size: 13px;
+    }
+
+
+    .tech-group {
+      display: block;
+
+      min-height: auto;
+
+      padding:
+        26px
+        0;
+    }
+
+
+    .tech-group__category {
+      margin-bottom: 20px;
+    }
+
+
+    .tech-group__number {
+      margin-bottom: 7px;
+    }
+
+
+    .tech-group__connection {
+      display: none;
+    }
+
+
+    .tech-group__tools {
+      padding-left: 0;
+
+      gap:
+        14px
+        20px;
+    }
+
+
+    .tool {
+      gap: 8px;
+
+      min-height: 36px;
+    }
+
+
+    .tool__logo {
+      width: 25px;
+      height: 25px;
+
+      flex-basis: 25px;
+    }
+
+
+    .tool__name {
+      font-size: 14px;
+    }
+
+
+    .tool--emphasis .tool__name {
+      font-size: 15px;
+    }
+
+
+    .tool__badge {
+      padding:
+        4px
+        7px;
+
+      font-size: 7px;
+    }
+
+
+    .tool__badge-dot {
+      width: 5px;
+      height: 5px;
+
+      flex-basis: 5px;
+    }
+
+
+    .tech__statement {
+      padding-top: 24px;
+    }
+
+
+    .tech__statement p {
+      max-width: 360px;
+
+      font-size: 16px;
+    }
+
+  }
+
+
+
+  /* =========================================================
+     SMALL MOBILE
+     ========================================================= */
+
+  @media (max-width: 390px) {
+
+    .tech__container {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+
+    .tech-group__tools {
+      gap:
+        12px
+        16px;
+    }
+
+
+    .tool__logo {
+      width: 23px;
+      height: 23px;
+
+      flex-basis: 23px;
+    }
+
+
+    .tool__name {
+      font-size: 13px;
+    }
+
+
+    .tool--emphasis .tool__name {
+      font-size: 14px;
+    }
+
+  }
+
+</style>

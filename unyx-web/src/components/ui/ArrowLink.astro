@@ -1,0 +1,36 @@
+---
+const {
+  href = "#",
+  class: className = "",
+} = Astro.props;
+---
+
+<a href={href} class:list={["arrow-link", className]}>
+  <span><slot /></span>
+  <span class="arrow-link__arrow" aria-hidden="true">→</span>
+</a>
+
+<style>
+  .arrow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    font-weight: 600;
+    color: inherit;
+
+    transition: color var(--transition-fast);
+  }
+
+  .arrow-link__arrow {
+    transition: transform var(--transition-fast);
+  }
+
+  .arrow-link:hover {
+    color: var(--color-blue);
+  }
+
+  .arrow-link:hover .arrow-link__arrow {
+    transform: translateX(4px);
+  }
+</style>

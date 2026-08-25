@@ -1,0 +1,59 @@
+---
+import "../styles/global.css";
+
+import Header from "../components/global/Header.astro";
+import MobileMenu from "../components/global/MobileMenu.astro";
+import Footer from "../components/global/Footer.astro";
+
+const {
+  title = "UNYX Solutions",
+  description = "Tecnología aplicada a necesidades reales.",
+  canonical = "https://unyxsolutions.com",
+  image = "/images/og/default-og.jpg",
+  noindex = false,
+  showHeader = true,
+  showFooter = true,
+} = Astro.props;
+
+const currentUrl = new URL(Astro.url.pathname, canonical);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+
+    <meta name="description" content={description} />
+
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <link rel="canonical" href={currentUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:image" content={new URL(image, canonical)} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, canonical)} />
+
+    <link rel="icon" href="/favicon.svg" />
+
+    <slot name="head" />
+  </head>
+
+  <body>
+    {showHeader && <Header />}
+    {showHeader && <MobileMenu />}
+
+    <slot />
+
+    {showFooter && <Footer />}
+  </body>
+</html>

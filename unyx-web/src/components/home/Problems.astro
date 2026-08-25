@@ -1,0 +1,448 @@
+---
+const problems = [
+  {
+    number: "01",
+    title: "Procesos manuales",
+    description:
+      "Tareas repetitivas que consumen tiempo y dependen demasiado de intervención humana.",
+  },
+  {
+    number: "02",
+    title: "Información dispersa",
+    description:
+      "Datos repartidos entre Excel, WhatsApp, correos y diferentes plataformas.",
+  },
+  {
+    number: "03",
+    title: "Falta de seguimiento",
+    description:
+      "Clientes, oportunidades y tareas que se pierden por falta de visibilidad y control.",
+  },
+  {
+    number: "04",
+    title: "Sistemas aislados",
+    description:
+      "Herramientas que funcionan por separado y obligan a repetir información entre plataformas.",
+  },
+  {
+    number: "05",
+    title: "Datos sin aprovechar",
+    description:
+      "Información disponible que no se convierte fácilmente en decisiones o acciones.",
+  },
+  {
+    number: "06",
+    title: "Tecnología difícil",
+    description:
+      "Equipos, usuarios e infraestructura que requieren demasiado tiempo para mantenerse funcionando correctamente.",
+  },
+];
+---
+
+<section class="problems" id="problema">
+  <div class="problems__container">
+
+    <div class="problems__header">
+      <div class="problems__heading">
+        <span class="problems__eyebrow">
+          EL PROBLEMA
+        </span>
+
+        <h2>
+          Cuando la tecnología no<br />
+          está conectada, la<br />
+          operación tampoco.
+        </h2>
+      </div>
+
+      <div class="problems__intro">
+        <p>
+          Muchas empresas no necesitan más herramientas.
+          Necesitan que sus procesos, sistemas e información
+          trabajen mejor juntos.
+        </p>
+      </div>
+    </div>
+
+    <div class="problems__grid">
+      {
+        problems.map((problem) => (
+          <article class="problem-card">
+            <span class="problem-card__number">
+              {problem.number}
+            </span>
+
+            <h3>
+              {problem.title}
+            </h3>
+
+            <p>
+              {problem.description}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="problems__closing">
+      <div
+        class="problems__line"
+        aria-hidden="true"
+      ></div>
+
+      <h3>
+        Ahí es donde entra UNYX.
+      </h3>
+
+      <a
+        href="#soluciones"
+        class="problems__link"
+      >
+        Conocer nuestras soluciones
+
+        <span aria-hidden="true">
+          →
+        </span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .problems {
+    position: relative;
+
+    width: 100%;
+
+    background: #ffffff;
+    color: #090a0c;
+  }
+
+  .problems__container {
+    width: min(100%, 1440px);
+
+    margin: 0 auto;
+
+    padding:
+      clamp(90px, 9vw, 145px)
+      clamp(32px, 5vw, 64px)
+      36px;
+  }
+
+  /* =========================================================
+     HEADER
+     ========================================================= */
+
+  .problems__header {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1.55fr)
+      minmax(260px, 0.85fr);
+
+    gap: clamp(60px, 10vw, 160px);
+
+    align-items: end;
+
+    margin-bottom: clamp(60px, 6vw, 78px);
+  }
+
+  .problems__heading {
+    max-width: 720px;
+  }
+
+  .problems__eyebrow {
+    display: block;
+
+    margin-bottom: 28px;
+
+    color: #075cff;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+  }
+
+  .problems__heading h2 {
+    margin: 0;
+
+    font-size: clamp(40px, 3.8vw, 58px);
+
+    font-weight: 700;
+
+    line-height: 1.02;
+
+    letter-spacing: -0.045em;
+  }
+
+  /* =========================================================
+     INTRO
+     ========================================================= */
+
+  .problems__intro {
+    max-width: 390px;
+
+    padding-bottom: 8px;
+  }
+
+  .problems__intro p {
+    margin: 0;
+
+    color: #333842;
+
+    font-size: 15px;
+
+    line-height: 1.65;
+  }
+
+  /* =========================================================
+     GRID
+     ========================================================= */
+
+  .problems__grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    border-top: 1px solid #dce0e6;
+    border-left: 1px solid #dce0e6;
+  }
+
+  /* =========================================================
+     CARDS
+     ========================================================= */
+
+  .problem-card {
+    min-height: 210px;
+
+    padding:
+      34px
+      30px
+      38px;
+
+    border-right: 1px solid #dce0e6;
+    border-bottom: 1px solid #dce0e6;
+
+    background: #ffffff;
+
+    transition:
+      background-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  @media (hover: hover) {
+    .problem-card:hover {
+      background: #fafbfc;
+    }
+  }
+
+  .problem-card__number {
+    display: block;
+
+    margin-bottom: 26px;
+
+    color: #075cff;
+
+    font-size: 27px;
+
+    font-weight: 700;
+
+    line-height: 1;
+  }
+
+  .problem-card h3 {
+    margin:
+      0
+      0
+      16px;
+
+    color: #090a0c;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.015em;
+  }
+
+  .problem-card p {
+    max-width: 320px;
+
+    margin: 0;
+
+    color: #343a46;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+  }
+
+  /* =========================================================
+     CLOSING
+     ========================================================= */
+
+  .problems__closing {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    padding-top: 44px;
+
+    text-align: center;
+  }
+
+  .problems__line {
+    width: 1px;
+
+    height: 40px;
+
+    margin-bottom: 20px;
+
+    background:
+      linear-gradient(
+        to bottom,
+        #e1e4e9,
+        #075cff
+      );
+  }
+
+  .problems__closing h3 {
+    margin:
+      0
+      0
+      14px;
+
+    color: #090a0c;
+
+    font-size: clamp(24px, 2vw, 30px);
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.03em;
+  }
+
+  .problems__link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #075cff;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+      gap 180ms ease,
+      opacity 180ms ease;
+  }
+
+  .problems__link:hover {
+    gap: 14px;
+  }
+
+  /* =========================================================
+     TABLET
+     ========================================================= */
+
+  @media (max-width: 900px) {
+    .problems__container {
+      padding:
+        90px
+        28px
+        32px;
+    }
+
+    .problems__header {
+      grid-template-columns: 1fr;
+
+      gap: 32px;
+
+      align-items: start;
+    }
+
+    .problems__heading h2 br {
+      display: none;
+    }
+
+    .problems__intro {
+      max-width: 520px;
+    }
+
+    .problems__grid {
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  /* =========================================================
+     MOBILE
+     ========================================================= */
+
+  @media (max-width: 600px) {
+    .problems__container {
+      padding:
+        72px
+        20px
+        28px;
+    }
+
+    .problems__header {
+      margin-bottom: 46px;
+    }
+
+    .problems__eyebrow {
+      margin-bottom: 20px;
+    }
+
+    .problems__heading h2 {
+      font-size: clamp(38px, 11vw, 50px);
+
+      line-height: 1;
+    }
+
+    .problems__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .problem-card {
+      min-height: auto;
+
+      padding:
+        28px
+        24px
+        32px;
+    }
+
+    .problem-card__number {
+      margin-bottom: 20px;
+
+      font-size: 24px;
+    }
+
+    .problems__closing {
+      padding-top: 38px;
+    }
+
+    .problems__line {
+      height: 34px;
+
+      margin-bottom: 18px;
+    }
+  }
+</style>

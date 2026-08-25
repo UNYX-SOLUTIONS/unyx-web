@@ -1,0 +1,589 @@
+<section class="featured-case" id="caso-destacado">
+  <div class="featured-case__container">
+
+    <header class="featured-case__header">
+      <div class="featured-case__heading">
+        <span class="featured-case__eyebrow">
+          CASO DESTACADO / 01
+        </span>
+
+        <span class="featured-case__client">
+          LUXVIAJES
+        </span>
+
+        <h2>
+          Una operación comercial
+          conectada de principio a fin.
+        </h2>
+      </div>
+
+      <div class="featured-case__summary">
+        <p>
+          Desarrollamos e integramos diferentes componentes digitales para
+          conectar la presencia web, la gestión comercial, las automatizaciones
+          y los procesos internos de Luxviajes.
+        </p>
+
+        <div class="featured-case__tags">
+          <span>WEB</span>
+          <span>CRM</span>
+          <span>AUTOMATIZACIÓN</span>
+          <span>INTEGRACIONES</span>
+          <span>IA</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="featured-case__visual">
+
+      <div class="case-window case-window--website">
+        <span class="case-window__label">
+          SITIO WEB
+        </span>
+
+        <div class="case-window__placeholder">
+          <span>AGENCIALUXVIAJES.COM</span>
+
+          <small>
+            Captura real del sitio web
+          </small>
+        </div>
+      </div>
+
+      <div class="case-window case-window--crm">
+        <span class="case-window__label case-window__label--blue">
+          CRM
+        </span>
+
+        <div class="case-window__placeholder case-window__placeholder--dark">
+          <span class="placeholder-line placeholder-line--large"></span>
+          <span class="placeholder-line"></span>
+          <span class="placeholder-line placeholder-line--short"></span>
+        </div>
+      </div>
+
+      <div class="case-window case-window--automation">
+        <span class="case-window__label">
+          AUTOMATIZACIÓN
+        </span>
+
+        <div class="automation-flow">
+          <span class="automation-flow__node is-active"></span>
+          <span class="automation-flow__line"></span>
+          <span class="automation-flow__node"></span>
+        </div>
+      </div>
+
+      <svg
+        class="featured-case__connection"
+        viewBox="0 0 1200 600"
+        aria-hidden="true"
+      >
+        <line
+          x1="700"
+          y1="325"
+          x2="1080"
+          y2="220"
+        />
+        <circle
+          cx="1080"
+          cy="220"
+          r="4"
+        />
+      </svg>
+
+    </div>
+
+    <div class="featured-case__story">
+
+      <article>
+        <div class="story-heading">
+          <span>01</span>
+          <h3>CONTEXTO</h3>
+        </div>
+
+        <p>
+          Una operación comercial con múltiples canales, herramientas y
+          procesos digitales que necesitan trabajar de forma coordinada.
+        </p>
+      </article>
+
+      <article>
+        <div class="story-heading">
+          <span>02</span>
+          <h3>SOLUCIÓN</h3>
+        </div>
+
+        <p>
+          Integramos diferentes componentes tecnológicos para centralizar
+          información, automatizar procesos y conectar puntos clave de la
+          operación.
+        </p>
+      </article>
+
+      <article>
+        <div class="story-heading">
+          <span>03</span>
+          <h3>CAPACIDADES</h3>
+        </div>
+
+        <p>
+          Software, CRM, automatización, integraciones e inteligencia artificial
+          como partes de un mismo ecosistema.
+        </p>
+      </article>
+
+    </div>
+
+    <div class="featured-case__footer">
+      <a href="/proyectos/luxviajes">
+        Ver caso completo
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .featured-case {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    background: #0b0b0d;
+    color: #ffffff;
+  }
+
+  .featured-case__container {
+    width: min(100%, 1440px);
+    margin: 0 auto;
+
+    padding:
+      92px
+      clamp(32px, 5vw, 64px)
+      76px;
+  }
+
+  .featured-case__header {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 7fr)
+      minmax(320px, 5fr);
+
+    gap: clamp(64px, 9vw, 140px);
+    align-items: end;
+
+    margin-bottom: 56px;
+  }
+
+  .featured-case__heading {
+    max-width: 680px;
+  }
+
+  .featured-case__eyebrow {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #075cff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+  }
+
+  .featured-case__client {
+    display: block;
+
+    margin-bottom: 20px;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .featured-case h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(38px, 3.8vw, 58px);
+    font-weight: 600;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.045em;
+  }
+
+  .featured-case__summary {
+    max-width: 440px;
+  }
+
+  .featured-case__summary p {
+    margin: 0;
+
+    color: #9da2ac;
+
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .featured-case__tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    margin-top: 24px;
+  }
+
+  .featured-case__tags span {
+    color: #6f747d;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: 0.04em;
+  }
+
+  .featured-case__visual {
+    position: relative;
+
+    min-height: 510px;
+
+    border: 1px solid #1d1f24;
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    background:
+      radial-gradient(
+        circle at 60% 50%,
+        rgba(0, 80, 248, 0.035),
+        transparent 32%
+      ),
+      #0d0d10;
+  }
+
+  .case-window {
+    position: absolute;
+
+    overflow: hidden;
+
+    border: 1px solid #202329;
+    border-radius: 7px;
+
+    background: #111216;
+
+    box-shadow:
+      0 30px 70px
+      rgba(0, 0, 0, 0.26);
+  }
+
+  .case-window--website {
+    left: 5%;
+    top: 10%;
+
+    width: 62%;
+    height: 65%;
+  }
+
+  .case-window--crm {
+    right: 7%;
+    top: 31%;
+
+    z-index: 3;
+
+    width: 38%;
+    height: 42%;
+  }
+
+  .case-window--automation {
+    left: 16%;
+    bottom: 6%;
+
+    z-index: 4;
+
+    width: 29%;
+    height: 27%;
+  }
+
+  .case-window__label {
+    display: flex;
+    align-items: center;
+
+    min-height: 34px;
+
+    padding: 0 14px;
+
+    border-bottom: 1px solid #1d2025;
+
+    color: #737983;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+  }
+
+  .case-window__label--blue {
+    color: #075cff;
+  }
+
+  .case-window__placeholder {
+    height: calc(100% - 34px);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    background:
+      linear-gradient(
+        135deg,
+        #15161a,
+        #0f1013
+      );
+
+    color: #767b84;
+  }
+
+  .case-window__placeholder > span {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .case-window__placeholder small {
+    color: #515660;
+    font-size: 10px;
+  }
+
+  .case-window__placeholder--dark {
+    align-items: flex-start;
+    padding: 32px;
+  }
+
+  .placeholder-line {
+    display: block;
+
+    width: 68%;
+    height: 8px;
+
+    border-radius: 4px;
+
+    background: #1d2025;
+  }
+
+  .placeholder-line--large {
+    width: 88%;
+  }
+
+  .placeholder-line--short {
+    width: 45%;
+  }
+
+  .automation-flow {
+    height: calc(100% - 34px);
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 28px;
+  }
+
+  .automation-flow__node {
+    width: 10px;
+    height: 10px;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    background: #252931;
+  }
+
+  .automation-flow__node.is-active {
+    background: #075cff;
+
+    box-shadow:
+      0 0 16px
+      rgba(7, 92, 255, 0.4);
+  }
+
+  .automation-flow__line {
+    flex: 1;
+
+    height: 1px;
+
+    background: #25304d;
+  }
+
+  .featured-case__connection {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+  }
+
+  .featured-case__connection line {
+    stroke: #075cff;
+    stroke-width: 1;
+  }
+
+  .featured-case__connection circle {
+    fill: #075cff;
+  }
+
+  .featured-case__story {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 42px;
+
+    margin-top: 52px;
+
+    padding-top: 32px;
+
+    border-top: 1px solid #1b1d22;
+  }
+
+  .story-heading {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 16px;
+  }
+
+  .story-heading span {
+    color: #075cff;
+
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .story-heading h3 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.03em;
+  }
+
+  .featured-case__story p {
+    max-width: 350px;
+
+    margin: 0;
+
+    color: #8f949e;
+
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+  .featured-case__footer {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 32px;
+  }
+
+  .featured-case__footer a {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-decoration: none;
+  }
+
+  .featured-case__footer a span {
+    transition: transform 180ms ease;
+  }
+
+  .featured-case__footer a:hover span {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 900px) {
+    .featured-case__header {
+      grid-template-columns: 1fr;
+
+      gap: 30px;
+    }
+
+    .featured-case__visual {
+      min-height: 470px;
+    }
+
+    .featured-case__story {
+      grid-template-columns: 1fr;
+
+      gap: 30px;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .featured-case__container {
+      padding:
+        70px
+        20px
+        68px;
+    }
+
+    .featured-case__visual {
+      min-height: 430px;
+    }
+
+    .case-window--website {
+      left: 4%;
+      top: 8%;
+
+      width: 92%;
+      height: 52%;
+    }
+
+    .case-window--crm {
+      right: 4%;
+      top: 48%;
+
+      width: 58%;
+      height: 35%;
+    }
+
+    .case-window--automation {
+      left: 5%;
+      bottom: 5%;
+
+      width: 48%;
+      height: 26%;
+    }
+
+    .featured-case__story {
+      margin-top: 44px;
+    }
+  }
+</style>

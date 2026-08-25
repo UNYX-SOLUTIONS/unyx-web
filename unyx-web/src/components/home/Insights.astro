@@ -1,0 +1,454 @@
+---
+const insights = [
+  {
+    category: "AUTOMATIZACIÓN · CRM",
+    type: "GUÍA",
+    title: "¿Cómo automatizar el seguimiento comercial de una empresa?",
+    description:
+      "Una guía para identificar tareas repetitivas, conectar información y mejorar el seguimiento de oportunidades comerciales.",
+    href: "/insights/automatizar-seguimiento-comercial",
+    featured: true,
+  },
+  {
+    category: "GESTIÓN EMPRESARIAL",
+    type: "ANÁLISIS",
+    title: "CRM vs ERP: ¿qué necesita realmente tu empresa?",
+    description:
+      "Qué resuelve cada sistema y cómo identificar cuál tiene sentido según la operación.",
+    href: "/insights/crm-vs-erp",
+  },
+  {
+    category: "INTELIGENCIA ARTIFICIAL",
+    type: "GUÍA",
+    title: "¿Cuándo tiene sentido implementar IA en un proceso?",
+    description:
+      "Cómo identificar procesos donde la inteligencia artificial puede aportar valor real.",
+    href: "/insights/ia-en-procesos",
+  },
+];
+---
+
+<section class="insights" id="insights">
+  <div class="insights__container">
+
+    <header class="insights__header">
+      <div>
+        <span class="insights__eyebrow">
+          INSIGHTS
+        </span>
+
+        <h2>
+          Ideas para tomar mejores<br />
+          decisiones tecnológicas.
+        </h2>
+
+        <p>
+          Análisis, guías y perspectivas sobre tecnología aplicada
+          a problemas reales de negocio.
+        </p>
+      </div>
+
+      <a href="/insights">
+        Ver todos los insights
+        <span>→</span>
+      </a>
+    </header>
+
+    <div class="insights__content">
+
+      <article class="featured-insight">
+        <a href={insights[0].href}>
+
+          <div class="featured-insight__visual">
+            <div class="flow">
+              <span class="flow__node active"></span>
+              <span class="flow__line"></span>
+              <span class="flow__node"></span>
+              <span class="flow__line"></span>
+              <span class="flow__node"></span>
+              <span class="flow__line"></span>
+              <span class="flow__node diamond"></span>
+            </div>
+
+            <div class="flow-labels">
+              <span>LEAD</span>
+              <span>REGISTRO</span>
+              <span>SEGUIMIENTO</span>
+              <span>OPORTUNIDAD</span>
+            </div>
+          </div>
+
+          <div class="insight-meta">
+            <span>{insights[0].category}</span>
+            <span>·</span>
+            <span>{insights[0].type}</span>
+          </div>
+
+          <h3>
+            {insights[0].title}
+          </h3>
+
+          <p>
+            {insights[0].description}
+          </p>
+        </a>
+      </article>
+
+      <div class="insights__secondary">
+        {
+          insights.slice(1).map((insight) => (
+            <article class="secondary-insight">
+              <a href={insight.href}>
+
+                <div class="insight-meta">
+                  <span>{insight.category}</span>
+                  <span>·</span>
+                  <span>{insight.type}</span>
+                </div>
+
+                <div class="secondary-insight__heading">
+                  <h3>
+                    {insight.title}
+                  </h3>
+
+                  <span aria-hidden="true">
+                    ↗
+                  </span>
+                </div>
+
+                <p>
+                  {insight.description}
+                </p>
+
+              </a>
+            </article>
+          ))
+        }
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .insights {
+    width: 100%;
+
+    background: #ffffff;
+
+    color: #0a0a0c;
+  }
+
+  .insights__container {
+    width: min(100%, 1440px);
+
+    margin: 0 auto;
+
+    padding:
+      82px
+      clamp(32px, 5vw, 64px)
+      86px;
+  }
+
+  .insights__header {
+    display: flex;
+
+    align-items: end;
+
+    justify-content: space-between;
+
+    gap: 60px;
+
+    padding-bottom: 46px;
+
+    border-bottom: 1px solid #e2e5e9;
+  }
+
+  .insights__eyebrow {
+    display: block;
+
+    margin-bottom: 20px;
+
+    color: #075cff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+  }
+
+  .insights h2 {
+    margin: 0;
+
+    font-size: clamp(38px, 3.5vw, 54px);
+
+    line-height: 1.05;
+
+    letter-spacing: -0.04em;
+  }
+
+  .insights__header p {
+    max-width: 580px;
+
+    margin: 22px 0 0;
+
+    color: #505762;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+  }
+
+  .insights__header > a {
+    display: flex;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+
+    color: #075cff;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+  }
+
+  .insights__content {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1.4fr)
+      minmax(340px, 0.9fr);
+  }
+
+  .featured-insight {
+    padding:
+      48px
+      46px
+      0
+      0;
+
+    border-right: 1px solid #e2e5e9;
+  }
+
+  .featured-insight a,
+  .secondary-insight a {
+    color: inherit;
+
+    text-decoration: none;
+  }
+
+  .featured-insight__visual {
+    position: relative;
+
+    height: 290px;
+
+    margin-bottom: 30px;
+
+    border: 1px solid #e4e7eb;
+
+    overflow: hidden;
+
+    background-image:
+      linear-gradient(#f2f3f5 1px, transparent 1px),
+      linear-gradient(90deg, #f2f3f5 1px, transparent 1px);
+
+    background-size: 30px 30px;
+  }
+
+  .flow {
+    position: absolute;
+
+    left: 10%;
+    right: 10%;
+
+    top: 50%;
+
+    display: flex;
+
+    align-items: center;
+  }
+
+  .flow__node {
+    width: 7px;
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #bfc5ce;
+  }
+
+  .flow__node.active,
+  .flow__node.diamond {
+    background: #075cff;
+  }
+
+  .flow__node.diamond {
+    border-radius: 0;
+
+    transform: rotate(45deg);
+  }
+
+  .flow__line {
+    flex: 1;
+
+    height: 1px;
+
+    border-top: 1px dashed #9fb9ec;
+  }
+
+  .flow-labels {
+    position: absolute;
+
+    left: 7%;
+    right: 7%;
+
+    top: calc(50% + 18px);
+
+    display: flex;
+
+    justify-content: space-between;
+  }
+
+  .flow-labels span {
+    padding: 4px 8px;
+
+    border: 1px solid #e2e5e9;
+
+    background: #ffffff;
+
+    color: #777e89;
+
+    font-size: 7px;
+  }
+
+  .insight-meta {
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 14px;
+
+    color: #7b818a;
+
+    font-size: 9px;
+
+    font-weight: 600;
+  }
+
+  .insight-meta span:first-child {
+    color: #075cff;
+
+    font-weight: 700;
+  }
+
+  .featured-insight h3 {
+    max-width: 620px;
+
+    margin: 0 0 16px;
+
+    font-size: clamp(25px, 2.2vw, 34px);
+
+    line-height: 1.15;
+
+    letter-spacing: -0.035em;
+  }
+
+  .featured-insight p {
+    max-width: 600px;
+
+    margin: 0;
+
+    color: #565d67;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+  }
+
+  .insights__secondary {
+    padding-left: 46px;
+  }
+
+  .secondary-insight {
+    padding: 48px 0;
+
+    border-bottom: 1px solid #e2e5e9;
+  }
+
+  .secondary-insight__heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 30px;
+  }
+
+  .secondary-insight h3 {
+    max-width: 430px;
+
+    margin: 0 0 14px;
+
+    font-size: 22px;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.025em;
+  }
+
+  .secondary-insight__heading > span {
+    color: #adb2ba;
+  }
+
+  .secondary-insight p {
+    max-width: 440px;
+
+    margin: 0;
+
+    color: #565d67;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+  @media (max-width: 850px) {
+    .insights__header {
+      align-items: flex-start;
+
+      flex-direction: column;
+    }
+
+    .insights__content {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-insight {
+      padding-right: 0;
+
+      border-right: 0;
+    }
+
+    .insights__secondary {
+      padding-left: 0;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .insights__container {
+      padding:
+        66px
+        20px;
+    }
+
+    .featured-insight__visual {
+      height: 220px;
+    }
+  }
+</style>

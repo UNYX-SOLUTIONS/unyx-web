@@ -1,0 +1,504 @@
+---
+const principles = [
+  {
+    number: "01",
+    title: "Partimos del problema",
+    description:
+      "Primero entendemos la operación y sus necesidades antes de definir qué tecnología tiene sentido implementar.",
+  },
+  {
+    number: "02",
+    title: "Conectamos las piezas",
+    description:
+      "Integramos software, automatización, datos e infraestructura cuando la solución requiere que diferentes componentes trabajen juntos.",
+  },
+  {
+    number: "03",
+    title: "Diseñamos para cada operación",
+    description:
+      "No aplicamos la misma receta a todas las empresas. Adaptamos la solución al contexto, recursos y objetivos de cada proyecto.",
+  },
+  {
+    number: "04",
+    title: "Acompañamos después de implementar",
+    description:
+      "Apoyamos la adopción, ajustes y evolución de las soluciones para que la tecnología continúe aportando valor.",
+  },
+];
+---
+
+<section class="why-unyx" id="por-que-unyx">
+  <div class="why-unyx__grid-bg" aria-hidden="true"></div>
+
+  <div class="why-unyx__container">
+
+    <header class="why-unyx__header">
+
+      <div class="why-unyx__heading">
+        <span class="why-unyx__eyebrow">
+          POR QUÉ UNYX
+        </span>
+
+        <h2>
+          No empezamos por la herramienta.
+          Empezamos por lo que necesitas resolver.
+        </h2>
+      </div>
+
+      <p class="why-unyx__intro">
+        Combinamos visión de negocio y capacidad técnica para construir
+        soluciones que funcionen dentro de la realidad de cada empresa.
+      </p>
+
+    </header>
+
+    <div class="why-unyx__principles">
+      {
+        principles.map((principle) => (
+          <article class="principle">
+
+            <span class="principle__number">
+              {principle.number}
+            </span>
+
+            <span
+              class="principle__corner"
+              aria-hidden="true"
+            >
+              +
+            </span>
+
+            <div class="principle__content">
+              <h3>
+                {principle.title}
+              </h3>
+
+              <p>
+                {principle.description}
+              </p>
+            </div>
+
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="why-unyx__bottom">
+
+      <div
+        class="why-unyx__core"
+        aria-hidden="true"
+      >
+        <div class="core-grid">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span class="active"></span>
+        </div>
+
+        <small>
+          UNYX CORE
+        </small>
+      </div>
+
+      <p>
+        UNYX conecta estrategia, tecnología y operación.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .why-unyx {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    background: #0b0b0d;
+    color: #ffffff;
+  }
+
+  .why-unyx__grid-bg {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+      linear-gradient(
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 1px
+      );
+
+    background-size: 32px 32px;
+
+    opacity: 0.38;
+  }
+
+  .why-unyx__container {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(100%, 1440px);
+
+    margin: 0 auto;
+
+    padding:
+      54px
+      clamp(32px, 5vw, 64px)
+      42px;
+  }
+
+  /* =========================================================
+     HEADER
+     ========================================================= */
+
+  .why-unyx__header {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1.45fr)
+      minmax(300px, 0.65fr);
+
+    gap: 72px;
+
+    align-items: end;
+
+    margin-bottom: 38px;
+  }
+
+  .why-unyx__heading {
+    max-width: 760px;
+  }
+
+  .why-unyx__eyebrow {
+    display: block;
+
+    margin-bottom: 16px;
+
+    color: #075cff;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: 0.08em;
+  }
+
+  .why-unyx__heading h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(36px, 3.2vw, 50px);
+
+    font-weight: 700;
+
+    line-height: 1.04;
+
+    letter-spacing: -0.045em;
+  }
+
+  .why-unyx__intro {
+    max-width: 390px;
+
+    margin: 0;
+
+    padding-bottom: 4px;
+
+    color: #9ca1ab;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+  }
+
+  /* =========================================================
+     PRINCIPLES
+     ========================================================= */
+
+  .why-unyx__principles {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    border-top: 1px solid #25272c;
+    border-left: 1px solid #25272c;
+  }
+
+  .principle {
+    position: relative;
+
+    min-height: 198px;
+
+    padding: 26px 32px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    border-right: 1px solid #25272c;
+    border-bottom: 1px solid #25272c;
+  }
+
+  .principle__number {
+    color: #075cff;
+
+    font-size: 10px;
+
+    font-weight: 700;
+  }
+
+  .principle__corner {
+    position: absolute;
+
+    top: 24px;
+    right: 28px;
+
+    color: #51565f;
+
+    font-size: 14px;
+  }
+
+  .principle__content {
+    max-width: 500px;
+
+    margin-top: 30px;
+  }
+
+  .principle h3 {
+    margin:
+      0
+      0
+      10px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.02em;
+  }
+
+  .principle p {
+    margin: 0;
+
+    color: #969ba5;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+  }
+
+  /* =========================================================
+     BOTTOM
+     ========================================================= */
+
+  .why-unyx__bottom {
+    display: grid;
+
+    grid-template-columns:
+      1fr
+      minmax(360px, 0.8fr);
+
+    gap: 50px;
+
+    align-items: center;
+
+    margin-top: 34px;
+  }
+
+  .why-unyx__core {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+  }
+
+  .core-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, 8px);
+
+    gap: 2px;
+  }
+
+  .core-grid span {
+    width: 8px;
+    height: 8px;
+
+    border: 1px solid #555b65;
+
+    background: transparent;
+  }
+
+  .core-grid .active {
+    border-color: #075cff;
+
+    background: #075cff;
+  }
+
+  .why-unyx__core small {
+    color: #075cff;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+  }
+
+  .why-unyx__bottom > p {
+    max-width: 500px;
+
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(18px, 1.5vw, 23px);
+
+    font-weight: 600;
+
+    line-height: 1.35;
+
+    letter-spacing: -0.025em;
+  }
+
+  /* =========================================================
+     LARGE DESKTOP
+     ========================================================= */
+
+  @media (min-width: 1200px) and (min-height: 760px) {
+    .why-unyx {
+      min-height: min(100svh, 900px);
+    }
+
+    .why-unyx__container {
+      min-height: min(100svh, 900px);
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+    }
+  }
+
+  /* =========================================================
+     TABLET
+     ========================================================= */
+
+  @media (max-width: 900px) {
+    .why-unyx__container {
+      padding:
+        60px
+        28px
+        52px;
+    }
+
+    .why-unyx__header {
+      grid-template-columns: 1fr;
+
+      gap: 24px;
+
+      margin-bottom: 38px;
+    }
+
+    .why-unyx__principles {
+      grid-template-columns: 1fr;
+    }
+
+    .principle {
+      min-height: auto;
+    }
+
+    .why-unyx__bottom {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* =========================================================
+     MOBILE
+     ========================================================= */
+
+  @media (max-width: 620px) {
+    .why-unyx__container {
+      padding:
+        56px
+        20px
+        48px;
+    }
+
+    .why-unyx__heading h2 {
+      font-size: clamp(36px, 10vw, 46px);
+    }
+
+    .principle {
+      padding: 26px 22px;
+    }
+
+    .principle__content {
+      margin-top: 28px;
+    }
+
+    .why-unyx__bottom {
+      margin-top: 34px;
+    }
+  }
+
+  /* =========================================================
+     SHORT DESKTOPS
+     ========================================================= */
+
+  @media (min-width: 901px) and (max-height: 850px) {
+    .why-unyx__container {
+      padding-top: 40px;
+      padding-bottom: 32px;
+    }
+
+    .why-unyx__header {
+      margin-bottom: 28px;
+    }
+
+    .why-unyx__heading h2 {
+      font-size: clamp(34px, 3vw, 46px);
+    }
+
+    .principle {
+      min-height: 175px;
+
+      padding:
+        22px
+        28px;
+    }
+
+    .principle__content {
+      margin-top: 22px;
+    }
+
+    .why-unyx__bottom {
+      margin-top: 24px;
+    }
+  }
+</style>

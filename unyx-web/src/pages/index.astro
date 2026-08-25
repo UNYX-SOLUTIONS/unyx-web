@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import Hero from "../components/home/Hero.astro";
+import Problems from "../components/home/Problems.astro";
+import Solutions from "../components/home/Solutions.astro";
+import FeaturedCase from "../components/home/FeaturedCase.astro";
+import Projects from "../components/home/Projects.astro";
+import Process from "../components/home/Process.astro";
+import WhyUnyx from "../components/home/WhyUnyx.astro";
+import TechEcosystem from "../components/home/TechEcosystem.astro";
+import Insights from "../components/home/Insights.astro";
+import FinalCTA from "../components/home/FinalCTA.astro";
+---
+
+<BaseLayout
+  title="UNYX Solutions | Tecnología aplicada a necesidades reales"
+  description="Diseñamos e integramos soluciones de software, automatización, inteligencia artificial, infraestructura y tecnología industrial."
+>
+  <main>
+    <Hero />
+    <Problems />
+    <Solutions />
+    <FeaturedCase />
+    <Projects />
+    <Process />
+    <WhyUnyx />
+    <TechEcosystem />
+    <Insights />
+    <FinalCTA />
+  </main>
+</BaseLayout>
