@@ -8,6 +8,8 @@ import SolutionCapabilities from "../../components/solutions/SolutionCapabilitie
 import SolutionProcess from "../../components/solutions/SolutionProcess.astro";
 import SolutionProjects from "../../components/solutions/SolutionProjects.astro";
 import SolutionCTA from "../../components/solutions/SolutionCTA.astro";
+import JsonLd from "../../components/global/JsonLd.astro";
+import { serviceSchema, breadcrumbListSchema } from "../../utils/schema";
 
 export async function getStaticPaths() {
   const allServices = serviceGroups.flatMap((group) =>
@@ -21,12 +23,23 @@ export async function getStaticPaths() {
 }
 
 const { service } = Astro.props as { service: Service & { group: string } };
+
+const breadcrumb = breadcrumbListSchema([
+  { name: "Inicio", path: "/" },
+  { name: "Soluciones", path: "/soluciones" },
+  { name: service.title, path: service.href },
+]);
+
+const serviceJsonLd = serviceSchema(service);
 ---
 
 <BaseLayout
   title={`${service.title} | UNYX Solutions`}
   description={service.description}
 >
+  <JsonLd slot="head" schema={breadcrumb} />
+  <JsonLd slot="head" schema={serviceJsonLd} />
+
   <main>
     <SolutionHero service={service} />
     <SolutionOverview service={service} />

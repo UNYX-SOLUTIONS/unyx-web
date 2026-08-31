@@ -1,16 +1,27 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import FinalCTA from "../components/home/FinalCTA.astro";
+import JsonLd from "../components/global/JsonLd.astro";
+import { breadcrumbListSchema } from "../utils/schema";
 
 const {
   title = "",
   description = "",
   category = "",
   number = "",
+  slug = "",
 } = Astro.props;
+
+const breadcrumb = breadcrumbListSchema([
+  { name: "Inicio", path: "/" },
+  { name: "Proyectos", path: "/proyectos" },
+  { name: title, path: `/proyectos/${slug}` },
+]);
 ---
 
 <BaseLayout title={title} description={description}>
+  <JsonLd slot="head" schema={breadcrumb} />
+
   <main>
     <section class="relative overflow-hidden bg-black text-white">
       <div class="relative z-[2] site-container pt-[170px] pb-[70px]">

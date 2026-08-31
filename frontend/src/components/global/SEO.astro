@@ -1,5 +1,7 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, DEFAULT_OG_IMAGE } from "../../consts";
+import { organizationSchema, websiteSchema } from "../../utils/schema";
+import JsonLd from "./JsonLd.astro";
 
 const {
   title = SITE_TITLE,
@@ -10,6 +12,9 @@ const {
 } = Astro.props;
 
 const currentUrl = new URL(Astro.url.pathname, canonical);
+
+const organization = organizationSchema();
+const website = websiteSchema();
 ---
 
 <meta charset="UTF-8" />
@@ -36,3 +41,6 @@ const currentUrl = new URL(Astro.url.pathname, canonical);
 <meta name="twitter:image" content={new URL(image, canonical)} />
 
 <link rel="icon" href="/favicon.svg" />
+
+<JsonLd schema={organization} />
+<JsonLd schema={website} />

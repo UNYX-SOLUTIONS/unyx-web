@@ -3,16 +3,25 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import ProjectsHero from "../../components/projects/ProjectsHero.astro";
 import ProjectCard from "../../components/projects/ProjectCard.astro";
+import JsonLd from "../../components/global/JsonLd.astro";
+import { breadcrumbListSchema } from "../../utils/schema";
 
 const projects = (await getCollection("projects")).sort((a, b) =>
   a.data.number.localeCompare(b.data.number)
 );
+
+const breadcrumb = breadcrumbListSchema([
+  { name: "Inicio", path: "/" },
+  { name: "Proyectos", path: "/proyectos" },
+]);
 ---
 
 <BaseLayout
   title="Proyectos | UNYX Solutions"
   description="Cada proyecto parte de una necesidad diferente. Nuestro trabajo es entenderla y construir la solución tecnológica adecuada."
 >
+  <JsonLd slot="head" schema={breadcrumb} />
+
   <main>
     <ProjectsHero />
 

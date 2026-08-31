@@ -21,6 +21,8 @@ const { Content } = await render(entry);
   description={entry.data.description}
   category={entry.data.category}
   type={entry.data.type}
+  slug={entry.id}
+  pubDate={entry.data.pubDate}
 >
   <ArticleContent>
     <Content />

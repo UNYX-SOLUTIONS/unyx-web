@@ -2,12 +2,21 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Solutions from "../../components/home/Solutions.astro";
 import SolutionCTA from "../../components/solutions/SolutionCTA.astro";
+import JsonLd from "../../components/global/JsonLd.astro";
+import { breadcrumbListSchema } from "../../utils/schema";
+
+const breadcrumb = breadcrumbListSchema([
+  { name: "Inicio", path: "/" },
+  { name: "Soluciones", path: "/soluciones" },
+]);
 ---
 
 <BaseLayout
   title="Soluciones | UNYX Solutions"
   description="Combinamos diferentes capacidades tecnológicas para diseñar soluciones que respondan a la realidad de cada operación."
 >
+  <JsonLd slot="head" schema={breadcrumb} />
+
   <main>
     <section class="relative overflow-hidden bg-black text-white">
       <div class="relative z-[2] site-container pt-[170px] pb-[80px]">

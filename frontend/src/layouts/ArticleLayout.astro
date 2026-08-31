@@ -1,15 +1,38 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import JsonLd from "../components/global/JsonLd.astro";
+import { articleSchema, breadcrumbListSchema } from "../utils/schema";
 
 const {
   title = "",
   description = "",
   category = "",
   type = "",
+  slug = "",
+  pubDate,
 } = Astro.props;
+
+const breadcrumb = breadcrumbListSchema([
+  { name: "Inicio", path: "/" },
+  { name: "Insights", path: "/insights" },
+  { name: title, path: `/insights/${slug}` },
+]);
+
+const article = pubDate
+  ? articleSchema({
+      title,
+      description,
+      category,
+      href: `/insights/${slug}`,
+      pubDate,
+    })
+  : null;
 ---
 
 <BaseLayout title={title} description={description}>
+  <JsonLd slot="head" schema={breadcrumb} />
+  {article && <JsonLd slot="head" schema={article} />}
+
   <main>
     <section class="relative overflow-hidden bg-black text-white">
       <div class="relative z-[2] site-container pt-[170px] pb-[70px]">

@@ -23,6 +23,7 @@ const { Content } = await render(entry);
   description={entry.data.description}
   category={entry.data.category}
   number={entry.data.number}
+  slug={entry.id}
 >
   <ProjectChallenge content={entry.data.challenge} />
   <ProjectSolution content={entry.data.solution} />
