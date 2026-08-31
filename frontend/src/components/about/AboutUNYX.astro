@@ -1,0 +1,59 @@
+---
+import { company } from "../../data/company";
+---
+
+<section class="w-full bg-white text-black">
+  <div class="mx-auto w-full max-w-[1440px] px-[clamp(32px,5vw,64px)] py-[80px]">
+
+    <div class="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-[90px]">
+      <div>
+        <span class="mb-5 block text-[11px] font-bold uppercase tracking-[0.08em] text-blue">
+          QUÉ HACEMOS
+        </span>
+
+        <h2 class="text-[clamp(28px,3vw,40px)] font-bold leading-[1.04] tracking-[-0.04em] text-black">
+          No empezamos por la herramienta. Empezamos por lo que necesitas resolver.
+        </h2>
+      </div>
+
+      <div class="flex flex-col gap-10">
+        {
+          company.valueProposition.map((item, index) => (
+            <div class="flex gap-6 border-b border-gray-200 pb-10 last:border-b-0 last:pb-0">
+              <span class="text-[11px] font-bold text-blue">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+
+              <p class="max-w-[560px] text-base leading-[1.6] text-gray-700">
+                {item}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mt-[90px]">
+      <span class="mb-8 block text-[11px] font-bold uppercase tracking-[0.08em] text-blue">
+        PARA QUIÉN TRABAJAMOS
+      </span>
+
+      <div class="grid grid-cols-2 border-l border-t border-gray-200 max-[800px]:grid-cols-1">
+        {
+          company.audiences.map((audience) => (
+            <article class="border-b border-r border-gray-200 p-8">
+              <h3 class="mb-3 text-base font-bold tracking-[-0.02em] text-black">
+                {audience.title}
+              </h3>
+
+              <p class="max-w-[420px] text-sm leading-[1.6] text-gray-600">
+                {audience.description}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+  </div>
+</section>

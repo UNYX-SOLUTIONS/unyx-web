@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { serviceGroups } from "../../data/services";
+import type { Service } from "../../data/services";
+import SolutionHero from "../../components/solutions/SolutionHero.astro";
+import SolutionOverview from "../../components/solutions/SolutionOverview.astro";
+import SolutionCapabilities from "../../components/solutions/SolutionCapabilities.astro";
+import SolutionProcess from "../../components/solutions/SolutionProcess.astro";
+import SolutionProjects from "../../components/solutions/SolutionProjects.astro";
+import SolutionCTA from "../../components/solutions/SolutionCTA.astro";
+
+export async function getStaticPaths() {
+  const allServices = serviceGroups.flatMap((group) =>
+    group.services.map((service) => ({ ...service, group: group.title }))
+  );
+
+  return allServices.map((service) => ({
+    params: { slug: service.href.split("/").pop() },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props as { service: Service & { group: string } };
+---
+
+<BaseLayout
+  title={`${service.title} | UNYX Solutions`}
+  description={service.description}
+>
+  <main>
+    <SolutionHero service={service} />
+    <SolutionOverview service={service} />
+    <SolutionCapabilities capabilities={service.capabilities} />
+    <SolutionProcess />
+    <SolutionProjects />
+    <SolutionCTA />
+  </main>
+</BaseLayout>

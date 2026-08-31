@@ -22,6 +22,9 @@ const projects = defineCollection({
     category: z.string().default(""),
     description: z.string().default(""),
     number: z.string().default(""),
+    challenge: z.string().optional(),
+    solution: z.string().optional(),
+    results: z.string().optional(),
   }),
 });
 

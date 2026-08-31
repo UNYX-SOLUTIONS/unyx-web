@@ -1,30 +1,7 @@
 ---
-const principles = [
-  {
-    number: "01",
-    title: "Partimos del problema",
-    description:
-      "Primero entendemos la operación y sus necesidades antes de definir qué tecnología tiene sentido implementar.",
-  },
-  {
-    number: "02",
-    title: "Conectamos las piezas",
-    description:
-      "Integramos software, automatización, datos e infraestructura cuando la solución requiere que diferentes componentes trabajen juntos.",
-  },
-  {
-    number: "03",
-    title: "Diseñamos para cada operación",
-    description:
-      "No aplicamos la misma receta a todas las empresas. Adaptamos la solución al contexto, recursos y objetivos de cada proyecto.",
-  },
-  {
-    number: "04",
-    title: "Acompañamos después de implementar",
-    description:
-      "Apoyamos la adopción, ajustes y evolución de las soluciones para que la tecnología continúe aportando valor.",
-  },
-];
+import { company } from "../../data/company";
+
+const principles = company.principles;
 ---
 
 <section class="relative w-full overflow-hidden bg-black text-white [@media(min-width:1200px)_and_(min-height:760px)]:min-h-[min(100svh,900px)]" id="por-que-unyx">

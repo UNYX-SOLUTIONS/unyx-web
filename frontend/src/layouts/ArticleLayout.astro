@@ -1,0 +1,42 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const {
+  title = "",
+  description = "",
+  category = "",
+  type = "",
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <main>
+    <section class="relative overflow-hidden bg-black text-white">
+      <div class="relative z-[2] mx-auto w-full max-w-[1440px] px-[clamp(32px,5vw,64px)] pt-[170px] pb-[70px]">
+        <div class="flex gap-2.5 text-[11px] font-semibold text-gray-500">
+          {category && <span class="font-bold text-blue">{category}</span>}
+          {category && type && <span>·</span>}
+          {type && <span>{type}</span>}
+        </div>
+
+        <h1 class="mt-6 max-w-[850px] text-[clamp(36px,4vw,58px)] font-bold leading-[1.04] tracking-[-0.045em] text-white">
+          {title}
+        </h1>
+
+        {description && (
+          <p class="mt-6 max-w-[620px] text-base leading-[1.65] text-gray-500">
+            {description}
+          </p>
+        )}
+      </div>
+    </section>
+
+    <section class="w-full bg-white text-black">
+      <div class="mx-auto w-full max-w-[1440px] px-[clamp(32px,5vw,64px)] py-[70px]">
+        <div class="mx-auto max-w-3xl">
+          <slot />
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

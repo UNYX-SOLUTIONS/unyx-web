@@ -1,0 +1,47 @@
+---
+import { company } from "../../data/company";
+
+const principles = company.principles;
+---
+
+<section class="w-full bg-black text-white">
+  <div class="mx-auto w-full max-w-[1440px] px-[clamp(32px,5vw,64px)] py-[80px]">
+
+    <span class="mb-5 block text-[11px] font-bold uppercase tracking-[0.08em] text-blue">
+      PRINCIPIOS
+    </span>
+
+    <h2 class="max-w-[760px] text-[clamp(28px,3vw,44px)] font-bold leading-[1.04] tracking-[-0.045em] text-white">
+      La forma en que trabajamos con cada empresa.
+    </h2>
+
+    <div class="mt-12 grid grid-cols-2 border-l border-t border-gray-800 max-[800px]:grid-cols-1">
+      {
+        principles.map((principle) => (
+          <article class="relative flex min-h-[190px] flex-col justify-between border-b border-r border-gray-800 p-[26px_32px]">
+
+            <span class="text-[10px] font-bold text-blue">
+              {principle.number}
+            </span>
+
+            <span class="absolute right-7 top-6 text-sm text-gray-600" aria-hidden="true">
+              +
+            </span>
+
+            <div class="mt-8 max-w-[500px]">
+              <h3 class="mb-2.5 text-[17px] font-bold leading-[1.25] tracking-[-0.02em] text-white">
+                {principle.title}
+              </h3>
+
+              <p class="text-xs leading-[1.55] text-gray-500">
+                {principle.description}
+              </p>
+            </div>
+
+          </article>
+        ))
+      }
+    </div>
+
+  </div>
+</section>

@@ -12,3 +12,5 @@ export const SOCIAL_LINKS = {
   linkedin: "#",
   instagram: "#",
 };
+
+export const KOMHO_WEBHOOK_URL = "";

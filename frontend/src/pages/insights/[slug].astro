@@ -1,7 +1,8 @@
 ---
 import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ArticleContent from "../../components/insights/ArticleContent.astro";
 
 export async function getStaticPaths() {
   const insights = await getCollection("insights");
@@ -15,13 +16,13 @@ const { entry } = Astro.props as { entry: CollectionEntry<"insights"> };
 const { Content } = await render(entry);
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.description}>
-  <main class="mx-auto w-full max-w-3xl px-6 py-24">
-    <article>
-      <h1 class="text-4xl font-bold tracking-tight text-black">{entry.data.title}</h1>
-      <div class="mt-8">
-        <Content />
-      </div>
-    </article>
-  </main>
-</BaseLayout>
+<ArticleLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  category={entry.data.category}
+  type={entry.data.type}
+>
+  <ArticleContent>
+    <Content />
+  </ArticleContent>
+</ArticleLayout>

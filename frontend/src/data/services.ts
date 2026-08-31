@@ -4,6 +4,7 @@ export interface Service {
   title: string;
   description: string;
   href: string;
+  capabilities?: string[];
 }
 
 export interface ServiceGroup {

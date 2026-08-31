@@ -1,7 +1,10 @@
 ---
 import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import ProjectChallenge from "../../components/projects/ProjectChallenge.astro";
+import ProjectSolution from "../../components/projects/ProjectSolution.astro";
+import ProjectResults from "../../components/projects/ProjectResults.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -15,13 +18,21 @@ const { entry } = Astro.props as { entry: CollectionEntry<"projects"> };
 const { Content } = await render(entry);
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.description}>
-  <main class="mx-auto w-full max-w-3xl px-6 py-24">
-    <article>
-      <h1 class="text-4xl font-bold tracking-tight text-black">{entry.data.title}</h1>
-      <div class="mt-8">
+<ProjectLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  category={entry.data.category}
+  number={entry.data.number}
+>
+  <ProjectChallenge content={entry.data.challenge} />
+  <ProjectSolution content={entry.data.solution} />
+  <ProjectResults content={entry.data.results} />
+
+  <section class="w-full bg-white text-black">
+    <div class="mx-auto w-full max-w-[1440px] px-[clamp(32px,5vw,64px)] py-[70px]">
+      <div class="article-body mx-auto max-w-3xl">
         <Content />
       </div>
-    </article>
-  </main>
-</BaseLayout>
+    </div>
+  </section>
+</ProjectLayout>

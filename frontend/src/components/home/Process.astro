@@ -1,30 +1,7 @@
 ---
-const steps = [
-  {
-    number: "01",
-    title: "Entendemos",
-    description:
-      "Analizamos la operación, los procesos y las necesidades antes de proponer tecnología.",
-  },
-  {
-    number: "02",
-    title: "Diseñamos",
-    description:
-      "Definimos una solución clara, viable y adaptada a la realidad de cada empresa.",
-  },
-  {
-    number: "03",
-    title: "Implementamos",
-    description:
-      "Configuramos, desarrollamos e integramos los componentes necesarios para poner la solución en funcionamiento.",
-  },
-  {
-    number: "04",
-    title: "Acompañamos",
-    description:
-      "Apoyamos la adopción, evolución y mejora de la solución después de su implementación.",
-  },
-];
+import { company } from "../../data/company";
+
+const steps = company.process;
 ---
 
 <section class="w-full bg-white text-black" id="como-trabajamos">

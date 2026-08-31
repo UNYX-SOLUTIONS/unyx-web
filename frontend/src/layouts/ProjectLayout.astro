@@ -1,0 +1,45 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import FinalCTA from "../components/home/FinalCTA.astro";
+
+const {
+  title = "",
+  description = "",
+  category = "",
+  number = "",
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <main>
+    <section class="relative overflow-hidden bg-black text-white">
+      <div class="relative z-[2] mx-auto w-full max-w-[1440px] px-[clamp(32px,5vw,64px)] pt-[170px] pb-[70px]">
+        {number && (
+          <span class="block text-[11px] font-bold tracking-[0.08em] text-blue">
+            PROYECTO / {number}
+          </span>
+        )}
+
+        <h1 class="mt-4 max-w-[850px] text-[clamp(36px,4vw,58px)] font-bold leading-[1.04] tracking-[-0.045em] text-white">
+          {title}
+        </h1>
+
+        {category && (
+          <p class="mt-4 text-[11px] font-semibold tracking-[0.04em] text-gray-500">
+            {category}
+          </p>
+        )}
+
+        {description && (
+          <p class="mt-6 max-w-[620px] text-base leading-[1.65] text-gray-500">
+            {description}
+          </p>
+        )}
+      </div>
+    </section>
+
+    <slot />
+
+    <FinalCTA />
+  </main>
+</BaseLayout>
