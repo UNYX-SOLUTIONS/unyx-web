@@ -95,109 +95,89 @@ const groups = [
 ];
 ---
 
-<section class="tech" id="ecosistema-tecnologico">
-  <div class="tech__container">
+<section class="relative w-full overflow-hidden bg-white text-black" id="ecosistema-tecnologico">
+  <div class="mx-auto w-full max-w-[1440px] px-[clamp(32px,5vw,64px)] pt-14 pb-11 max-[900px]:px-7 max-[900px]:py-[58px] max-[620px]:px-5 max-[620px]:py-[54px] max-[390px]:px-[18px] [@media(min-width:901px)_and_(max-height:900px)]:pt-[42px] [@media(min-width:901px)_and_(max-height:900px)]:pb-[34px] [@media(min-width:901px)_and_(max-height:760px)]:pt-[30px] [@media(min-width:901px)_and_(max-height:760px)]:pb-7">
 
-    <!-- =====================================================
-         HEADER
-         ===================================================== -->
+    <header class="grid grid-cols-[minmax(0,1.55fr)_minmax(280px,0.65fr)] items-end gap-[clamp(60px,8vw,120px)] border-b border-gray-200 pb-[34px] max-[900px]:grid-cols-1 max-[900px]:gap-6 [@media(min-width:901px)_and_(max-height:900px)]:pb-7 [@media(min-width:901px)_and_(max-height:760px)]:pb-[22px]">
 
-    <header class="tech__header">
-
-      <div class="tech__heading">
-        <span class="tech__eyebrow">
+      <div class="max-w-[780px]">
+        <span class="mb-[18px] block text-[10px] font-bold leading-none tracking-[0.08em] text-blue [@media(min-width:901px)_and_(max-height:900px)]:mb-[14px]">
           ECOSISTEMA TECNOLÓGICO
         </span>
 
-        <h2>
+        <h2 class="text-[clamp(36px,3.2vw,50px)] font-bold leading-[1.04] tracking-[-0.043em] text-black max-[620px]:text-[clamp(34px,10vw,44px)] [@media(min-width:901px)_and_(max-height:760px)]:text-[clamp(34px,2.8vw,44px)]">
           Trabajamos con la tecnología que
           mejor encaja con cada solución.
         </h2>
       </div>
 
-      <p class="tech__intro">
+      <p class="max-w-[380px] text-[13px] leading-[1.65] text-gray-600 max-[900px]:max-w-[520px]">
         Integramos plataformas, servicios y herramientas de distintos
         ecosistemas para construir soluciones adaptadas a cada operación.
       </p>
 
     </header>
 
-
-    <!-- =====================================================
-         TECHNOLOGY GROUPS
-         ===================================================== -->
-
-    <div class="tech__map">
+    <div class="w-full">
 
       {
         groups.map((group) => (
 
-          <section class="tech-group">
+          <section class="relative grid min-h-[105px] grid-cols-[170px_100px_minmax(0,1fr)] items-center border-b border-gray-200 max-[900px]:grid-cols-[140px_70px_minmax(0,1fr)] max-[620px]:block max-[620px]:min-h-0 max-[620px]:py-[26px] [@media(min-width:901px)_and_(max-height:900px)]:min-h-[94px] [@media(min-width:901px)_and_(max-height:760px)]:min-h-[82px]">
 
-            <!-- Category -->
-
-            <div class="tech-group__category">
-
-              <span class="tech-group__number">
+            <div class="self-center max-[620px]:mb-5">
+              <span class="mb-2 block text-[8px] font-semibold leading-none text-gray-500 max-[620px]:mb-[7px]">
                 {group.number}
               </span>
 
-              <h3>
+              <h3 class="text-[10px] font-bold leading-[1.25] tracking-[0.025em] text-black">
                 {group.title}
               </h3>
-
             </div>
-
-
-            <!-- Connection -->
 
             <div
-              class="tech-group__connection"
+              class="relative flex w-full items-center pr-0.5 max-[620px]:hidden"
               aria-hidden="true"
             >
-              <span class="tech-group__origin"></span>
-              <span class="tech-group__line"></span>
+              <span class="h-[5px] w-[5px] shrink-0 rounded-full bg-blue"></span>
+              <span class="h-px flex-1 bg-linear-to-r from-blue via-[#8eb5ff] to-gray-200"></span>
             </div>
 
-
-            <!-- Technologies -->
-
-            <div class="tech-group__tools">
+            <div class="group/tools flex min-w-0 flex-wrap items-center gap-x-7 gap-y-3 pl-6 max-[900px]:gap-x-[22px] max-[900px]:pl-[18px] max-[620px]:gap-x-5 max-[620px]:gap-y-[14px] max-[620px]:pl-0 max-[390px]:gap-x-4">
 
               {
                 group.tools.map((tool) => (
 
                   <div
                     class:list={[
-                      "tool",
-                      tool.emphasis && "tool--emphasis",
+                      "inline-flex min-h-11 items-center gap-[9px] text-black transition-[transform,opacity] duration-[180ms] group-hover/tools:opacity-[0.48] hover:-translate-y-0.5 hover:opacity-100 [@media(min-width:901px)_and_(max-height:760px)]:min-h-[38px] max-[620px]:min-h-9 max-[620px]:gap-2",
+                      tool.emphasis && "tool-emphasis",
                     ]}
                   >
 
-                    <div class="tool__logo">
+                    <div class="flex h-[29px] w-[29px] shrink-0 items-center justify-center [@media(min-width:901px)_and_(max-height:760px)]:h-[26px] [@media(min-width:901px)_and_(max-height:760px)]:w-[26px] max-[620px]:h-[25px] max-[620px]:w-[25px] max-[390px]:h-[23px] max-[390px]:w-[23px]">
 
                       <img
                         src={tool.logo}
                         alt=""
                         loading="lazy"
                         decoding="async"
+                        class="block h-full w-full object-contain"
                       />
 
                     </div>
 
-
-                    <span class="tool__name">
+                    <span class:list={["whitespace-nowrap text-base font-medium leading-none text-black max-[900px]:text-sm max-[620px]:text-sm max-[390px]:text-[13px]", tool.emphasis && "text-lg font-bold tracking-[-0.02em] max-[900px]:text-base max-[620px]:text-[15px] max-[390px]:text-sm"]}>
                       {tool.name}
                     </span>
-
 
                     {
                       tool.badge && (
 
-                        <span class="tool__badge">
+                        <span class="ml-0.5 inline-flex items-center gap-[5px] whitespace-nowrap rounded border border-blue/30 bg-gray-100 px-2 py-[5px] text-[8px] font-bold leading-none tracking-[0.06em] text-blue max-[620px]:px-[7px] max-[620px]:py-1 max-[620px]:text-[7px]">
 
                           <span
-                            class="tool__badge-dot"
+                            class="block h-[6px] w-[6px] shrink-0 rounded-full bg-blue max-[620px]:h-[5px] max-[620px]:w-[5px]"
                             aria-hidden="true"
                           ></span>
 
@@ -222,14 +202,9 @@ const groups = [
 
     </div>
 
+    <div class="flex items-start pt-7 [@media(min-width:901px)_and_(max-height:900px)]:pt-[22px] [@media(min-width:901px)_and_(max-height:760px)]:pt-[18px] max-[620px]:pt-6">
 
-    <!-- =====================================================
-         FINAL STATEMENT
-         ===================================================== -->
-
-    <div class="tech__statement">
-
-      <p>
+      <p class="max-w-[480px] text-[17px] font-medium leading-[1.45] tracking-[-0.02em] text-black max-[620px]:max-w-[360px] max-[620px]:text-base [@media(min-width:901px)_and_(max-height:760px)]:text-base">
         La herramienta no define la solución.
         La necesidad define la tecnología.
       </p>
@@ -238,735 +213,3 @@ const groups = [
 
   </div>
 </section>
-
-
-<style>
-
-  /* =========================================================
-     SECTION
-     ========================================================= */
-
-  .tech {
-    position: relative;
-
-    width: 100%;
-
-    overflow: hidden;
-
-    background: #ffffff;
-
-    color: #0a0a0c;
-  }
-
-
-  .tech__container {
-    width: min(100%, 1440px);
-
-    margin: 0 auto;
-
-    padding:
-      56px
-      clamp(32px, 5vw, 64px)
-      44px;
-  }
-
-
-  /* =========================================================
-     HEADER
-     ========================================================= */
-
-  .tech__header {
-    display: grid;
-
-    grid-template-columns:
-      minmax(0, 1.55fr)
-      minmax(280px, 0.65fr);
-
-    gap: clamp(60px, 8vw, 120px);
-
-    align-items: end;
-
-    padding-bottom: 34px;
-
-    border-bottom: 1px solid #e1e5ea;
-  }
-
-
-  .tech__heading {
-    max-width: 780px;
-  }
-
-
-  .tech__eyebrow {
-    display: block;
-
-    margin-bottom: 18px;
-
-    color: #075cff;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    line-height: 1;
-
-    letter-spacing: 0.08em;
-  }
-
-
-  .tech__heading h2 {
-    margin: 0;
-
-    color: #0a0a0c;
-
-    font-size: clamp(
-      36px,
-      3.2vw,
-      50px
-    );
-
-    font-weight: 700;
-
-    line-height: 1.04;
-
-    letter-spacing: -0.043em;
-  }
-
-
-  .tech__intro {
-    max-width: 380px;
-
-    margin: 0;
-
-    color: #505762;
-
-    font-size: 13px;
-
-    line-height: 1.65;
-  }
-
-
-
-  /* =========================================================
-     TECHNOLOGY MAP
-     ========================================================= */
-
-  .tech__map {
-    width: 100%;
-  }
-
-
-  .tech-group {
-    position: relative;
-
-    display: grid;
-
-    grid-template-columns:
-      170px
-      100px
-      minmax(0, 1fr);
-
-    align-items: center;
-
-    min-height: 105px;
-
-    border-bottom: 1px solid #e1e5ea;
-  }
-
-
-
-  /* =========================================================
-     CATEGORY
-     ========================================================= */
-
-  .tech-group__category {
-    align-self: center;
-  }
-
-
-  .tech-group__number {
-    display: block;
-
-    margin-bottom: 8px;
-
-    color: #858b95;
-
-    font-size: 8px;
-
-    font-weight: 600;
-
-    line-height: 1;
-  }
-
-
-  .tech-group__category h3 {
-    margin: 0;
-
-    color: #0a0a0c;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    line-height: 1.25;
-
-    letter-spacing: 0.025em;
-  }
-
-
-
-  /* =========================================================
-     CONNECTION
-     ========================================================= */
-
-  .tech-group__connection {
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    width: 100%;
-
-    padding-right: 2px;
-  }
-
-
-  .tech-group__origin {
-    width: 5px;
-    height: 5px;
-
-    flex: 0 0 auto;
-
-    border-radius: 50%;
-
-    background: #075cff;
-  }
-
-
-  .tech-group__line {
-    height: 1px;
-
-    flex: 1;
-
-    background:
-      linear-gradient(
-        90deg,
-        #075cff 0%,
-        #8eb5ff 42%,
-        #dce2eb 100%
-      );
-  }
-
-
-
-  /* =========================================================
-     TECHNOLOGIES
-     ========================================================= */
-
-  .tech-group__tools {
-    display: flex;
-
-    align-items: center;
-
-    flex-wrap: wrap;
-
-    gap:
-      12px
-      28px;
-
-    min-width: 0;
-
-    padding-left: 24px;
-  }
-
-
-  .tool {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    min-height: 44px;
-
-    color: #0a0a0c;
-
-    transition:
-      transform 180ms ease,
-      opacity 180ms ease;
-  }
-
-
-  /* =========================================================
-     LOGOS
-     ========================================================= */
-
-  .tool__logo {
-    width: 29px;
-    height: 29px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    flex: 0 0 29px;
-  }
-
-
-  .tool__logo img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-  }
-
-
-
-  /* =========================================================
-     TOOL NAMES
-     ========================================================= */
-
-  .tool__name {
-    white-space: nowrap;
-
-    color: #0a0a0c;
-
-    font-size: 16px;
-
-    font-weight: 500;
-
-    line-height: 1;
-  }
-
-
-  .tool--emphasis .tool__name {
-    font-size: 18px;
-
-    font-weight: 700;
-
-    letter-spacing: -0.02em;
-  }
-
-
-
-  /* =========================================================
-     KOMMO PARTNER BADGE
-     ========================================================= */
-
-  .tool__badge {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 5px;
-
-    margin-left: 2px;
-
-    padding:
-      5px
-      8px;
-
-    border: 1px solid #cbd8fa;
-
-    border-radius: 4px;
-
-    background: #eef3ff;
-
-    color: #34518f;
-
-    white-space: nowrap;
-
-    font-size: 8px;
-
-    font-weight: 700;
-
-    line-height: 1;
-
-    letter-spacing: 0.06em;
-  }
-
-
-  .tool__badge-dot {
-    display: block;
-
-    width: 6px;
-    height: 6px;
-
-    flex: 0 0 6px;
-
-    border-radius: 50%;
-
-    background: #075cff;
-  }
-
-
-
-  /* =========================================================
-     HOVER
-     ========================================================= */
-
-  @media (hover: hover) {
-
-    .tech-group__tools:hover .tool {
-      opacity: 0.48;
-    }
-
-
-    .tech-group__tools .tool:hover {
-      opacity: 1;
-
-      transform: translateY(-2px);
-    }
-
-  }
-
-
-
-  /* =========================================================
-     FINAL STATEMENT
-     ========================================================= */
-
-  .tech__statement {
-    display: flex;
-
-    align-items: flex-start;
-
-    padding-top: 28px;
-  }
-
-
-  .tech__statement p {
-    max-width: 480px;
-
-    margin: 0;
-
-    color: #0a0a0c;
-
-    font-size: 17px;
-
-    font-weight: 500;
-
-    line-height: 1.45;
-
-    letter-spacing: -0.02em;
-  }
-
-
-
-  /* =========================================================
-     SHORT DESKTOP
-     Optimized to fit inside smaller laptop screens
-     ========================================================= */
-
-  @media (min-width: 901px) and (max-height: 900px) {
-
-    .tech__container {
-      padding-top: 42px;
-      padding-bottom: 34px;
-    }
-
-
-    .tech__header {
-      padding-bottom: 28px;
-    }
-
-
-    .tech__eyebrow {
-      margin-bottom: 14px;
-    }
-
-
-    .tech-group {
-      min-height: 94px;
-    }
-
-
-    .tech__statement {
-      padding-top: 22px;
-    }
-
-  }
-
-
-
-  /* =========================================================
-     VERY SHORT DESKTOP
-     ========================================================= */
-
-  @media (min-width: 901px) and (max-height: 760px) {
-
-    .tech__container {
-      padding-top: 30px;
-      padding-bottom: 28px;
-    }
-
-
-    .tech__header {
-      padding-bottom: 22px;
-    }
-
-
-    .tech__heading h2 {
-      font-size: clamp(
-        34px,
-        2.8vw,
-        44px
-      );
-    }
-
-
-    .tech-group {
-      min-height: 82px;
-    }
-
-
-    .tool {
-      min-height: 38px;
-    }
-
-
-    .tool__logo {
-      width: 26px;
-      height: 26px;
-
-      flex-basis: 26px;
-    }
-
-
-    .tech__statement {
-      padding-top: 18px;
-    }
-
-
-    .tech__statement p {
-      font-size: 16px;
-    }
-
-  }
-
-
-
-  /* =========================================================
-     TABLET
-     ========================================================= */
-
-  @media (max-width: 900px) {
-
-    .tech__container {
-      padding:
-        58px
-        28px;
-    }
-
-
-    .tech__header {
-      grid-template-columns: 1fr;
-
-      gap: 24px;
-    }
-
-
-    .tech__intro {
-      max-width: 520px;
-    }
-
-
-    .tech-group {
-      grid-template-columns:
-        140px
-        70px
-        minmax(0, 1fr);
-    }
-
-
-    .tech-group__tools {
-      gap:
-        12px
-        22px;
-
-      padding-left: 18px;
-    }
-
-
-    .tool__name {
-      font-size: 14px;
-    }
-
-
-    .tool--emphasis .tool__name {
-      font-size: 16px;
-    }
-
-  }
-
-
-
-  /* =========================================================
-     MOBILE
-     ========================================================= */
-
-  @media (max-width: 620px) {
-
-    .tech__container {
-      padding:
-        54px
-        20px;
-    }
-
-
-    .tech__header {
-      padding-bottom: 28px;
-    }
-
-
-    .tech__heading h2 {
-      font-size:
-        clamp(
-          34px,
-          10vw,
-          44px
-        );
-    }
-
-
-    .tech__intro {
-      font-size: 13px;
-    }
-
-
-    .tech-group {
-      display: block;
-
-      min-height: auto;
-
-      padding:
-        26px
-        0;
-    }
-
-
-    .tech-group__category {
-      margin-bottom: 20px;
-    }
-
-
-    .tech-group__number {
-      margin-bottom: 7px;
-    }
-
-
-    .tech-group__connection {
-      display: none;
-    }
-
-
-    .tech-group__tools {
-      padding-left: 0;
-
-      gap:
-        14px
-        20px;
-    }
-
-
-    .tool {
-      gap: 8px;
-
-      min-height: 36px;
-    }
-
-
-    .tool__logo {
-      width: 25px;
-      height: 25px;
-
-      flex-basis: 25px;
-    }
-
-
-    .tool__name {
-      font-size: 14px;
-    }
-
-
-    .tool--emphasis .tool__name {
-      font-size: 15px;
-    }
-
-
-    .tool__badge {
-      padding:
-        4px
-        7px;
-
-      font-size: 7px;
-    }
-
-
-    .tool__badge-dot {
-      width: 5px;
-      height: 5px;
-
-      flex-basis: 5px;
-    }
-
-
-    .tech__statement {
-      padding-top: 24px;
-    }
-
-
-    .tech__statement p {
-      max-width: 360px;
-
-      font-size: 16px;
-    }
-
-  }
-
-
-
-  /* =========================================================
-     SMALL MOBILE
-     ========================================================= */
-
-  @media (max-width: 390px) {
-
-    .tech__container {
-      padding-left: 18px;
-      padding-right: 18px;
-    }
-
-
-    .tech-group__tools {
-      gap:
-        12px
-        16px;
-    }
-
-
-    .tool__logo {
-      width: 23px;
-      height: 23px;
-
-      flex-basis: 23px;
-    }
-
-
-    .tool__name {
-      font-size: 13px;
-    }
-
-
-    .tool--emphasis .tool__name {
-      font-size: 14px;
-    }
-
-  }
-
-</style>

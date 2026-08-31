@@ -1,10 +1,10 @@
-<nav class="mobile-menu" data-mobile-menu hidden>
-  <div class="mobile-menu__inner">
-    <a href="/soluciones">Soluciones</a>
-    <a href="/proyectos">Proyectos</a>
-    <a href="/nosotros">Nosotros</a>
-    <a href="/insights">Insights</a>
-    <a class="mobile-menu__cta" href="/contacto">
+<nav class="fixed inset-x-0 top-[84px] z-[45] bg-black border-b border-white/[0.08]" data-mobile-menu hidden>
+  <div class="flex flex-col gap-5 px-[var(--container-padding)] pt-7 pb-9">
+    <a href="/soluciones" class="text-[1.1rem] font-semibold text-white">Soluciones</a>
+    <a href="/proyectos" class="text-[1.1rem] font-semibold text-white">Proyectos</a>
+    <a href="/nosotros" class="text-[1.1rem] font-semibold text-white">Nosotros</a>
+    <a href="/insights" class="text-[1.1rem] font-semibold text-white">Insights</a>
+    <a class="mt-3 text-[1.1rem] font-semibold text-blue!" href="/contacto">
       Cuéntanos tu proyecto →
     </a>
   </div>
@@ -23,31 +23,3 @@
     });
   }
 </script>
-
-<style>
-  .mobile-menu {
-    position: fixed;
-    inset: 84px 0 auto;
-    z-index: 45;
-    background: var(--color-black);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .mobile-menu__inner {
-    padding: 28px var(--container-padding) 36px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .mobile-menu a {
-    color: var(--color-white);
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-
-  .mobile-menu__cta {
-    margin-top: 12px;
-    color: var(--color-blue) !important;
-  }
-</style>

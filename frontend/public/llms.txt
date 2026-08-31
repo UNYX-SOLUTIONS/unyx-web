@@ -1,3 +1,31 @@
 # UNYX Solutions
 
-Sitio oficial de UNYX Solutions.
+## Descripción oficial
+Tecnología aplicada a necesidades reales.
+UNYX diseña, integra y mantiene software, automatización, IA e infraestructura para mejorar operaciones empresariales. No vendemos tecnología por tecnología; primero entendemos la operación del cliente y luego conectamos sistemas, datos, personas y procesos.
+
+## Propuesta de valor
+- Entendemos antes de implementar.
+- Integramos sistemas, datos, personas y procesos.
+- Construimos soluciones que pueden evolucionar.
+- Acompañamos la adopción y la operación posterior.
+
+## Audiencias objetivo
+- Gerencia / Propietarios: Buscan resolver problemas sin saber qué tecnología necesitan.
+- Líderes comerciales / Operaciones: Necesitan CRM, automatización y seguimiento comercial.
+- Responsables de TI: Buscan integraciones con su entorno actual y arquitectura robusta.
+- Empresas evaluando proveedores: Necesitan casos, metodología y confianza.
+
+## Servicios (Soluciones)
+- Desarrollo de software a medida.
+- Automatización e inteligencia artificial (IA).
+- CRM y automatización comercial.
+- Integraciones y APIs (conexión de sistemas heredados y modernos).
+- Soporte y gestión tecnológica.
+- Infraestructura y redes.
+- Cloud, datos y continuidad operativa.
+- IoT y automatización industrial.
+
+## Contacto comercial
+CTA principal: Cuéntanos tu proyecto.
+Web: https://unyxsolutions.com

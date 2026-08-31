@@ -1,43 +1,43 @@
-<footer class="site-footer">
-  <div class="site-footer__container">
+<footer class="w-full bg-black text-white border-t border-[#1c1e22]">
+  <div class="mx-auto w-full max-w-[1440px] px-[clamp(32px,5vw,64px)] pt-[66px] pb-[30px] max-[620px]:px-5 max-[620px]:pt-[54px] max-[620px]:pb-[26px]">
 
-    <div class="site-footer__main">
+    <div class="grid grid-cols-[minmax(270px,1.3fr)_minmax(230px,1fr)_minmax(150px,0.65fr)_minmax(140px,0.55fr)] gap-[clamp(50px,6vw,90px)] pb-[62px] max-[1000px]:grid-cols-2 max-[620px]:grid-cols-1 max-[620px]:gap-11 max-[620px]:pb-12">
 
-      <div class="site-footer__brand">
+      <div>
 
         <a
           href="/"
-          class="site-footer__logo"
+          class="inline-flex items-center gap-3 text-white"
           aria-label="UNYX Solutions"
         >
           <span
-            class="site-footer__symbol"
+            class="grid w-5 h-5 grid-cols-2 gap-0.5"
             aria-hidden="true"
           >
-            <span></span>
-            <span></span>
-            <span></span>
-            <span class="active"></span>
+            <span class="bg-transparent border border-[#5a606a]"></span>
+            <span class="bg-transparent border border-[#5a606a]"></span>
+            <span class="bg-transparent border border-[#5a606a]"></span>
+            <span class="bg-[#075cff] border border-[#075cff]"></span>
           </span>
 
-          <strong>
+          <strong class="text-[19px] font-bold">
             UNYX Solutions
           </strong>
         </a>
 
-        <p>
+        <p class="mt-[22px] max-w-80 text-[13px] leading-[1.7] text-[#999fa9]">
           Tecnología aplicada a necesidades reales. Diseñamos e integramos
           soluciones de software, automatización, inteligencia artificial,
           infraestructura y tecnología industrial.
         </p>
 
-        <div class="site-footer__contact">
+        <div class="flex flex-col gap-[7px] mt-[52px] text-[13px] max-[1000px]:mt-9">
 
-          <a href="mailto:info@unyxsolutions.com">
+          <a href="mailto:info@unyxsolutions.com" class="text-white">
             info@unyxsolutions.com
           </a>
 
-          <span>
+          <span class="text-[#999fa9]">
             Guayaquil, Ecuador.
           </span>
 
@@ -46,105 +46,106 @@
       </div>
 
       <nav
-        class="site-footer__column site-footer__solutions"
+        class="flex flex-col items-start gap-[13px]"
         aria-label="Soluciones"
       >
-        <h2>
+        <h2 class="mb-2 text-[10px] font-bold tracking-[0.04em] text-white">
           SOLUCIONES
         </h2>
 
-        <a href="/soluciones/desarrollo-software">
+        <a href="/soluciones/desarrollo-software" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
           Desarrollo de software
         </a>
 
-        <a href="/soluciones/crm-automatizacion-comercial">
+        <a href="/soluciones/crm-automatizacion-comercial" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
           CRM y automatización comercial
         </a>
 
-        <a href="/soluciones/automatizacion-ia">
+        <a href="/soluciones/automatizacion-ia" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
           Automatización e IA
         </a>
 
-        <a href="/soluciones/integraciones-apis">
+        <a href="/soluciones/integraciones-apis" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
           Integraciones y APIs
         </a>
 
-        <a href="/soluciones/soporte-gestion-tecnologica">
+        <a href="/soluciones/soporte-gestion-tecnologica" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
           Soporte y gestión tecnológica
         </a>
 
-        <a href="/soluciones/infraestructura-redes">
+        <a href="/soluciones/infraestructura-redes" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
           Infraestructura y redes
         </a>
 
-        <a href="/soluciones/cloud-datos-continuidad">
+        <a href="/soluciones/cloud-datos-continuidad" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
           Cloud, datos y continuidad
         </a>
 
-        <a href="/soluciones/iot-automatizacion-industrial">
+        <a href="/soluciones/iot-automatizacion-industrial" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
           IoT y automatización industrial
         </a>
 
-        <a href="/soluciones/integracion-ot-it">
+        <a href="/soluciones/integracion-ot-it" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
           Integración OT / IT
         </a>
       </nav>
 
       <nav
-        class="site-footer__column"
+        class="flex flex-col items-start gap-[13px]"
         aria-label="Empresa"
       >
-        <h2>
+        <h2 class="mb-2 text-[10px] font-bold tracking-[0.04em] text-white">
           EMPRESA
         </h2>
 
-        <a href="/nosotros">
+        <a href="/nosotros" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
           Nosotros
         </a>
 
-        <a href="/proyectos">
+        <a href="/proyectos" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
           Proyectos
         </a>
 
-        <a href="/#como-trabajamos">
+        <a href="/#como-trabajamos" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
           Cómo trabajamos
         </a>
 
-        <a href="/#contacto">
+        <a href="/#contacto" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
           Contacto
         </a>
       </nav>
 
-      <div class="site-footer__right">
+      <div class="flex flex-col justify-between gap-[55px] max-[1000px]:justify-start">
 
         <nav
-          class="site-footer__column"
+          class="flex flex-col items-start gap-[13px]"
           aria-label="Recursos"
         >
-          <h2>
+          <h2 class="mb-2 text-[10px] font-bold tracking-[0.04em] text-white">
             RECURSOS
           </h2>
 
-          <a href="/insights">
+          <a href="/insights" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
             Insights
           </a>
 
-          <a href="/proyectos">
+          <a href="/proyectos" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
             Casos de éxito
           </a>
         </nav>
 
         <nav
-          class="site-footer__column"
+          class="flex flex-col items-start gap-[13px]"
           aria-label="Redes sociales"
         >
-          <h2>
+          <h2 class="mb-2 text-[10px] font-bold tracking-[0.04em] text-white">
             SOCIAL
           </h2>
 
           <a
             href="#"
             rel="noopener noreferrer"
+            class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5"
           >
             LinkedIn
           </a>
@@ -152,6 +153,7 @@
           <a
             href="#"
             rel="noopener noreferrer"
+            class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5"
           >
             Instagram
           </a>
@@ -161,23 +163,23 @@
 
     </div>
 
-    <div class="site-footer__bottom">
+    <div class="flex items-center justify-between gap-8 pt-[26px] border-t border-[#1e2025] text-[10px] text-[#7f858e] max-[620px]:flex-col max-[620px]:items-start">
 
       <span>
         © 2026 UNYX Solutions. Todos los derechos reservados.
       </span>
 
-      <nav aria-label="Legal">
+      <nav class="flex gap-[26px] max-[620px]:flex-wrap max-[620px]:gap-x-[22px] max-[620px]:gap-y-3" aria-label="Legal">
 
-        <a href="/privacidad">
+        <a href="/privacidad" class="text-[#858b94] transition-colors duration-[160ms] hover:text-white">
           Privacidad
         </a>
 
-        <a href="/terminos">
+        <a href="/terminos" class="text-[#858b94] transition-colors duration-[160ms] hover:text-white">
           Términos
         </a>
 
-        <a href="/cookies">
+        <a href="/cookies" class="text-[#858b94] transition-colors duration-[160ms] hover:text-white">
           Cookies
         </a>
 
@@ -187,265 +189,3 @@
 
   </div>
 </footer>
-
-<style>
-  .site-footer {
-    width: 100%;
-
-    background: #0b0b0d;
-
-    color: #ffffff;
-
-    border-top: 1px solid #1c1e22;
-  }
-
-  .site-footer__container {
-    width: min(100%, 1440px);
-
-    margin: 0 auto;
-
-    padding:
-      66px
-      clamp(32px, 5vw, 64px)
-      30px;
-  }
-
-  /* MAIN */
-
-  .site-footer__main {
-    display: grid;
-
-    grid-template-columns:
-      minmax(270px, 1.3fr)
-      minmax(230px, 1fr)
-      minmax(150px, 0.65fr)
-      minmax(140px, 0.55fr);
-
-    gap: clamp(50px, 6vw, 90px);
-
-    padding-bottom: 62px;
-  }
-
-  /* BRAND */
-
-  .site-footer__logo {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    color: #ffffff;
-
-    text-decoration: none;
-  }
-
-  .site-footer__logo strong {
-    font-size: 19px;
-
-    font-weight: 700;
-  }
-
-  .site-footer__symbol {
-    width: 20px;
-    height: 20px;
-
-    display: grid;
-
-    grid-template-columns:
-      repeat(2, 1fr);
-
-    gap: 2px;
-  }
-
-  .site-footer__symbol span {
-    border: 1px solid #5a606a;
-
-    background: transparent;
-  }
-
-  .site-footer__symbol .active {
-    border-color: #075cff;
-
-    background: #075cff;
-  }
-
-  .site-footer__brand > p {
-    max-width: 320px;
-
-    margin: 22px 0 0;
-
-    color: #999fa9;
-
-    font-size: 13px;
-
-    line-height: 1.7;
-  }
-
-  .site-footer__contact {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 7px;
-
-    margin-top: 52px;
-
-    font-size: 13px;
-  }
-
-  .site-footer__contact a {
-    color: #ffffff;
-
-    text-decoration: none;
-  }
-
-  .site-footer__contact span {
-    color: #999fa9;
-  }
-
-  /* COLUMNS */
-
-  .site-footer__column {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 13px;
-  }
-
-  .site-footer__column h2 {
-    margin:
-      0
-      0
-      8px;
-
-    color: #ffffff;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.04em;
-  }
-
-  .site-footer__column a {
-    color: #9da2ab;
-
-    font-size: 12px;
-
-    line-height: 1.45;
-
-    text-decoration: none;
-
-    transition:
-      color 160ms ease,
-      transform 160ms ease;
-  }
-
-  .site-footer__column a:hover {
-    color: #ffffff;
-
-    transform: translateX(2px);
-  }
-
-  .site-footer__right {
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: space-between;
-
-    gap: 55px;
-  }
-
-  /* BOTTOM */
-
-  .site-footer__bottom {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 32px;
-
-    padding-top: 26px;
-
-    border-top: 1px solid #1e2025;
-
-    color: #7f858e;
-
-    font-size: 10px;
-  }
-
-  .site-footer__bottom nav {
-    display: flex;
-
-    gap: 26px;
-  }
-
-  .site-footer__bottom a {
-    color: #858b94;
-
-    text-decoration: none;
-
-    transition: color 160ms ease;
-  }
-
-  .site-footer__bottom a:hover {
-    color: #ffffff;
-  }
-
-  /* TABLET */
-
-  @media (max-width: 1000px) {
-    .site-footer__main {
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-    }
-
-    .site-footer__contact {
-      margin-top: 36px;
-    }
-
-    .site-footer__right {
-      justify-content: flex-start;
-    }
-  }
-
-  /* MOBILE */
-
-  @media (max-width: 620px) {
-    .site-footer__container {
-      padding:
-        54px
-        20px
-        26px;
-    }
-
-    .site-footer__main {
-      grid-template-columns: 1fr;
-
-      gap: 44px;
-
-      padding-bottom: 48px;
-    }
-
-    .site-footer__bottom {
-      flex-direction: column;
-
-      align-items: flex-start;
-    }
-
-    .site-footer__bottom nav {
-      flex-wrap: wrap;
-
-      gap:
-        12px
-        22px;
-    }
-  }
-</style>

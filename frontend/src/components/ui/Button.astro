@@ -7,10 +7,22 @@ const {
   type = "button",
 } = Astro.props;
 
+const variantClasses = {
+  primary: "bg-blue text-white hover:bg-blue-hover",
+  secondary: "bg-transparent text-black border-gray-300 hover:border-black",
+  "dark-secondary": "bg-transparent text-white border-white/25 hover:border-white/60",
+};
+
+const sizeClasses = {
+  sm: "px-[18px] py-3 text-sm",
+  md: "px-[22px] py-[15px] text-base",
+  lg: "px-7 py-[18px] text-lg",
+};
+
 const classes = [
-  "button",
-  `button--${variant}`,
-  `button--${size}`,
+  "inline-flex items-center justify-center gap-2.5 min-h-12 border border-transparent rounded-lg font-semibold leading-none transition-[background-color,color,border-color,transform] duration-[160ms] hover:-translate-y-px",
+  variantClasses[variant],
+  sizeClasses[size],
   className,
 ];
 ---
@@ -26,74 +38,3 @@ const classes = [
     </button>
   )
 }
-
-<style>
-  .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    min-height: 48px;
-
-    border: 1px solid transparent;
-    border-radius: var(--radius-sm);
-
-    font-weight: 600;
-    line-height: 1;
-
-    transition:
-      background-color var(--transition-fast),
-      color var(--transition-fast),
-      border-color var(--transition-fast),
-      transform var(--transition-fast);
-  }
-
-  .button:hover {
-    transform: translateY(-1px);
-  }
-
-  .button--primary {
-    background: var(--color-blue);
-    color: var(--color-white);
-  }
-
-  .button--primary:hover {
-    background: var(--color-blue-hover);
-  }
-
-  .button--secondary {
-    background: transparent;
-    color: var(--color-black);
-    border-color: var(--color-gray-300);
-  }
-
-  .button--secondary:hover {
-    border-color: var(--color-black);
-  }
-
-  .button--dark-secondary {
-    background: transparent;
-    color: var(--color-white);
-    border-color: rgba(255, 255, 255, 0.25);
-  }
-
-  .button--dark-secondary:hover {
-    border-color: rgba(255, 255, 255, 0.6);
-  }
-
-  .button--sm {
-    padding: 12px 18px;
-    font-size: var(--fs-sm);
-  }
-
-  .button--md {
-    padding: 15px 22px;
-    font-size: var(--fs-base);
-  }
-
-  .button--lg {
-    padding: 18px 28px;
-    font-size: var(--fs-md);
-  }
-</style>

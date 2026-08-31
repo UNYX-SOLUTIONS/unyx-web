@@ -1,4 +1,4 @@
-:root {
+@theme {
   /* Brand */
   --color-black: #0b0b0d;
   --color-black-soft: #111216;
@@ -17,12 +17,6 @@
   --color-gray-200: #e3e6eb;
   --color-gray-100: #f3f5f7;
 
-  /* Semantic */
-  --color-bg: var(--color-white);
-  --color-text: var(--color-black);
-  --color-text-muted: var(--color-gray-700);
-  --color-border: var(--color-gray-200);
-
   /* Typography */
   --font-sans:
     Inter,
@@ -33,6 +27,14 @@
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
+}
+
+:root {
+  /* Semantic */
+  --color-bg: var(--color-white);
+  --color-text: var(--color-black);
+  --color-text-muted: var(--color-gray-700);
+  --color-border: var(--color-gray-200);
 
   /* Font sizes */
   --fs-xs: 0.75rem;

@@ -1,95 +1,20 @@
-<header class="header">
-  <div class="header__container">
+<header class="absolute top-0 left-0 z-100 w-full text-white border-b border-white/8">
+  <div class="grid w-[min(calc(100%-48px),1280px)] h-21 mx-auto grid-cols-[1fr_auto_1fr] items-center gap-10 max-[800px]:grid-cols-[1fr_auto]">
 
-    <a href="/" class="logo">
+    <a href="/" class="text-xl font-bold text-white">
       UNYX Solutions
     </a>
 
-    <nav>
-      <a href="/soluciones">Soluciones</a>
-      <a href="/proyectos">Proyectos</a>
-      <a href="/nosotros">Nosotros</a>
-      <a href="/insights">Insights</a>
+    <nav class="flex gap-8.5 max-[800px]:hidden">
+      <a href="/soluciones" class="text-sm text-gray-400 hover:text-white">Soluciones</a>
+      <a href="/proyectos" class="text-sm text-gray-400 hover:text-white">Proyectos</a>
+      <a href="/nosotros" class="text-sm text-gray-400 hover:text-white">Nosotros</a>
+      <a href="/insights" class="text-sm text-gray-400 hover:text-white">Insights</a>
     </nav>
 
-    <a href="/contacto" class="cta">
+    <a href="/contacto" class="justify-self-end px-5 py-3.25 text-sm font-semibold text-white bg-blue rounded-lg">
       Cuéntanos tu proyecto
     </a>
 
   </div>
 </header>
-
-<style>
-  .header {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-
-    z-index: 100;
-
-    color: white;
-
-    border-bottom: 1px solid rgba(255,255,255,.08);
-  }
-
-  .header__container {
-    width: min(calc(100% - 48px), 1280px);
-    height: 84px;
-
-    margin: auto;
-
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-
-    align-items: center;
-    gap: 40px;
-  }
-
-  .logo {
-    color: white;
-
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  nav {
-    display: flex;
-    gap: 34px;
-  }
-
-  nav a {
-    color: #a7abb3;
-
-    font-size: 14px;
-  }
-
-  nav a:hover {
-    color: white;
-  }
-
-  .cta {
-    justify-self: end;
-
-    background: #0050f8;
-    color: white;
-
-    padding: 13px 20px;
-
-    border-radius: 8px;
-
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  @media (max-width: 800px) {
-    nav {
-      display: none;
-    }
-
-    .header__container {
-      grid-template-columns: 1fr auto;
-    }
-  }
-</style>

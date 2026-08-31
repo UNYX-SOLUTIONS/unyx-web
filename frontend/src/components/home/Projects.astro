@@ -28,45 +28,51 @@ const projects = [
     className: "sismeing",
   },
 ];
+
+const visualModifiers = {
+  meditec: "",
+  hse: "h-[210px] bg-[linear-gradient(30deg,#f3f5f7_12%,transparent_12.5%,transparent_87%,#f3f5f7_87.5%)]",
+  sismeing: "h-[180px]",
+};
 ---
 
-<section class="projects" id="proyectos">
-  <div class="projects__container">
+<section class="w-full bg-white text-black" id="proyectos">
+  <div class="mx-auto w-full max-w-[1440px] px-[clamp(32px,5vw,64px)] pt-[78px] pb-[42px] max-[620px]:px-5 max-[620px]:pt-[66px] max-[620px]:pb-[34px]">
 
-    <header class="projects__header">
+    <header class="grid grid-cols-[minmax(0,1.55fr)_minmax(280px,0.65fr)] items-end gap-20 mb-[52px] max-[900px]:grid-cols-1 max-[900px]:gap-7">
       <div>
-        <span class="projects__eyebrow">
+        <span class="mb-6 block text-[11px] font-bold tracking-[0.08em] text-blue">
           TRABAJO REAL
         </span>
 
-        <h2>
+        <h2 class="max-w-[850px] text-[clamp(38px,3.5vw,54px)] leading-[1.05] tracking-[-0.04em] text-black">
           Tecnología aplicada en contextos reales.
         </h2>
       </div>
 
-      <p>
+      <p class="max-w-[390px] text-sm leading-[1.65] text-gray-600">
         Cada proyecto parte de una necesidad diferente. Nuestro trabajo es
         entenderla y construir la solución tecnológica adecuada.
       </p>
     </header>
 
-    <div class="projects__grid">
+    <div class="grid grid-cols-3 border-t border-gray-200 max-[900px]:grid-cols-1">
       {
         projects.map((project) => (
           <a
-            class="project-card"
+            class="group block min-w-0 border-r border-gray-200 p-[28px_24px_34px] text-inherit max-[900px]:border-b max-[900px]:border-l max-[620px]:p-[24px_20px_30px]"
             href={project.href}
             aria-label={`Ver proyecto ${project.client}`}
           >
-            <div class="project-card__top">
+            <div class="mb-7 flex items-center justify-between text-[11px] font-bold text-blue">
               <span>{project.number}</span>
-              <span aria-hidden="true">↗</span>
+              <span class="text-lg text-gray-400 transition-[color,transform] duration-[180ms] group-hover:translate-x-[3px] group-hover:-translate-y-[3px] group-hover:text-blue" aria-hidden="true">↗</span>
             </div>
 
             <div
               class:list={[
-                "project-card__visual",
-                `project-card__visual--${project.className}`,
+                "mb-7 flex h-[190px] items-center justify-center overflow-hidden border border-gray-200 bg-gray-100 text-[10px] font-bold tracking-[0.05em] text-gray-400 transition-colors duration-[180ms] group-hover:border-gray-300 max-[620px]:h-[190px]",
+                visualModifiers[project.className],
               ]}
             >
               <span>
@@ -74,15 +80,15 @@ const projects = [
               </span>
             </div>
 
-            <h3>
+            <h3 class="mb-2 text-[22px] font-bold tracking-[-0.03em] text-black">
               {project.client}
             </h3>
 
-            <span class="project-card__category">
+            <span class="mb-[18px] block text-[10px] font-bold tracking-[0.04em] text-gray-600">
               {project.category}
             </span>
 
-            <p>
+            <p class="max-w-[350px] text-[13px] leading-[1.65] text-gray-600">
               {project.description}
             </p>
           </a>
@@ -90,312 +96,12 @@ const projects = [
       }
     </div>
 
-    <div class="projects__footer">
-      <a href="/proyectos">
+    <div class="flex justify-end pt-[26px]">
+      <a href="/proyectos" class="inline-flex items-center gap-2.5 text-xs font-semibold text-black">
         Ver todos los proyectos
-        <span aria-hidden="true">→</span>
+        <span class="transition-transform duration-[180ms] group-hover:translate-x-1" aria-hidden="true">→</span>
       </a>
     </div>
 
   </div>
 </section>
-
-<style>
-  .projects {
-    width: 100%;
-
-    background: #ffffff;
-
-    color: #0a0a0c;
-  }
-
-  .projects__container {
-    width: min(100%, 1440px);
-
-    margin: 0 auto;
-
-    padding:
-      78px
-      clamp(32px, 5vw, 64px)
-      42px;
-  }
-
-  .projects__header {
-    display: grid;
-
-    grid-template-columns:
-      minmax(0, 1.55fr)
-      minmax(280px, 0.65fr);
-
-    gap: 80px;
-
-    align-items: end;
-
-    margin-bottom: 52px;
-  }
-
-  .projects__eyebrow {
-    display: block;
-
-    margin-bottom: 24px;
-
-    color: #075cff;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.08em;
-  }
-
-  .projects h2 {
-    max-width: 850px;
-
-    margin: 0;
-
-    color: #0a0a0c;
-
-    font-size: clamp(38px, 3.5vw, 54px);
-
-    line-height: 1.05;
-
-    letter-spacing: -0.04em;
-  }
-
-  .projects__header > p {
-    max-width: 390px;
-
-    margin: 0;
-
-    color: #505762;
-
-    font-size: 14px;
-
-    line-height: 1.65;
-  }
-
-  .projects__grid {
-    display: grid;
-
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
-
-    border-top: 1px solid #e2e5ea;
-  }
-
-  .project-card {
-    display: block;
-
-    min-width: 0;
-
-    padding:
-      28px
-      24px
-      34px;
-
-    border-right: 1px solid #e2e5ea;
-
-    color: inherit;
-
-    text-decoration: none;
-  }
-
-  .project-card:first-child {
-    border-left: 1px solid #e2e5ea;
-  }
-
-  .project-card__top {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 28px;
-
-    color: #075cff;
-
-    font-size: 11px;
-
-    font-weight: 700;
-  }
-
-  .project-card__top span:last-child {
-    color: #a5aab3;
-
-    font-size: 18px;
-
-    transition:
-      color 180ms ease,
-      transform 180ms ease;
-  }
-
-  .project-card__visual {
-    height: 190px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    margin-bottom: 28px;
-
-    overflow: hidden;
-
-    background:
-      linear-gradient(
-        135deg,
-        #f2f4f7,
-        #fafbfc
-      );
-
-    border: 1px solid #eceef2;
-
-    color: #c1c6cf;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.05em;
-  }
-
-  .project-card__visual--hse {
-    height: 210px;
-
-    background-image:
-      linear-gradient(
-        30deg,
-        #f1f3f6 12%,
-        transparent 12.5%,
-        transparent 87%,
-        #f1f3f6 87.5%
-      );
-  }
-
-  .project-card__visual--sismeing {
-    height: 180px;
-  }
-
-  .project-card h3 {
-    margin: 0 0 8px;
-
-    color: #0a0a0c;
-
-    font-size: 22px;
-
-    font-weight: 700;
-
-    letter-spacing: -0.03em;
-  }
-
-  .project-card__category {
-    display: block;
-
-    margin-bottom: 18px;
-
-    color: #525966;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.04em;
-  }
-
-  .project-card p {
-    max-width: 350px;
-
-    margin: 0;
-
-    color: #525966;
-
-    font-size: 13px;
-
-    line-height: 1.65;
-  }
-
-  @media (hover: hover) {
-    .project-card:hover .project-card__top span:last-child {
-      color: #075cff;
-
-      transform: translate(3px, -3px);
-    }
-
-    .project-card:hover .project-card__visual {
-      border-color: #d6dbe2;
-    }
-  }
-
-  .projects__footer {
-    display: flex;
-
-    justify-content: flex-end;
-
-    padding-top: 26px;
-  }
-
-  .projects__footer a {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    color: #0a0a0c;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    text-decoration: none;
-  }
-
-  .projects__footer a span {
-    transition: transform 180ms ease;
-  }
-
-  .projects__footer a:hover span {
-    transform: translateX(4px);
-  }
-
-  @media (max-width: 900px) {
-    .projects__header {
-      grid-template-columns: 1fr;
-
-      gap: 28px;
-    }
-
-    .projects__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .project-card {
-      border-left: 1px solid #e2e5ea;
-      border-bottom: 1px solid #e2e5ea;
-    }
-  }
-
-  @media (max-width: 620px) {
-    .projects__container {
-      padding:
-        66px
-        20px
-        34px;
-    }
-
-    .project-card {
-      padding:
-        24px
-        20px
-        30px;
-    }
-
-    .project-card__visual,
-    .project-card__visual--hse,
-    .project-card__visual--sismeing {
-      height: 190px;
-    }
-  }
-</style>
