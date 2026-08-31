@@ -1,19 +1,27 @@
-<header class="absolute top-0 left-0 z-100 w-full text-white border-b border-white/8">
-  <div class="grid w-[min(calc(100%-48px),1280px)] h-21 mx-auto grid-cols-[1fr_auto_1fr] items-center gap-10 max-[800px]:grid-cols-[1fr_auto]">
+---
+import { SITE_TITLE } from "../../consts";
+import { headerNav, headerCta } from "../../data/navigation";
+---
+
+<header class="absolute top-0 left-0 z-[100] w-full text-white border-b border-white/[0.08]">
+  <div class="grid w-[min(calc(100%-48px),1280px)] h-[84px] mx-auto grid-cols-[1fr_auto_1fr] items-center gap-10 max-[800px]:grid-cols-[1fr_auto]">
 
     <a href="/" class="text-xl font-bold text-white">
-      UNYX Solutions
+      {SITE_TITLE}
     </a>
 
-    <nav class="flex gap-8.5 max-[800px]:hidden">
-      <a href="/soluciones" class="text-sm text-gray-400 hover:text-white">Soluciones</a>
-      <a href="/proyectos" class="text-sm text-gray-400 hover:text-white">Proyectos</a>
-      <a href="/nosotros" class="text-sm text-gray-400 hover:text-white">Nosotros</a>
-      <a href="/insights" class="text-sm text-gray-400 hover:text-white">Insights</a>
+    <nav class="flex gap-[34px] max-[800px]:hidden">
+      {
+        headerNav.map((item) => (
+          <a href={item.href} class="text-sm text-gray-400 hover:text-white">
+            {item.label}
+          </a>
+        ))
+      }
     </nav>
 
-    <a href="/contacto" class="justify-self-end px-5 py-3.25 text-sm font-semibold text-white bg-blue rounded-lg">
-      Cuéntanos tu proyecto
+    <a href={headerCta.href} class="justify-self-end px-5 py-[13px] text-sm font-semibold text-white bg-blue rounded-lg">
+      {headerCta.label}
     </a>
 
   </div>

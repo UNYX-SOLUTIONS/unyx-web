@@ -1,3 +1,12 @@
+---
+import { SITE_TITLE, CONTACT_EMAIL, CONTACT_LOCATION } from "../../consts";
+import { company } from "../../data/company";
+import { footerColumns, footerSideColumns, footerLegal } from "../../data/navigation";
+
+const linkClasses =
+  "text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5";
+---
+
 <footer class="w-full bg-black text-white border-t border-[#1c1e22]">
   <div class="mx-auto w-full max-w-[1440px] px-[clamp(32px,5vw,64px)] pt-[66px] pb-[30px] max-[620px]:px-5 max-[620px]:pt-[54px] max-[620px]:pb-[26px]">
 
@@ -8,7 +17,7 @@
         <a
           href="/"
           class="inline-flex items-center gap-3 text-white"
-          aria-label="UNYX Solutions"
+          aria-label={SITE_TITLE}
         >
           <span
             class="grid w-5 h-5 grid-cols-2 gap-0.5"
@@ -21,143 +30,75 @@
           </span>
 
           <strong class="text-[19px] font-bold">
-            UNYX Solutions
+            {SITE_TITLE}
           </strong>
         </a>
 
         <p class="mt-[22px] max-w-80 text-[13px] leading-[1.7] text-[#999fa9]">
-          Tecnología aplicada a necesidades reales. Diseñamos e integramos
-          soluciones de software, automatización, inteligencia artificial,
-          infraestructura y tecnología industrial.
+          {company.description}
         </p>
 
         <div class="flex flex-col gap-[7px] mt-[52px] text-[13px] max-[1000px]:mt-9">
 
-          <a href="mailto:info@unyxsolutions.com" class="text-white">
-            info@unyxsolutions.com
+          <a href={`mailto:${CONTACT_EMAIL}`} class="text-white">
+            {CONTACT_EMAIL}
           </a>
 
           <span class="text-[#999fa9]">
-            Guayaquil, Ecuador.
+            {CONTACT_LOCATION}
           </span>
 
         </div>
 
       </div>
 
-      <nav
-        class="flex flex-col items-start gap-[13px]"
-        aria-label="Soluciones"
-      >
-        <h2 class="mb-2 text-[10px] font-bold tracking-[0.04em] text-white">
-          SOLUCIONES
-        </h2>
+      {
+        footerColumns.map((column) => (
+          <nav
+            class="flex flex-col items-start gap-[13px]"
+            aria-label={column.ariaLabel}
+          >
+            <h2 class="mb-2 text-[10px] font-bold tracking-[0.04em] text-white">
+              {column.title}
+            </h2>
 
-        <a href="/soluciones/desarrollo-software" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-          Desarrollo de software
-        </a>
-
-        <a href="/soluciones/crm-automatizacion-comercial" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-          CRM y automatización comercial
-        </a>
-
-        <a href="/soluciones/automatizacion-ia" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-          Automatización e IA
-        </a>
-
-        <a href="/soluciones/integraciones-apis" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-          Integraciones y APIs
-        </a>
-
-        <a href="/soluciones/soporte-gestion-tecnologica" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-          Soporte y gestión tecnológica
-        </a>
-
-        <a href="/soluciones/infraestructura-redes" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-          Infraestructura y redes
-        </a>
-
-        <a href="/soluciones/cloud-datos-continuidad" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-          Cloud, datos y continuidad
-        </a>
-
-        <a href="/soluciones/iot-automatizacion-industrial" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-          IoT y automatización industrial
-        </a>
-
-        <a href="/soluciones/integracion-ot-it" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-          Integración OT / IT
-        </a>
-      </nav>
-
-      <nav
-        class="flex flex-col items-start gap-[13px]"
-        aria-label="Empresa"
-      >
-        <h2 class="mb-2 text-[10px] font-bold tracking-[0.04em] text-white">
-          EMPRESA
-        </h2>
-
-        <a href="/nosotros" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-          Nosotros
-        </a>
-
-        <a href="/proyectos" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-          Proyectos
-        </a>
-
-        <a href="/#como-trabajamos" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-          Cómo trabajamos
-        </a>
-
-        <a href="/#contacto" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-          Contacto
-        </a>
-      </nav>
+            {
+              column.links.map((link) => (
+                <a href={link.href} class={linkClasses}>
+                  {link.label}
+                </a>
+              ))
+            }
+          </nav>
+        ))
+      }
 
       <div class="flex flex-col justify-between gap-[55px] max-[1000px]:justify-start">
 
-        <nav
-          class="flex flex-col items-start gap-[13px]"
-          aria-label="Recursos"
-        >
-          <h2 class="mb-2 text-[10px] font-bold tracking-[0.04em] text-white">
-            RECURSOS
-          </h2>
+        {
+          footerSideColumns.map((column) => (
+            <nav
+              class="flex flex-col items-start gap-[13px]"
+              aria-label={column.ariaLabel}
+            >
+              <h2 class="mb-2 text-[10px] font-bold tracking-[0.04em] text-white">
+                {column.title}
+              </h2>
 
-          <a href="/insights" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-            Insights
-          </a>
-
-          <a href="/proyectos" class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5">
-            Casos de éxito
-          </a>
-        </nav>
-
-        <nav
-          class="flex flex-col items-start gap-[13px]"
-          aria-label="Redes sociales"
-        >
-          <h2 class="mb-2 text-[10px] font-bold tracking-[0.04em] text-white">
-            SOCIAL
-          </h2>
-
-          <a
-            href="#"
-            rel="noopener noreferrer"
-            class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5"
-          >
-            LinkedIn
-          </a>
-
-          <a
-            href="#"
-            rel="noopener noreferrer"
-            class="text-xs leading-[1.45] text-[#9da2ab] transition-[color,transform] duration-[160ms] hover:text-white hover:translate-x-0.5"
-          >
-            Instagram
-          </a>
-        </nav>
+              {
+                column.links.map((link) => (
+                  <a
+                    href={link.href}
+                    rel={link.external ? "noopener noreferrer" : undefined}
+                    class={linkClasses}
+                  >
+                    {link.label}
+                  </a>
+                ))
+              }
+            </nav>
+          ))
+        }
 
       </div>
 
@@ -171,17 +112,13 @@
 
       <nav class="flex gap-[26px] max-[620px]:flex-wrap max-[620px]:gap-x-[22px] max-[620px]:gap-y-3" aria-label="Legal">
 
-        <a href="/privacidad" class="text-[#858b94] transition-colors duration-[160ms] hover:text-white">
-          Privacidad
-        </a>
-
-        <a href="/terminos" class="text-[#858b94] transition-colors duration-[160ms] hover:text-white">
-          Términos
-        </a>
-
-        <a href="/cookies" class="text-[#858b94] transition-colors duration-[160ms] hover:text-white">
-          Cookies
-        </a>
+        {
+          footerLegal.map((link) => (
+            <a href={link.href} class="text-[#858b94] transition-colors duration-[160ms] hover:text-white">
+              {link.label}
+            </a>
+          ))
+        }
 
       </nav>
 

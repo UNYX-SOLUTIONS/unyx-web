@@ -1,31 +1,9 @@
 ---
-const insights = [
-  {
-    category: "AUTOMATIZACIÓN · CRM",
-    type: "GUÍA",
-    title: "¿Cómo automatizar el seguimiento comercial de una empresa?",
-    description:
-      "Una guía para identificar tareas repetitivas, conectar información y mejorar el seguimiento de oportunidades comerciales.",
-    href: "/insights/automatizar-seguimiento-comercial",
-    featured: true,
-  },
-  {
-    category: "GESTIÓN EMPRESARIAL",
-    type: "ANÁLISIS",
-    title: "CRM vs ERP: ¿qué necesita realmente tu empresa?",
-    description:
-      "Qué resuelve cada sistema y cómo identificar cuál tiene sentido según la operación.",
-    href: "/insights/crm-vs-erp",
-  },
-  {
-    category: "INTELIGENCIA ARTIFICIAL",
-    type: "GUÍA",
-    title: "¿Cuándo tiene sentido implementar IA en un proceso?",
-    description:
-      "Cómo identificar procesos donde la inteligencia artificial puede aportar valor real.",
-    href: "/insights/ia-en-procesos",
-  },
-];
+import { getCollection } from "astro:content";
+
+const allInsights = await getCollection("insights");
+const featured = allInsights.find((entry) => entry.data.featured) ?? allInsights[0];
+const secondary = allInsights.filter((entry) => entry !== featured);
 ---
 
 <section class="w-full bg-white text-black" id="insights">
@@ -57,7 +35,7 @@ const insights = [
     <div class="grid grid-cols-[minmax(0,1.4fr)_minmax(340px,0.9fr)] max-[850px]:grid-cols-1">
 
       <article class="border-r border-gray-200 p-[48px_46px_0_0] max-[850px]:border-r-0 max-[850px]:pr-0">
-        <a href={insights[0].href} class="text-inherit">
+        <a href={`/insights/${featured.id}`} class="text-inherit">
 
           <div class="relative mb-[30px] h-[290px] overflow-hidden border border-gray-200 bg-[linear-gradient(#e3e6eb_1px,transparent_1px),linear-gradient(90deg,#e3e6eb_1px,transparent_1px)] bg-[length:30px_30px] max-[620px]:h-[220px]">
             <div class="absolute left-[10%] right-[10%] top-1/2 flex items-center">
@@ -79,36 +57,36 @@ const insights = [
           </div>
 
           <div class="mb-[14px] flex gap-2.5 text-[9px] font-semibold text-gray-500">
-            <span class="font-bold text-blue">{insights[0].category}</span>
+            <span class="font-bold text-blue">{featured.data.category}</span>
             <span>·</span>
-            <span>{insights[0].type}</span>
+            <span>{featured.data.type}</span>
           </div>
 
           <h3 class="mb-4 max-w-[620px] text-[clamp(25px,2.2vw,34px)] leading-[1.15] tracking-[-0.035em] text-black">
-            {insights[0].title}
+            {featured.data.title}
           </h3>
 
           <p class="max-w-[600px] text-sm leading-[1.65] text-gray-600">
-            {insights[0].description}
+            {featured.data.description}
           </p>
         </a>
       </article>
 
       <div class="pl-[46px] max-[850px]:pl-0">
         {
-          insights.slice(1).map((insight) => (
+          secondary.map((insight) => (
             <article class="border-b border-gray-200 py-12">
-              <a href={insight.href} class="text-inherit">
+              <a href={`/insights/${insight.id}`} class="text-inherit">
 
                 <div class="mb-[14px] flex gap-2.5 text-[9px] font-semibold text-gray-500">
-                  <span class="font-bold text-blue">{insight.category}</span>
+                  <span class="font-bold text-blue">{insight.data.category}</span>
                   <span>·</span>
-                  <span>{insight.type}</span>
+                  <span>{insight.data.type}</span>
                 </div>
 
                 <div class="flex justify-between gap-[30px]">
                   <h3 class="mb-[14px] max-w-[430px] text-[22px] leading-[1.25] tracking-[-0.025em] text-black">
-                    {insight.title}
+                    {insight.data.title}
                   </h3>
 
                   <span class="text-gray-400" aria-hidden="true">
@@ -117,7 +95,7 @@ const insights = [
                 </div>
 
                 <p class="max-w-[440px] text-[13px] leading-[1.65] text-gray-600">
-                  {insight.description}
+                  {insight.data.description}
                 </p>
 
               </a>

@@ -1,98 +1,5 @@
 ---
-const groups = [
-  {
-    number: "01",
-    title: "NEGOCIO Y CRM",
-    tools: [
-      {
-        name: "Kommo",
-        logo: "/logos/tech/kommo.svg",
-        emphasis: true,
-        badge: "PARTNER",
-      },
-      {
-        name: "Meta",
-        logo: "/logos/tech/Meta.svg",
-      },
-      {
-        name: "WhatsApp Business",
-        logo: "/logos/tech/WhatsApp.svg",
-      },
-    ],
-  },
-  {
-    number: "02",
-    title: "CLOUD Y PRODUCTIVIDAD",
-    tools: [
-      {
-        name: "Microsoft 365",
-        logo: "/logos/tech/Microsoft 365.svg",
-        emphasis: true,
-      },
-      {
-        name: "Google Workspace",
-        logo: "/logos/tech/Google.svg",
-        emphasis: true,
-      },
-      {
-        name: "Firebase",
-        logo: "/logos/tech/Firebase.svg",
-      },
-    ],
-  },
-  {
-    number: "03",
-    title: "DESARROLLO E INTEGRACIÓN",
-    tools: [
-      {
-        name: "Astro",
-        logo: "/logos/tech/Astro.svg",
-      },
-      {
-        name: "React",
-        logo: "/logos/tech/React.svg",
-      },
-      {
-        name: "Next.js",
-        logo: "/logos/tech/Next.js.svg",
-      },
-      {
-        name: "Node.js",
-        logo: "/logos/tech/Node.js.svg",
-      },
-      {
-        name: "Python",
-        logo: "/logos/tech/Python.svg",
-      },
-      {
-        name: "Flutter",
-        logo: "/logos/tech/Flutter.svg",
-      },
-    ],
-  },
-  {
-    number: "04",
-    title: "AUTOMATIZACIÓN Y DATOS",
-    tools: [
-      {
-        name: "n8n",
-        logo: "/logos/tech/n8n.svg",
-      },
-      {
-        name: "PostgreSQL",
-        logo: "/logos/tech/PostgreSQL.svg",
-      },
-      {
-        name: "Supabase",
-        logo: "/logos/tech/supabase.svg",
-      },
-      {
-        name: "OpenAI",
-        logo: "/logos/tech/OpenAI.svg",
-      },
-    ],
-  },
-];
+import { techGroups } from "../../data/technologies";
 ---
 
 <section class="relative w-full overflow-hidden bg-white text-black" id="ecosistema-tecnologico">
@@ -121,7 +28,7 @@ const groups = [
     <div class="w-full">
 
       {
-        groups.map((group) => (
+        techGroups.map((group) => (
 
           <section class="relative grid min-h-[105px] grid-cols-[170px_100px_minmax(0,1fr)] items-center border-b border-gray-200 max-[900px]:grid-cols-[140px_70px_minmax(0,1fr)] max-[620px]:block max-[620px]:min-h-0 max-[620px]:py-[26px] [@media(min-width:901px)_and_(max-height:900px)]:min-h-[94px] [@media(min-width:901px)_and_(max-height:760px)]:min-h-[82px]">
 
