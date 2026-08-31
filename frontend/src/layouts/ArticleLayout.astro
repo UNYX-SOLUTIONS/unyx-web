@@ -12,7 +12,7 @@ const {
 <BaseLayout title={title} description={description}>
   <main>
     <section class="relative overflow-hidden bg-black text-white">
-      <div class="relative z-[2] mx-auto w-full max-w-[1440px] px-[clamp(32px,5vw,64px)] pt-[170px] pb-[70px]">
+      <div class="relative z-[2] site-container pt-[170px] pb-[70px]">
         <div class="flex gap-2.5 text-[11px] font-semibold text-gray-500">
           {category && <span class="font-bold text-blue">{category}</span>}
           {category && type && <span>·</span>}
@@ -32,7 +32,7 @@ const {
     </section>
 
     <section class="w-full bg-white text-black">
-      <div class="mx-auto w-full max-w-[1440px] px-[clamp(32px,5vw,64px)] py-[70px]">
+      <div class="site-container py-[70px]">
         <div class="mx-auto max-w-3xl">
           <slot />
         </div>

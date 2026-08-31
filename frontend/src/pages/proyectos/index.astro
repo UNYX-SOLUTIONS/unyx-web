@@ -17,7 +17,7 @@ const projects = (await getCollection("projects")).sort((a, b) =>
     <ProjectsHero />
 
     <section class="w-full bg-white text-black">
-      <div class="mx-auto w-full max-w-[1440px] px-[clamp(32px,5vw,64px)] py-[70px]">
+      <div class="site-container py-[70px]">
         <div class="grid grid-cols-3 gap-6 max-[900px]:grid-cols-2 max-[620px]:grid-cols-1">
           {
             projects.map((entry) => (
