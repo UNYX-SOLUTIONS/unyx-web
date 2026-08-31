@@ -11,6 +11,7 @@ const insights = defineCollection({
     featured: z.boolean().default(false),
     pubDate: z.coerce.date().optional(),
     draft: z.boolean().default(false),
+    image: z.string().optional(),
   }),
 });
 
@@ -25,6 +26,7 @@ const projects = defineCollection({
     challenge: z.string().optional(),
     solution: z.string().optional(),
     results: z.string().optional(),
+    image: z.string().optional(),
   }),
 });
 

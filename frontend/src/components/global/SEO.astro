@@ -24,6 +24,7 @@ const currentUrl = new URL(Astro.url.pathname, canonical);
 <link rel="canonical" href={currentUrl} />
 
 <meta property="og:type" content="website" />
+<meta property="og:site_name" content={SITE_TITLE} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={currentUrl} />

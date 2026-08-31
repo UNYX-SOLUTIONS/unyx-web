@@ -14,11 +14,25 @@ const { entry } = Astro.props;
     <span class="text-lg text-gray-400 transition-[color,transform] duration-[180ms] group-hover:translate-x-[3px] group-hover:-translate-y-[3px] group-hover:text-blue" aria-hidden="true">↗</span>
   </div>
 
-  <div class="mb-7 flex h-[170px] items-center justify-center overflow-hidden border border-gray-200 bg-gray-100 text-[10px] font-bold tracking-[0.05em] text-gray-400">
-    <span>
-      PROYECTO / {entry.data.client}
-    </span>
-  </div>
+  {
+    entry.data.image ? (
+      <img
+        src={entry.data.image}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        width="800"
+        height="500"
+        class="mb-7 aspect-[8/5] w-full border border-gray-200 object-cover"
+      />
+    ) : (
+      <div class="mb-7 flex h-[170px] items-center justify-center overflow-hidden border border-gray-200 bg-gray-100 text-[10px] font-bold tracking-[0.05em] text-gray-400">
+        <span>
+          PROYECTO / {entry.data.client}
+        </span>
+      </div>
+    )
+  }
 
   <h3 class="mb-2 text-[22px] font-bold tracking-[-0.03em] text-black">
     {entry.data.client}
