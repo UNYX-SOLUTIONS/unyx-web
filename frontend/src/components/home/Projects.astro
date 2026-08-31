@@ -1,39 +1,16 @@
 ---
-const projects = [
-  {
-    number: "02",
-    client: "MEDITEC",
-    category: "CRM · AUTOMATIZACIÓN · PROCESOS",
-    description:
-      "Optimización de procesos comerciales y configuración tecnológica para mejorar el seguimiento y la gestión de clientes.",
-    href: "/proyectos/meditec",
-    className: "meditec",
-  },
-  {
-    number: "03",
-    client: "HSE SERVICES",
-    category: "SOFTWARE · DIGITALIZACIÓN",
-    description:
-      "Soluciones digitales orientadas a organizar información y apoyar procesos operativos.",
-    href: "/proyectos/hse-services",
-    className: "hse",
-  },
-  {
-    number: "04",
-    client: "SISMEING",
-    category: "TECNOLOGÍA · INTEGRACIÓN",
-    description:
-      "Implementación de soluciones tecnológicas adaptadas a necesidades técnicas y operativas.",
-    href: "/proyectos/sismeing",
-    className: "sismeing",
-  },
-];
+import { getCollection } from "astro:content";
 
 const visualModifiers = {
   meditec: "",
-  hse: "h-[210px] bg-[linear-gradient(30deg,#f3f5f7_12%,transparent_12.5%,transparent_87%,#f3f5f7_87.5%)]",
+  "hse-services":
+    "h-[210px] bg-[linear-gradient(30deg,#f3f5f7_12%,transparent_12.5%,transparent_87%,#f3f5f7_87.5%)]",
   sismeing: "h-[180px]",
 };
+
+const projects = (await getCollection("projects"))
+  .filter((entry) => entry.data.number !== "01")
+  .sort((a, b) => a.data.number.localeCompare(b.data.number));
 ---
 
 <section class="w-full bg-white text-black" id="proyectos">
@@ -61,35 +38,35 @@ const visualModifiers = {
         projects.map((project) => (
           <a
             class="group block min-w-0 border-r border-gray-200 p-[28px_24px_34px] text-inherit max-[900px]:border-b max-[900px]:border-l max-[620px]:p-[24px_20px_30px]"
-            href={project.href}
-            aria-label={`Ver proyecto ${project.client}`}
+            href={`/proyectos/${project.id}`}
+            aria-label={`Ver proyecto ${project.data.client}`}
           >
             <div class="mb-7 flex items-center justify-between text-[11px] font-bold text-blue">
-              <span>{project.number}</span>
+              <span>{project.data.number}</span>
               <span class="text-lg text-gray-400 transition-[color,transform] duration-[180ms] group-hover:translate-x-[3px] group-hover:-translate-y-[3px] group-hover:text-blue" aria-hidden="true">↗</span>
             </div>
 
             <div
               class:list={[
                 "mb-7 flex h-[190px] items-center justify-center overflow-hidden border border-gray-200 bg-gray-100 text-[10px] font-bold tracking-[0.05em] text-gray-400 transition-colors duration-[180ms] group-hover:border-gray-300 max-[620px]:h-[190px]",
-                visualModifiers[project.className],
+                visualModifiers[project.id],
               ]}
             >
               <span>
-                PROYECTO / {project.client}
+                PROYECTO / {project.data.client}
               </span>
             </div>
 
             <h3 class="mb-2 text-[22px] font-bold tracking-[-0.03em] text-black">
-              {project.client}
+              {project.data.client}
             </h3>
 
             <span class="mb-[18px] block text-[10px] font-bold tracking-[0.04em] text-gray-600">
-              {project.category}
+              {project.data.category}
             </span>
 
             <p class="max-w-[350px] text-[13px] leading-[1.65] text-gray-600">
-              {project.description}
+              {project.data.description}
             </p>
           </a>
         ))
@@ -97,7 +74,7 @@ const visualModifiers = {
     </div>
 
     <div class="flex justify-end pt-[26px]">
-      <a href="/proyectos" class="inline-flex items-center gap-2.5 text-xs font-semibold text-black">
+      <a href="/proyectos" class="group inline-flex items-center gap-2.5 text-xs font-semibold text-black">
         Ver todos los proyectos
         <span class="transition-transform duration-[180ms] group-hover:translate-x-1" aria-hidden="true">→</span>
       </a>
