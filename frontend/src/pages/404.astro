@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
 ---
 
 <BaseLayout title="Página no encontrada | UNYX Solutions" noindex>
@@ -18,12 +19,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           La página que buscas no existe o fue movida.
         </p>
 
-        <a
-          href="/"
-          class="mt-9 inline-flex min-h-[54px] items-center justify-center gap-4 rounded-lg bg-blue px-6 text-sm font-semibold text-white transition-[background-color,transform] duration-[180ms] hover:-translate-y-0.5 hover:bg-blue-hover"
-        >
+        <Button href="/" variant="primary" class="mt-9">
           Volver al inicio
-        </a>
+        </Button>
       </div>
     </section>
   </main>

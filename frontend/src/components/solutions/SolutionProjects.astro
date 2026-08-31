@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import ProjectCard from "../projects/ProjectCard.astro";
+import SectionLabel from "../ui/SectionLabel.astro";
 
 const projects = (await getCollection("projects")).sort((a, b) =>
   a.data.number.localeCompare(b.data.number)
@@ -10,9 +11,9 @@ const projects = (await getCollection("projects")).sort((a, b) =>
 <section class="w-full bg-white text-black">
   <div class="site-container py-[80px]">
 
-    <span class="mb-5 block text-[11px] font-bold uppercase tracking-[0.08em] text-blue">
+    <SectionLabel class="mb-5">
       PROYECTOS
-    </span>
+    </SectionLabel>
 
     <h2 class="max-w-[760px] text-[clamp(28px,3vw,44px)] font-bold leading-[1.04] tracking-[-0.04em] text-black">
       Tecnología aplicada en contextos reales.

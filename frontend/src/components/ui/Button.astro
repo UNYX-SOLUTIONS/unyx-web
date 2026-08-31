@@ -2,27 +2,26 @@
 const {
   href,
   variant = "primary",
-  size = "md",
   class: className = "",
   type = "button",
 } = Astro.props;
 
 const variantClasses = {
-  primary: "bg-blue text-white hover:bg-blue-hover",
-  secondary: "bg-transparent text-black border-gray-300 hover:border-black",
-  "dark-secondary": "bg-transparent text-white border-white/25 hover:border-white/60",
-};
-
-const sizeClasses = {
-  sm: "px-[18px] py-3 text-sm",
-  md: "px-[22px] py-[15px] text-base",
-  lg: "px-7 py-[18px] text-lg",
+  primary:
+    "gap-4 min-h-13.5 rounded-lg border border-blue bg-blue px-6 text-sm font-semibold leading-none text-white hover:border-blue-hover hover:bg-blue-hover",
+  secondary:
+    "min-h-13.5 rounded-lg border border-gray-300 bg-transparent px-6 text-sm font-semibold leading-none text-black hover:border-black",
+  "dark-secondary":
+    "min-h-13.5 rounded-lg border border-gray-700 bg-transparent px-6 text-sm font-semibold leading-none text-white hover:border-gray-500 hover:bg-white/[0.035]",
+  "dark-primary":
+    "gap-6 rounded-md bg-blue px-6 py-4.5 text-[13px] font-bold text-white hover:bg-blue-hover",
+  compact:
+    "rounded-lg bg-blue px-5 py-3.25 text-sm font-semibold text-white hover:bg-blue-hover",
 };
 
 const classes = [
-  "inline-flex items-center justify-center gap-2.5 min-h-12 border border-transparent rounded-lg font-semibold leading-none transition-[background-color,color,border-color,transform] duration-[160ms] hover:-translate-y-px",
+  "group inline-flex items-center justify-center transition-[background-color,border-color,color,transform] duration-180 hover:-translate-y-0.5 disabled:opacity-60",
   variantClasses[variant],
-  sizeClasses[size],
   className,
 ];
 ---

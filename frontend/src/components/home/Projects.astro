@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import ArrowLink from "../ui/ArrowLink.astro";
 
 const visualModifiers = {
   meditec: "",
@@ -74,10 +75,9 @@ const projects = (await getCollection("projects"))
     </div>
 
     <div class="flex justify-end pt-[26px]">
-      <a href="/proyectos" class="group inline-flex items-center gap-2.5 text-xs font-semibold text-black">
+      <ArrowLink href="/proyectos" class="text-black">
         Ver todos los proyectos
-        <span class="transition-transform duration-[180ms] group-hover:translate-x-1" aria-hidden="true">→</span>
-      </a>
+      </ArrowLink>
     </div>
 
   </div>

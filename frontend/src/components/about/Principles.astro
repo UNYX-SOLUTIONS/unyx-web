@@ -1,5 +1,6 @@
 ---
 import { company } from "../../data/company";
+import SectionLabel from "../ui/SectionLabel.astro";
 
 const principles = company.principles;
 ---
@@ -7,9 +8,9 @@ const principles = company.principles;
 <section class="w-full bg-black text-white">
   <div class="site-container py-[80px]">
 
-    <span class="mb-5 block text-[11px] font-bold uppercase tracking-[0.08em] text-blue">
+    <SectionLabel class="mb-5">
       PRINCIPIOS
-    </span>
+    </SectionLabel>
 
     <h2 class="max-w-[760px] text-[clamp(28px,3vw,44px)] font-bold leading-[1.04] tracking-[-0.045em] text-white">
       La forma en que trabajamos con cada empresa.

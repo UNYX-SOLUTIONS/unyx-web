@@ -1,5 +1,6 @@
 ---
 import { CONTACT_CTA } from "../../consts";
+import Button from "../ui/Button.astro";
 ---
 
 <section class="relative overflow-hidden bg-black text-white">
@@ -16,13 +17,10 @@ import { CONTACT_CTA } from "../../consts";
         </h2>
       </div>
 
-      <a
-        href="/contacto"
-        class="inline-flex items-center gap-6 rounded-md bg-blue px-6 py-[18px] text-[13px] font-bold text-white transition-[background-color,transform] duration-[180ms] hover:-translate-y-0.5 hover:bg-blue-hover"
-      >
+      <Button href="/contacto" variant="dark-primary">
         {CONTACT_CTA}
         <span aria-hidden="true">→</span>
-      </a>
+      </Button>
     </div>
 
   </div>

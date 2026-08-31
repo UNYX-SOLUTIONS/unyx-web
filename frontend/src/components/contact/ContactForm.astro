@@ -1,5 +1,7 @@
 ---
 import { KOMHO_WEBHOOK_URL, CONTACT_EMAIL } from "../../consts";
+import Button from "../ui/Button.astro";
+import SectionLabel from "../ui/SectionLabel.astro";
 
 const fields = [
   { id: "nombre", label: "Nombre", type: "text", required: true },
@@ -14,9 +16,9 @@ const fields = [
     <div class="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-[90px]">
 
       <div>
-        <span class="mb-5 block text-[11px] font-bold uppercase tracking-[0.08em] text-blue">
+        <SectionLabel class="mb-5">
           ESCRÍBENOS
-        </span>
+        </SectionLabel>
 
         <h2 class="text-[clamp(28px,3vw,40px)] font-bold leading-[1.04] tracking-[-0.04em] text-black">
           Completa el formulario y te contactaremos.
@@ -77,12 +79,9 @@ const fields = [
           ></textarea>
         </div>
 
-        <button
-          type="submit"
-          class="mt-2 inline-flex min-h-[54px] items-center justify-center gap-4 rounded-lg bg-blue px-6 text-sm font-semibold text-white transition-[background-color,transform] duration-[180ms] hover:-translate-y-0.5 hover:bg-blue-hover disabled:opacity-60"
-        >
+        <Button type="submit" variant="primary" class="mt-2">
           Enviar mensaje
-        </button>
+        </Button>
 
         <p id="form-status" class="hidden text-sm font-semibold text-blue" role="status"></p>
       </form>

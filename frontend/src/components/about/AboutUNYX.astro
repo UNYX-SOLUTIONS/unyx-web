@@ -1,5 +1,6 @@
 ---
 import { company } from "../../data/company";
+import SectionLabel from "../ui/SectionLabel.astro";
 ---
 
 <section class="w-full bg-white text-black">
@@ -7,9 +8,9 @@ import { company } from "../../data/company";
 
     <div class="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-[90px]">
       <div>
-        <span class="mb-5 block text-[11px] font-bold uppercase tracking-[0.08em] text-blue">
+        <SectionLabel class="mb-5">
           QUÉ HACEMOS
-        </span>
+        </SectionLabel>
 
         <h2 class="text-[clamp(28px,3vw,40px)] font-bold leading-[1.04] tracking-[-0.04em] text-black">
           No empezamos por la herramienta. Empezamos por lo que necesitas resolver.
@@ -34,9 +35,9 @@ import { company } from "../../data/company";
     </div>
 
     <div class="mt-[90px]">
-      <span class="mb-8 block text-[11px] font-bold uppercase tracking-[0.08em] text-blue">
+      <SectionLabel class="mb-8">
         PARA QUIÉN TRABAJAMOS
-      </span>
+      </SectionLabel>
 
       <div class="grid grid-cols-2 border-l border-t border-gray-200 max-[800px]:grid-cols-1">
         {

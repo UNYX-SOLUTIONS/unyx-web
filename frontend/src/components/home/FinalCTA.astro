@@ -1,3 +1,7 @@
+---
+import Button from "../ui/Button.astro";
+---
+
 <section class="relative w-full overflow-hidden bg-black text-white" id="contacto">
   <div
     class="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[length:32px_32px]"
@@ -23,8 +27,8 @@
 
       <div class="mt-9 flex flex-col items-start gap-[22px]">
 
-        <a
-          class="group inline-flex items-center gap-6 rounded-md bg-blue px-6 py-[18px] text-[13px] font-bold text-white"
+        <Button
+          variant="dark-primary"
           href="mailto:info@unyxsolutions.com"
         >
           Cuéntanos tu proyecto
@@ -32,7 +36,7 @@
           <span class="transition-transform duration-[180ms] group-hover:translate-x-1" aria-hidden="true">
             →
           </span>
-        </a>
+        </Button>
 
         <span class="text-[13px] text-gray-500">
           O escríbenos directamente:

@@ -1,3 +1,7 @@
+---
+import Button from "../ui/Button.astro";
+---
+
 <section
   class="relative flex min-h-svh items-center overflow-hidden bg-black text-white"
   id="inicio"
@@ -44,23 +48,25 @@
       <div
         class="mt-8.5! flex flex-wrap items-center gap-3.5 max-[520px]:flex-col max-[520px]:items-stretch"
       >
-        <a
-          class="group inline-flex min-h-13.5 items-center justify-center gap-4 rounded-lg border border-blue bg-blue px-6 text-sm font-semibold leading-none text-white transition-[background-color,border-color,color,transform] duration-180 hover:-translate-y-0.5 hover:border-blue-hover hover:bg-blue-hover max-[520px]:w-full"
+        <Button
           href="/contacto"
+          variant="primary"
+          class="max-[520px]:w-full"
         >
           <span>Cuéntanos tu proyecto</span>
           <span
             class="text-xl transition-transform duration-180 group-hover:translate-x-1"
             aria-hidden="true">→</span
           >
-        </a>
+        </Button>
 
-        <a
-          class="inline-flex min-h-13.5 items-center justify-center rounded-lg border border-gray-700 bg-transparent px-6 text-sm font-semibold leading-none text-white transition-[background-color,border-color,color,transform] duration-180 hover:-translate-y-0.5 hover:border-gray-500 hover:bg-white/[0.035] max-[520px]:w-full"
+        <Button
           href="#soluciones"
+          variant="dark-secondary"
+          class="max-[520px]:w-full"
         >
           Explorar soluciones
-        </a>
+        </Button>
       </div>
     </div>
 

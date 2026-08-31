@@ -1,4 +1,6 @@
 ---
+import SectionLabel from "../ui/SectionLabel.astro";
+
 const { content = "" } = Astro.props;
 ---
 
@@ -8,9 +10,9 @@ const { content = "" } = Astro.props;
       <div class="site-container py-[70px]">
 
         <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-[90px]">
-          <span class="block text-[11px] font-bold uppercase tracking-[0.08em] text-blue">
+          <SectionLabel>
             SOLUCIÓN
-          </span>
+          </SectionLabel>
 
           <p class="max-w-[640px] text-[clamp(20px,1.8vw,26px)] font-semibold leading-[1.4] tracking-[-0.025em] text-black">
             {content}

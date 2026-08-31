@@ -1,5 +1,6 @@
 ---
 import { company } from "../../data/company";
+import SectionLabel from "../ui/SectionLabel.astro";
 
 const steps = company.process;
 ---
@@ -9,9 +10,9 @@ const steps = company.process;
 
     <header class="grid grid-cols-[minmax(0,1.55fr)_minmax(300px,0.65fr)] items-end gap-20 mb-[52px] max-[900px]:grid-cols-1 max-[900px]:gap-7 max-[900px]:mb-12 max-[620px]:mb-11">
       <div class="max-w-[760px]">
-        <span class="mb-[22px] block text-[11px] font-bold uppercase tracking-[0.08em] text-blue">
+        <SectionLabel class="mb-[22px]">
           CÓMO TRABAJAMOS
-        </span>
+        </SectionLabel>
 
         <h2 class="text-[clamp(40px,3.8vw,58px)] font-bold leading-[1.04] tracking-[-0.045em] text-black">
           Primero entendemos.<br class="max-[620px]:hidden" />

@@ -5,7 +5,7 @@ const {
 } = Astro.props;
 ---
 
-<a href={href} class:list={["group inline-flex items-center gap-2.5 font-semibold text-inherit transition-colors duration-[160ms] hover:text-blue", className]}>
-  <span><slot /></span>
-  <span class="transition-transform duration-[160ms] group-hover:translate-x-1" aria-hidden="true">→</span>
+<a href={href} class:list={["group inline-flex items-center gap-2.5 text-xs font-semibold transition-colors duration-180", className]}>
+  <slot />
+  <span class="transition-transform duration-180 group-hover:translate-x-1" aria-hidden="true">→</span>
 </a>
