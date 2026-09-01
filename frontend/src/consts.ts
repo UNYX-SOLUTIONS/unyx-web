@@ -14,3 +14,6 @@ export const SOCIAL_LINKS = {
 };
 
 export const KOMHO_WEBHOOK_URL = "";
+
+export const GA4_MEASUREMENT_ID = "";
+export const CLARITY_PROJECT_ID = "";

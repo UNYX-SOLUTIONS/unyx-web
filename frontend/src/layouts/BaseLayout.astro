@@ -5,6 +5,7 @@ import SEO from "../components/global/SEO.astro";
 import Header from "../components/global/Header.astro";
 import MobileMenu from "../components/global/MobileMenu.astro";
 import Footer from "../components/global/Footer.astro";
+import Analytics from "../components/global/Analytics.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, DEFAULT_OG_IMAGE } from "../consts";
 
@@ -40,5 +41,7 @@ const {
     <slot />
 
     {showFooter && <Footer />}
+
+    <Analytics />
   </body>
 </html>

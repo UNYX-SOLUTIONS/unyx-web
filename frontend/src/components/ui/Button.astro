@@ -4,6 +4,7 @@ const {
   variant = "primary",
   class: className = "",
   type = "button",
+  dataAnalytics,
 } = Astro.props;
 
 const variantClasses = {
@@ -28,11 +29,11 @@ const classes = [
 
 {
   href ? (
-    <a href={href} class:list={classes}>
+    <a href={href} class:list={classes} data-analytics={dataAnalytics}>
       <slot />
     </a>
   ) : (
-    <button type={type} class:list={classes}>
+    <button type={type} class:list={classes} data-analytics={dataAnalytics}>
       <slot />
     </button>
   )
