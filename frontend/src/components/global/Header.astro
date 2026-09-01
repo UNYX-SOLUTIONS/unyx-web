@@ -4,17 +4,17 @@ import { headerNav, headerCta } from "../../data/navigation";
 import Button from "../ui/Button.astro";
 ---
 
-<header class="absolute top-0 left-0 z-[100] w-full text-white border-b border-white/[0.08]">
-  <div class="grid w-[min(calc(100%-48px),1280px)] h-[84px] mx-auto grid-cols-[1fr_auto_1fr] items-center gap-10 max-[800px]:grid-cols-[1fr_auto]">
+<header class="sticky top-0 left-0 z-100 w-full text-white border-b border-white/8 bg-black *:backdrop-blur-[2px] *:backdrop-saturate-[1.8] *:backdrop-brightness-[0.9]">
+  <div class="grid w-[min(calc(100%-48px),1280px)] h-21 mx-auto grid-cols-[1fr_auto_1fr] items-center gap-10 max-[800px]:grid-cols-[1fr_auto_auto] max-[800px]:gap-6">
 
     <a href="/" class="text-xl font-bold text-white">
       {SITE_TITLE}
     </a>
 
-    <nav class="flex gap-[34px] max-[800px]:hidden">
+    <nav class="flex gap-8.5 max-[800px]:hidden">
       {
         headerNav.map((item) => (
-          <a href={item.href} class="text-sm text-gray-400 hover:text-white">
+          <a href={item.href} class="text-sm! text-gray-300! hover:text-white!">
             {item.label}
           </a>
         ))
@@ -24,11 +24,24 @@ import Button from "../ui/Button.astro";
     <Button
       href={headerCta.href}
       variant="compact"
-      class="justify-self-end"
+      class="justify-self-end max-[480px]:hidden"
       dataAnalytics="header_cta_click"
     >
       {headerCta.label}
     </Button>
+
+    <button
+      type="button"
+      class="group hidden h-11 w-11 flex-col items-center justify-center gap-1.5 text-white! max-[800px]:flex!"
+      data-mobile-menu-toggle
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Abrir menú"
+    >
+      <span class="block h-0.5 w-6 bg-current! transition-transform duration-200 group-aria-expanded:translate-y-2 group-aria-expanded:rotate-45"></span>
+      <span class="block h-0.5 w-6 bg-current! transition-opacity duration-200 group-aria-expanded:opacity-0"></span>
+      <span class="block h-0.5 w-6 bg-current! transition-transform duration-200 group-aria-expanded:-translate-y-2 group-aria-expanded:-rotate-45"></span>
+    </button>
 
   </div>
 </header>

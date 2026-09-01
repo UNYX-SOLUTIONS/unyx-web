@@ -1,261 +1,157 @@
 # Auditoría del Proyecto — UNYX Solutions Landing Page
 
+> Fecha: 2026-09-01 · Rama: `MisaelFront` · Estado: **pre-producción**
+> Objetivo: saber dónde estamos, qué falta para producción y si se necesita backend.
+
+---
+
 ## 1. Resumen ejecutivo
 
-Proyecto de landing corporativa para **UNYX Solutions** (tecnología aplicada a necesidades reales). Es un sitio **estático** construido con **Astro 7** + **Tailwind CSS 4**, con la home (10 secciones) ya implementada y migrada a Tailwind. El resto de páginas (soluciones, proyectos, insights, nosotros, contacto, legales) existen como **rutas vacías/placeholders**, igual que sus componentes y capas de datos/utilidades.
+El sitio está **funcionalmente completo a nivel de código**: 26 páginas estáticas generadas, build limpio, **Lighthouse 100/100/100/100** (Performance, Accessibility, Best Practices, SEO) verificado hoy sobre el build actual.
 
-**Estado global:** la home está funcional y con estilos migrados; el resto del sitio es *scaffolding* pendiente de construir.
+Para salir a producción **no falta desarrollo grande**: faltan principalmente **contenido real y configuraciones con datos del cliente** (IDs de analítica, webhook, textos legales, contenido del Documento Maestro) y **una corrección funcional del menú móvil**. **No se requiere backend** para la v1.
+
+| Área | Estado |
+|---|---|
+| Código / desarrollo | ✅ 6 fases del roadmap completadas |
+| Build | ✅ Limpio, 26 páginas, sitemap generado |
+| Calidad (Lighthouse) | ✅ 100 / 100 / 100 / 100 |
+| Contenido | 🟡 Parcial (falta contenido del Word) |
+| Configuraciones reales | 🔴 Pendientes (IDs, webhook, redes) |
+| Textos legales | 🔴 Pendientes |
+| Backend | ✅ No necesario para v1 |
 
 ---
 
-## 2. Stack tecnológico
+## 2. Qué tenemos (inventario actual)
 
-| Capa | Tecnología | Versión | Nota |
+### Stack
+- **Astro 7.2.6** (SSG estático) + **Tailwind CSS 4.3.3** (`@tailwindcss/vite`)
+- Content collections (`astro:content` + `glob`), sitemap (`@astrojs/sitemap`)
+- Vanilla JS (sin frameworks de UI); scripts: menú móvil, formulario, analítica
+
+### Rutas generadas (26)
+- `/` — home con 10 secciones
+- `/soluciones` + 9 slugs dinámicos (`[slug].astro` desde `data/services.ts`)
+- `/proyectos` + 4 slugs dinámicos (content collections)
+- `/insights` + 3 slugs dinámicos (content collections)
+- `/nosotros`, `/contacto`, `/privacidad`, `/terminos`, `/cookies`, `/404`
+
+### Fases completadas
+1. **F0 Build desbloqueado** — `content.config.ts`, `getStaticPaths`
+2. **F1 Datos centralizados** — `consts.ts`, `data/company|services|technologies|navigation.ts`, `SEO.astro`, 7 `.md`
+3. **F2 Páginas** — layouts + 21 componentes + 24 rutas
+4. **F3 Componentes UI** — `Button` (5 variantes), `ArrowLink`, `SectionLabel` (prop `dark`), `Container`/`site-container` (36 archivos)
+5. **F4 Assets y rendimiento** — OG image generada, fix crítico de cascada CSS (capas), contraste AA
+6. **F5 SEO estructurado** — sitemap, JSON-LD (Organization, WebSite, Service, BreadcrumbList, Article condicional, FAQPage listo), `llms.txt` completo
+7. **F6 Analítica** — `Analytics.astro` (GA4 + Clarity condicionales, eventos, scroll depth, persistencia UTM)
+
+### Diseño (design system)
+- Paleta: `black #0b0b0d`, `blue #0050f8`, `blue-hover #0b5cff`, `blue-light #8da7d9`, grays 100–900, `white`
+- Fuente: system-ui stack (Inter/Geist/Manrope, sin webfonts)
+- Tokens en `variables.css` (`@theme`), contenedor único `site-container`, botones/links/labels como componentes
+
+---
+
+## 3. Lo que falta para producción
+
+### 🔴 Bloqueante (requerido antes de publicar)
+
+| # | Pendiente | Detalle | Responsable |
 |---|---|---|---|
-| Framework | Astro | `^7.2.6` | Output estático (`static`) |
-| CSS | Tailwind CSS | `^4.3.3` | Vía plugin `@tailwindcss/vite` (no `@astrojs/tailwind`, que está deprecado) |
-| Integración Tailwind | `@tailwindcss/vite` | `^4.3.3` | Registrado en `astro.config.mjs` |
-| Runtime | Node.js | `>=22.12.0` | Local: v22.17.0 |
-| Package manager | npm + pnpm | — | ⚠️ **Dos lockfiles** rastreados (`package-lock.json` y `pnpm-lock.yaml`) |
+| 1 | **Menú móvil sin botón** | El `Header` oculta la navegación en móvil (`max-[800px]:hidden`) pero **no existe el botón hamburguesa** (`[data-mobile-menu-toggle]`). En celular no hay navegación. | Dev (~1 h) |
+| 2 | **Textos legales reales** | `/privacidad`, `/terminos`, `/cookies` dicen "documento en revisión". Obligatorios legalmente, y requisito para activar analítica (consentimiento). | Cliente + Dev |
+| 3 | **Configuraciones reales** (`src/consts.ts`) | `GA4_MEASUREMENT_ID`, `CLARITY_PROJECT_ID`, `KOMHO_WEBHOOK_URL` (formulario → Kommo), `SOCIAL_LINKS` (LinkedIn/Instagram, hoy `"#"`). | Cliente |
+| 4 | **Contenido del Documento Maestro** | Cuerpos de los 3 insights, detalle de proyectos (challenge/solution/results para Meditec/HSE/Sismeing), `capabilities` de cada servicio (Sección 10), equipo (`company.team` vacío), `pubDate` de insights (para Article JSON-LD). | Cliente |
+| 5 | **Dominio + hosting + SSL** | Conectar `unyxsolutions.com` a Vercel/Netlify (Astro estático, deploy desde git). | Cliente |
+| 6 | **Verificación post-deploy** | Google Search Console (sitemap + validar datos estructurados en Rich Results Test). | Dev |
 
----
+### 🟡 Importante (ideal antes/justo después de lanzar)
 
-## 3. Arquitectura
-
-```
-frontend/
-├── astro.config.mjs          # defineConfig + vite plugin tailwindcss
-├── package.json
-├── src/
-│   ├── assets/               # README placeholder
-│   ├── components/
-│   │   ├── global/           # Header, Footer, MobileMenu, SEO(empty)
-│   │   ├── home/             # 10 secciones de la home (implementadas)
-│   │   ├── ui/               # Button, ArrowLink, SectionLabel, Container (+ServiceCard empty)
-│   │   ├── solutions/        # 8 archivos vacíos
-│   │   ├── projects/         # 7 archivos vacíos
-│   │   ├── insights/         # 4 archivos vacíos
-│   │   ├── about/            # 4 archivos vacíos
-│   │   ├── contact/          # 2 archivos vacíos
-│   │   └── three/            # HeroNetwork (vacío)
-│   ├── content/              # colecciones: insights (3), projects (4) — md con title vacío
-│   ├── content.config.ts     # VACÍO → rompe content collections
-│   ├── data/                 # company, navigation, services, technologies (vacíos)
-│   ├── layouts/
-│   │   ├── BaseLayout.astro  # ✓ implementado (head/SEO/Header/Footer)
-│   │   ├── ProjectLayout.astro  # vacío
-│   │   └── ArticleLayout.astro  # vacío
-│   ├── pages/
-│   │   ├── index.astro       # ✓ única página implementada
-│   │   └── ... (resto vacío)
-│   ├── scripts/              # animations, header, hero-network (vacíos)
-│   ├── styles/               # variables, reset, typography, utilities, global, animations
-│   ├── utils/                # formatDate, schema, seo, urls (vacíos)
-│   └── consts.ts             # vacío
-└── public/                   # favicon, logos/tech (17 SVG), robots.txt, llms.txt, images (vacías)
-```
-
-### Estructura de estilos
-
-| Archivo | Rol |
-|---|---|
-| `variables.css` | `@theme` (paleta + fuente) + tokens de diseño (`:root`) |
-| `reset.css` | Reset base (box-sizing, tipografía, enlaces, listas) |
-| `typography.css` | Estilos base de `h1-h4`, `p`, `.eyebrow`, `.text-muted`, `.text-light` |
-| `utilities.css` | `.container`, `.grid-12`, `.sr-only`, `.border-top/bottom`, `.bg-black/white`, `.text-blue` |
-| `global.css` | Importa `tailwindcss` + los demás; `.section`, `.section-heading` |
-| `animations.css` | `prefers-reduced-motion` |
-
-> ⚠️ Estas clases globales (`.container`, `.section`, `.grid-12`, `.eyebrow`, etc.) quedaron **huérfanas** tras la migración: ningún componente las usa ya.
-
----
-
-## 4. Migración a Tailwind — estado
-
-- **Completada** en todos los componentes con contenido real (global, home, ui).
-- Cero bloques `<style>` scoped restantes en los `.astro`.
-- Enfoque: **colores normalizados a tokens** de `@theme` (los hex "desviados" como `#075cff` → `blue`, `#0a0a0c` → `black`, grises sueltos → `gray-*`); **spacing/tipografía fieles** (arbitrarios donde no hay escala exacta); decoración compleja (gradientes, `mask-image`, pseudo-elementos, `stroke-dasharray`) vía arbitrarios de Tailwind v4.
-
----
-
-## 5. Componentes implementados
-
-### Global
-| Componente | Estado |
-|---|---|
-| `Header.astro` | ✅ Migrado |
-| `Footer.astro` | ✅ Migrado |
-| `MobileMenu.astro` | ✅ Migrado |
-| `SEO.astro` | ⬜ Vacío |
-
-### Home (página principal — todas ✅ migradas)
-| Componente | ID de sección | Contenido |
+| # | Pendiente | Detalle |
 |---|---|---|
-| `Hero.astro` | `#inicio` | Titular + red/nodos animados |
-| `Problems.astro` | `#problema` | "El problema" (6 tarjetas) |
-| `Solutions.astro` | `#soluciones` | 9 servicios en 3 grupos + sistema de conexión |
-| `FeaturedCase.astro` | `#caso-destacado` | Caso Luxviajes (ventanas visuales) |
-| `Projects.astro` | `#proyectos` | 3 proyectos destacados |
-| `Process.astro` | `#como-trabajamos` | 4 pasos |
-| `WhyUnyx.astro` | `#por-que-unyx` | 4 principios |
-| `TechEcosystem.astro` | `#ecosistema-tecnologico` | 16 tecnologías en 4 grupos |
-| `Insights.astro` | `#insights` | 1 destacado + 2 secundarios |
-| `FinalCTA.astro` | `#contacto` | CTA final |
+| 7 | **Imágenes reales** | Proyectos e insights (WebP/AVIF). La infraestructura ya está lista: campo `image` en los schemas, `ProjectCard`/`FeaturedInsight` renderizan imagen si existe (con dimensiones, sin CLS). |
+| 8 | **Social links reales** | Si no hay perfiles, quitar la columna SOCIAL del footer en vez de dejar `#`. |
+| 9 | **QA responsive real** | Probar en dispositivos físicos (iOS/Android) y navegadores. Hoy verificado solo en Chrome headless. |
+| 10 | **Eventos de conversión activos** | Los eventos están implementados; solo se activan al poner los IDs (F6). |
 
-### UI (✅ migrados, pero **sin usar** actualmente)
-| Componente | Estado |
+### 🟢 Mejoras visuales/UX (post-lanzamiento, el "pulido")
+
+- Pulido de hovers/transiciones y micro-interacciones (P3 del Word, sin animaciones complejas en v1)
+- Página de equipo con fotos reales cuando existan
+- OG image personalizada por página (hoy hay una global generada, 1200×630)
+- HeroNetwork en three.js — **descartado para v1** por decisión del plan
+- Limpieza: 9 archivos vacíos restantes (`ProjectHero`, `HeroNetwork`, `ServiceCard`, `scripts/*` ×3, `utils/formatDate|seo|urls`) — borrar o implementar; no bloquean nada
+
+### Estimación de esfuerzo restante
+
+| Tarea | Esfuerzo |
 |---|---|
-| `Button.astro` | ✅ Migrado (variantes primary/secondary/dark-secondary + tamaños) |
-| `ArrowLink.astro` | ✅ Migrado |
-| `SectionLabel.astro` | ✅ Migrado |
-| `Container.astro` | ✅ (usa clase `.container` global) |
-| `ServiceCard.astro` | ⬜ Vacío |
-
-> ⚠️ `Button`, `ArrowLink`, `SectionLabel`, `Container` **no se importan** en ningún `.astro` actual.
-
-### Por construir (componentes vacíos)
-- **solutions/**: `SolutionHero`, `SolutionOverview`, `SolutionCapabilities`, `SolutionProcess`, `SolutionProjects`, `SolutionCTA`.
-- **projects/**: `ProjectsHero`, `ProjectCard`, `ProjectHero`, `ProjectChallenge`, `ProjectSolution`, `ProjectResults`.
-- **insights/**: `InsightsHero`, `FeaturedInsight`, `InsightCard`, `ArticleContent`.
-- **about/**: `AboutHero`, `AboutUNYX`, `Principles`, `Team`.
-- **contact/**: `ContactHero`, `ContactForm`.
-- **three/**: `HeroNetwork`.
+| Menú móvil (toggle + estados) | ~1 h |
+| Contenido: pegar textos del Word en `.md`/data | ~2-3 h (según volumen) |
+| Legales | depende del cliente |
+| Configuraciones + deploy (Vercel/Netlify) | ~1 h |
+| QA + Search Console | ~1-2 h |
+| **Total desarrollo restante** | **~5-7 h + contenido del cliente** |
 
 ---
 
-## 6. Páginas / rutas
+## 4. ¿Se necesita backend?
 
-| Ruta | Estado |
+**No para la primera versión.** El sitio es 100% estático y cada necesidad funcional ya está resuelta sin servidor propio:
+
+| Necesidad | Solución actual (sin backend) |
 |---|---|
-| `/` (index) | ✅ Implementada |
-| `/nosotros` | ⬜ Vacío |
-| `/contacto` | ⬜ Vacío |
-| `/soluciones` (index) | ⬜ Vacío |
-| `/soluciones/{9 slugs}` | ⬜ Vacíos (desarrollo-software, crm-automatizacion-comercial, automatizacion-ia, integraciones-apis, soporte-gestion-tecnologica, infraestructura-redes, cloud-datos-continuidad, iot-automatizacion-industrial, integracion-ot-it) |
-| `/proyectos` (index) | ⬜ Vacío |
-| `/proyectos/[slug]` | ⬜ Vacío (⚠️ sin `getStaticPaths`) |
-| `/insights` (index) | ⬜ Vacío |
-| `/insights/[slug]` | ⬜ Vacío (⚠️ sin `getStaticPaths`) |
-| `/privacidad`, `/terminos`, `/404` | ⬜ Vacíos |
+| Formulario de contacto | Webhook directo a **Kommo** (HTTP POST desde el front) + fallback mailto. Honeypot antispam incluido. |
+| Publicar insights/proyectos | Archivos `.md` en el repo (content collections). El editor no necesita backend, solo commit/push → redeploy. |
+| Analítica | **GA4 + Clarity** (terceros). |
+| SEO | Estático: sitemap, JSON-LD, meta únicos. |
+| Envío de emails | No hay envío propio; el webhook de Kommo o el mailto lo cubren. |
+
+### Cuándo considerar backend (futuro, opcional)
+
+1. **Quieren publicar contenido sin tocar el repo** → headless CMS (Decap, Contentful, Sanity) conectado a Astro, o un panel propio.
+2. **Formulario con validación/spam más robusto** → función serverless (Vercel/Netlify Functions) que valide y reenvíe a Kommo, o servicio tipo Formspree/Getform.
+3. **Funcionalidades de producto** (login, comentarios, reservas, chat) → ahí sí un backend real (Supabase/NestJS/etc.).
+4. **Blog con comentarios o newsletters** → servicio externo (Beehiiv, Mailchimp).
+
+**Recomendación:** lanzar v1 100% estático (cero costo de servidor, máximo rendimiento) y recién evaluar backend cuando exista una funcionalidad que lo exija.
 
 ---
 
-## 7. Paleta de colores actual
+## 5. Estado de calidad (medido hoy)
 
-Definida en `src/styles/variables.css` dentro de `@theme` (genera utilidades `bg-*`, `text-*`, `border-*`).
-
-### Colores de marca
-| Token | Hex | Uso típico |
-|---|---|---|
-| `--color-blue` | `#0050f8` | Acento primario, CTAs, enlaces, eyebrow |
-| `--color-blue-hover` | `#0b5cff` | Hover de elementos azules |
-
-### Neutros
-| Token | Hex | Uso típico |
-|---|---|---|
-| `--color-black` | `#0b0b0d` | Fondo secciones oscuras |
-| `--color-black-soft` | `#111216` | Paneles oscuros |
-| `--color-white` | `#ffffff` | Fondo secciones claras |
-| `--color-gray-900` | `#1a1c20` | Paneles/letreros oscuros |
-| `--color-gray-800` | `#2a2d33` | Bordes oscuros |
-| `--color-gray-700` | `#45474a` | Texto muted, bordes |
-| `--color-gray-600` | `#63666d` | Texto secundario |
-| `--color-gray-500` | `#858991` | Texto tenue |
-| `--color-gray-400` | `#a7abb3` | Texto claro/desactivado |
-| `--color-gray-300` | `#c9cdd4` | Bordes hover |
-| `--color-gray-200` | `#e3e6eb` | Bordes (tema claro) |
-| `--color-gray-100` | `#f3f5f7` | Fondos claros/hover |
-
-### Tokens semánticos (`:root`)
-```css
---color-bg:         var(--color-white)
---color-text:       var(--color-black)
---color-text-muted: var(--color-gray-700)
---color-border:     var(--color-gray-200)
+```
+Build:       26 páginas, sin errores
+Lighthouse:  Performance 100 · Accessibility 100 · Best Practices 100 · SEO 100
+JSON-LD:     Organization, WebSite, Service, BreadcrumbList (Article pendiente de pubDate)
+Sitemap:     25 URLs en sitemap-index.xml · robots.txt apuntando correctamente
+Contraste:   AA (4.5:1) corregido en toda la interfaz (tokens blue-light + grises)
 ```
 
-### Tipografía
-```css
---font-sans: Inter, Geist, Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif
-```
-
-> **Nota de normalización:** el CSS original usaba colores "desviados" (`#075cff`, `#0a0a0c`, `#343a46`, etc.) que durante la migración se **unificaron a estos tokens**, lo que corrige sutilmente algunos tonos.
-
-### Otros tokens de diseño
-- **Tamaños de fuente:** `--fs-xs` (0.75rem) → `--fs-4xl` (4.5rem)
-- **Line heights:** `--lh-tight` 1.05 / `--lh-heading` 1.1 / `--lh-body` 1.6
-- **Spacing:** `--space-1` (4px) → `--space-11` (160px)
-- **Radius:** `8 / 12 / 16 / 20px`
-- **Transiciones:** `--transition-fast` 160ms / `--transition-base` 240ms
-- **Layout:** `--container-max: 1280px`, `--container-padding: 24px`, `--section-padding-y: 128px`
+### Riesgos conocidos
+- **Menú móvil inoperante** (ítem 1) — único bug funcional detectado.
+- Clases con `!` residuales del trabajo previo (inofensivas tras el fix de capas CSS de F4; candidatas a limpieza).
+- Dos lockfiles (`package-lock.json` + `pnpm-lock.yaml`) — recomendado estandarizar en uno (pnpm).
 
 ---
 
-## 8. Contenido y datos
+## 6. Camino recomendado a producción
 
-| Recurso | Estado |
-|---|---|
-| `src/content/insights/*.md` (3) | ⬜ Solo `title: ""` vacío |
-| `src/content/projects/*.md` (4) | ⬜ Solo `title: ""` vacío |
-| `src/content.config.ts` | ⬜ **Vacío** → error `collections: expected record, received undefined` |
-| `src/data/*.ts` (5) | ⬜ Vacíos |
-| `src/utils/*.ts` (4) | ⬜ Vacíos |
-| `src/scripts/*.ts` (3) | ⬜ Vacíos |
-| `src/consts.ts` | ⬜ Vacío |
+**Paso 1 (bloqueantes técnicos):**
+1. Implementar botón hamburguesa del Header (conectar con `MobileMenu` ya existente).
+2. Reemplazar textos legales con versiones reales.
+3. Llenar `consts.ts` con IDs reales y social links.
 
----
+**Paso 2 (contenido):**
+4. Pegar el contenido faltante del Documento Maestro (insights, detalle de proyectos, capabilities, equipo, pubDates).
 
-## 9. Assets
+**Paso 3 (deploy y verificación):**
+5. Deploy a Vercel/Netlify con dominio propio + SSL.
+6. Verificar Search Console (indexación, sitemap) y Rich Results Test (JSON-LD).
+7. Validar formulario → Kommo con una prueba real end-to-end.
 
-- **`public/logos/tech/`** — 17 logos de tecnologías (Astro, React, Next.js, Node.js, Python, Flutter, Firebase, Google, Microsoft 365, n8n, PostgreSQL, Supabase, OpenAI, Kommo, Meta, WhatsApp, supabase). ✅ Existen.
-- **`public/images/`** — directorios vacíos (`.gitkeep`) para `brand`, `insights`, `og`, `projects/*`, `technologies`. ⚠️ Falta el OG image (`/images/og/default-og.jpg` referenciado en `BaseLayout` no existe).
-- **`public/fonts/`** y **`public/models/`** — solo README.
-- **`favicon.svg` / `favicon.ico`** — ✅.
+**Paso 4 (post-lanzamiento):**
+8. Imágenes reales, pulido visual, OG por página, eventos de conversión (activos con los IDs).
 
----
-
-## 10. Problemas detectados
-
-1. **Build no pasa** por dos causas preexistentes:
-   - `src/content.config.ts` vacío → `collections: Invalid input: expected record, received undefined`.
-   - `src/pages/insights/[slug].astro` y `src/pages/proyectos/[slug].astro` vacíos → falta `getStaticPaths()`.
-2. **Dos lockfiles** (`package-lock.json` + `pnpm-lock.yaml`): riesgo de deriva entre instalaciones.
-3. **Clases globales huérfanas** en `utilities.css`/`typography.css`/`global.css` (`.container`, `.section`, `.grid-12`, `.eyebrow`, `.text-muted`, etc.) tras la migración.
-4. **Componentes UI sin uso** (`Button`, `ArrowLink`, `SectionLabel`, `Container`).
-5. **`SEO.astro` vacío**: el SEO actual está inline en `BaseLayout.astro`.
-6. **Assets faltantes**: OG image referenciada no existe; imágenes de proyectos/insights vacías.
-7. **Contenido vacío**: todos los `.md` de content collections solo tienen `title: ""`.
-
----
-
-## 11. Secciones que faltarían / roadmap sugerido
-
-### Prioridad alta (bloquean el sitio completo)
-- [ ] Implementar `src/content.config.ts` (definir colecciones `insights` y `projects`).
-- [ ] Implementar `getStaticPaths()` en `[slug].astro` de insights y proyectos (o marcar `prerender = false`).
-- [ ] Completar el contenido de los `.md` (frontmatter + body).
-
-### Páginas por construir
-- [ ] `/nosotros` → `AboutHero`, `AboutUNYX`, `Principles`, `Team`.
-- [ ] `/contacto` → `ContactHero`, `ContactForm` (formulario funcional / integración).
-- [ ] `/soluciones/*` (10 páginas) → `SolutionHero`, `SolutionOverview`, `SolutionCapabilities`, `SolutionProcess`, `SolutionProjects`, `SolutionCTA`.
-- [ ] `/proyectos` + `/proyectos/[slug]` → `ProjectsHero`, `ProjectCard`, `ProjectHero`, `ProjectChallenge`, `ProjectSolution`, `ProjectResults`.
-- [ ] `/insights` + `/insights/[slug]` → `InsightsHero`, `FeaturedInsight`, `InsightCard`, `ArticleContent`.
-- [ ] `/privacidad`, `/terminos`, `/404`.
-
-### Cross-cutting
-- [ ] Componente `SEO` (extraer la lógica del head de `BaseLayout`).
-- [ ] Capa de datos (`data/`, `utils/`, `consts.ts`) para centralizar navegación, servicios, tecnologías, empresa.
-- [ ] Scripts de interacción (`header.ts`, `hero-network.ts`, `animations.ts`) — hoy el header/menú se manejan con `<script>` inline en `MobileMenu`.
-- [ ] `HeroNetwork` (three.js?) — hoy la red del hero es CSS puro.
-- [ ] Limpiar clases globales huérfanas y decidir si se unifican los dos lockfiles.
-- [ ] Añadir OG images y assets de proyectos/insights.
-
----
-
-## 12. Recomendaciones
-
-1. **Unificar gestor de paquetes** (pnpm, dado que `pnpm-lock.yaml` ya estaba rastreado) y eliminar el lockfile sobrante.
-2. **Resolver los dos errores de build** antes de seguir agregando páginas, para tener CI/feedback estable.
-3. **Reutilizar los componentes UI** ya migrados (`Button`, `ArrowLink`, `SectionLabel`, `Container`) al construir las páginas nuevas, en vez de duplicar utilidades inline.
-4. **Limpiar** `utilities.css`/`typography.css`/`global.css` de las clases que ya nadie usa, conservando solo las que aportan (o migrarlas a `@utility` de Tailwind v4).
+**Veredicto:** con el menú móvil corregido y los datos del cliente en `consts.ts` + legales, el sitio puede estar en producción en cuestión de **días**, no semanas.

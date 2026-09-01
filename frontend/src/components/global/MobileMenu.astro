@@ -1,4 +1,4 @@
-<nav class="fixed inset-x-0 top-21 z-45 bg-black border-b border-white/8" data-mobile-menu hidden>
+<nav id="mobile-menu" class="fixed inset-x-0 top-21 z-45 bg-black border-b border-white/8" data-mobile-menu hidden>
   <div class="flex flex-col gap-5 px-(--container-padding) pt-7 pb-9">
     <a href="/soluciones" class="text-[1.1rem] font-semibold text-white">Soluciones</a>
     <a href="/proyectos" class="text-[1.1rem] font-semibold text-white">Proyectos</a>
@@ -19,7 +19,9 @@
       const isOpen = toggle.getAttribute("aria-expanded") === "true";
 
       toggle.setAttribute("aria-expanded", String(!isOpen));
+      toggle.setAttribute("aria-label", isOpen ? "Abrir menú" : "Cerrar menú");
       menu.toggleAttribute("hidden");
+      document.body.style.overflow = isOpen ? "" : "hidden";
     });
   }
 </script>
