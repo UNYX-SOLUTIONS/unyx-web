@@ -1,4 +1,7 @@
 ---
+import ArrowLink from "../ui/ArrowLink.astro";
+import SectionLabel from "../ui/SectionLabel.astro";
+
 const problems = [
   {
     number: "01",
@@ -39,24 +42,24 @@ const problems = [
 ];
 ---
 
-<section class="problems" id="problema">
-  <div class="problems__container">
+<section class="relative w-full bg-white text-black" id="problema">
+  <div class="site-container pt-[clamp(90px,9vw,145px)] pb-9 max-[900px]:px-7 max-[900px]:pt-22.5 max-[900px]:pb-8 max-[600px]:px-5 max-[600px]:pt-18 max-[600px]:pb-7">
 
-    <div class="problems__header">
-      <div class="problems__heading">
-        <span class="problems__eyebrow">
+    <div class="grid grid-cols-[minmax(0,1.55fr)_minmax(260px,0.85fr)] items-end gap-[clamp(60px,10vw,160px)] mb-[clamp(60px,6vw,78px)] max-[900px]:grid-cols-1 max-[900px]:items-start max-[900px]:gap-8 max-[600px]:mb-11.5">
+      <div class="max-w-180">
+        <SectionLabel class="mb-7 max-[600px]:mb-5">
           EL PROBLEMA
-        </span>
+        </SectionLabel>
 
-        <h2>
-          Cuando la tecnología no<br />
-          está conectada, la<br />
+        <h2 class="text-[clamp(40px,3.8vw,58px)]! font-bold! leading-[1.02]! tracking-[-0.045em]! text-black max-[600px]:text-[clamp(38px,11vw,50px)]! max-[600px]:leading-none!">
+          Cuando la tecnología no<br class="max-[900px]:hidden!" />
+          está conectada, la<br class="max-[900px]:hidden!" />
           operación tampoco.
         </h2>
       </div>
 
-      <div class="problems__intro">
-        <p>
+      <div class="max-w-97.5! pb-2! max-[900px]:max-w-130!">
+        <p class="text-[15px]! leading-[1.65] text-gray-700">
           Muchas empresas no necesitan más herramientas.
           Necesitan que sus procesos, sistemas e información
           trabajen mejor juntos.
@@ -64,19 +67,19 @@ const problems = [
       </div>
     </div>
 
-    <div class="problems__grid">
+    <div class="grid grid-cols-3 border-l border-t border-gray-200 max-[900px]:grid-cols-2! max-[600px]:grid-cols-1!">
       {
         problems.map((problem) => (
-          <article class="problem-card">
-            <span class="problem-card__number">
+          <article class="min-h-52.5 border-b border-r border-gray-200 bg-white p-[34px_30px_38px] transition-[background-color,transform] duration-180 hover:bg-gray-100 max-[600px]:min-h-0 max-[600px]:p-[28px_24px_32px]">
+            <span class="mb-6.5 block text-[27px] font-bold leading-none text-blue max-[600px]:mb-5 max-[600px]:text-2xl">
               {problem.number}
             </span>
 
-            <h3>
+            <h3 class="mb-4 text-base font-bold leading-tight tracking-[-0.015em] text-black">
               {problem.title}
             </h3>
 
-            <p>
+            <p class="max-w-80 text-[13px] leading-[1.6] text-gray-700">
               {problem.description}
             </p>
           </article>
@@ -84,365 +87,20 @@ const problems = [
       }
     </div>
 
-    <div class="problems__closing">
+    <div class="flex flex-col items-center pt-11 text-center max-[600px]:pt-9.5">
       <div
-        class="problems__line"
+        class="mb-5 h-10 w-px bg-linear-to-b from-gray-200 to-blue max-[600px]:mb-4.5 max-[600px]:h-8.5"
         aria-hidden="true"
       ></div>
 
-      <h3>
+      <h3 class="mb-3.5 text-[clamp(24px,2vw,30px)] font-bold leading-[1.2] tracking-[-0.03em] text-black">
         Ahí es donde entra UNYX.
       </h3>
 
-      <a
-        href="#soluciones"
-        class="problems__link"
-      >
+      <ArrowLink href="#soluciones" class="text-blue">
         Conocer nuestras soluciones
-
-        <span aria-hidden="true">
-          →
-        </span>
-      </a>
+      </ArrowLink>
     </div>
 
   </div>
 </section>
-
-<style>
-  .problems {
-    position: relative;
-
-    width: 100%;
-
-    background: #ffffff;
-    color: #090a0c;
-  }
-
-  .problems__container {
-    width: min(100%, 1440px);
-
-    margin: 0 auto;
-
-    padding:
-      clamp(90px, 9vw, 145px)
-      clamp(32px, 5vw, 64px)
-      36px;
-  }
-
-  /* =========================================================
-     HEADER
-     ========================================================= */
-
-  .problems__header {
-    display: grid;
-
-    grid-template-columns:
-      minmax(0, 1.55fr)
-      minmax(260px, 0.85fr);
-
-    gap: clamp(60px, 10vw, 160px);
-
-    align-items: end;
-
-    margin-bottom: clamp(60px, 6vw, 78px);
-  }
-
-  .problems__heading {
-    max-width: 720px;
-  }
-
-  .problems__eyebrow {
-    display: block;
-
-    margin-bottom: 28px;
-
-    color: #075cff;
-
-    font-size: 12px;
-    font-weight: 700;
-
-    letter-spacing: 0.08em;
-
-    text-transform: uppercase;
-  }
-
-  .problems__heading h2 {
-    margin: 0;
-
-    font-size: clamp(40px, 3.8vw, 58px);
-
-    font-weight: 700;
-
-    line-height: 1.02;
-
-    letter-spacing: -0.045em;
-  }
-
-  /* =========================================================
-     INTRO
-     ========================================================= */
-
-  .problems__intro {
-    max-width: 390px;
-
-    padding-bottom: 8px;
-  }
-
-  .problems__intro p {
-    margin: 0;
-
-    color: #333842;
-
-    font-size: 15px;
-
-    line-height: 1.65;
-  }
-
-  /* =========================================================
-     GRID
-     ========================================================= */
-
-  .problems__grid {
-    display: grid;
-
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
-
-    border-top: 1px solid #dce0e6;
-    border-left: 1px solid #dce0e6;
-  }
-
-  /* =========================================================
-     CARDS
-     ========================================================= */
-
-  .problem-card {
-    min-height: 210px;
-
-    padding:
-      34px
-      30px
-      38px;
-
-    border-right: 1px solid #dce0e6;
-    border-bottom: 1px solid #dce0e6;
-
-    background: #ffffff;
-
-    transition:
-      background-color 180ms ease,
-      transform 180ms ease;
-  }
-
-  @media (hover: hover) {
-    .problem-card:hover {
-      background: #fafbfc;
-    }
-  }
-
-  .problem-card__number {
-    display: block;
-
-    margin-bottom: 26px;
-
-    color: #075cff;
-
-    font-size: 27px;
-
-    font-weight: 700;
-
-    line-height: 1;
-  }
-
-  .problem-card h3 {
-    margin:
-      0
-      0
-      16px;
-
-    color: #090a0c;
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-    line-height: 1.25;
-
-    letter-spacing: -0.015em;
-  }
-
-  .problem-card p {
-    max-width: 320px;
-
-    margin: 0;
-
-    color: #343a46;
-
-    font-size: 13px;
-
-    line-height: 1.6;
-  }
-
-  /* =========================================================
-     CLOSING
-     ========================================================= */
-
-  .problems__closing {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    padding-top: 44px;
-
-    text-align: center;
-  }
-
-  .problems__line {
-    width: 1px;
-
-    height: 40px;
-
-    margin-bottom: 20px;
-
-    background:
-      linear-gradient(
-        to bottom,
-        #e1e4e9,
-        #075cff
-      );
-  }
-
-  .problems__closing h3 {
-    margin:
-      0
-      0
-      14px;
-
-    color: #090a0c;
-
-    font-size: clamp(24px, 2vw, 30px);
-
-    font-weight: 700;
-
-    line-height: 1.2;
-
-    letter-spacing: -0.03em;
-  }
-
-  .problems__link {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    color: #075cff;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    text-decoration: none;
-
-    transition:
-      gap 180ms ease,
-      opacity 180ms ease;
-  }
-
-  .problems__link:hover {
-    gap: 14px;
-  }
-
-  /* =========================================================
-     TABLET
-     ========================================================= */
-
-  @media (max-width: 900px) {
-    .problems__container {
-      padding:
-        90px
-        28px
-        32px;
-    }
-
-    .problems__header {
-      grid-template-columns: 1fr;
-
-      gap: 32px;
-
-      align-items: start;
-    }
-
-    .problems__heading h2 br {
-      display: none;
-    }
-
-    .problems__intro {
-      max-width: 520px;
-    }
-
-    .problems__grid {
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  /* =========================================================
-     MOBILE
-     ========================================================= */
-
-  @media (max-width: 600px) {
-    .problems__container {
-      padding:
-        72px
-        20px
-        28px;
-    }
-
-    .problems__header {
-      margin-bottom: 46px;
-    }
-
-    .problems__eyebrow {
-      margin-bottom: 20px;
-    }
-
-    .problems__heading h2 {
-      font-size: clamp(38px, 11vw, 50px);
-
-      line-height: 1;
-    }
-
-    .problems__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .problem-card {
-      min-height: auto;
-
-      padding:
-        28px
-        24px
-        32px;
-    }
-
-    .problem-card__number {
-      margin-bottom: 20px;
-
-      font-size: 24px;
-    }
-
-    .problems__closing {
-      padding-top: 38px;
-    }
-
-    .problems__line {
-      height: 34px;
-
-      margin-bottom: 18px;
-    }
-  }
-</style>

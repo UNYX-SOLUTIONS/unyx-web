@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+const { entry } = Astro.props;
+---
+
+<article class="border-b border-gray-200 py-12">
+  <a href={`/insights/${entry.id}`} class="text-inherit">
+
+    <div class="mb-[14px] flex gap-2.5 text-[9px] font-semibold text-gray-600">
+      <span class="font-bold text-blue">{entry.data.category}</span>
+      <span>·</span>
+      <span>{entry.data.type}</span>
+    </div>
+
+    <div class="flex justify-between gap-[30px]">
+      <h3 class="mb-[14px] max-w-[430px] text-[22px] leading-[1.25] tracking-[-0.025em] text-black">
+        {entry.data.title}
+      </h3>
+
+      <span class="text-gray-400" aria-hidden="true">
+        ↗
+      </span>
+    </div>
+
+    <p class="max-w-[440px] text-[13px] leading-[1.65] text-gray-600">
+      {entry.data.description}
+    </p>
+
+  </a>
+</article>

@@ -1,682 +1,156 @@
-<section class="hero" id="inicio">
-  <div class="hero__container">
+---
+import Button from "../ui/Button.astro";
+---
 
-    <div class="hero__content">
-      <div class="hero__label">
-        <span class="hero__label-dot"></span>
+<section
+  class="relative flex min-h-svh items-center overflow-hidden bg-black text-white"
+  id="inicio"
+>
+  <div
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_76%_48%,rgba(0,80,248,0.045),transparent_28%)]"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute inset-0 opacity-55 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-size-[44px_44px] mask-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.45)_18%,rgba(0,0,0,1)_50%,rgba(0,0,0,0.5)_100%)]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div
+    class="relative! z-2 mx-auto grid w-[min(calc(100%-48px),1280px)]! grid-cols-[1.05fr_0.95fr]! items-center! gap-15! -translate-y-6! pt-20! pb-25! max-[1050px]:grid-cols-[1fr_0.78fr]! max-[1050px]:gap-10 max-[800px]:w-[min(calc(100%-36px),1280px)]! max-[800px]:grid-cols-1! max-[800px]:gap-13.5! max-[800px]:translate-y-0 max-[800px]:pt-35! max-[800px]:pb-22.5! max-[520px]:w-[calc(100%-32px)]! max-[520px]:pt-31.25! max-[520px]:pb-17.5!"
+  >
+    <div class="max-w-175! max-[800px]:max-w-full!">
+      <div
+        class="mb-6 flex items-center gap-2.5 text-xs font-bold leading-none tracking-[0.06em] text-blue-light max-[520px]:text-[10px]"
+      >
+        <span
+          class="h-1.75! w-1.75! shrink-0! rounded-full! bg-blue shadow-[0_0_14px_rgba(0,80,248,0.65)]!"
+        ></span>
         <span>TECNOLOGÍA · AUTOMATIZACIÓN · INGENIERÍA</span>
       </div>
 
-      <h1 class="hero__title">
+      <h1
+        class="max-w-170! text-[clamp(48px,4.7vw,68px)]! font-bold leading-[1.02]! tracking-[-0.045em]! text-white! text-balance! max-[1050px]:text-[clamp(46px,5.5vw,62px)]! max-[800px]:max-w-162.5! max-[800px]:text-[clamp(42px,12vw,58px)]! max-[520px]:text-[clamp(40px,13vw,50px)]!"
+      >
         Tecnología aplicada a
-        <span>necesidades reales.</span>
+        <span class="block">necesidades reales.</span>
       </h1>
 
-      <p class="hero__description">
+      <p
+        class="mt-7! max-w-175! text-[17px]! leading-[1.6]! text-gray-400! max-[800px]:max-w-170! max-[800px]:text-base!"
+      >
         Diseñamos e integramos soluciones de software, automatización,
-        inteligencia artificial e infraestructura que ayudan a las empresas
-        a trabajar mejor.
+        inteligencia artificial e infraestructura que ayudan a las empresas a
+        trabajar mejor.
       </p>
 
-      <div class="hero__actions">
-        <a
-          class="hero__button hero__button--primary"
+      <div
+        class="mt-8.5! flex flex-wrap items-center gap-3.5 max-[520px]:flex-col max-[520px]:items-stretch"
+      >
+        <Button
           href="/contacto"
+          variant="primary"
+          class="max-[520px]:w-full"
+          dataAnalytics="hero_primary_cta"
         >
           <span>Cuéntanos tu proyecto</span>
-          <span class="hero__arrow" aria-hidden="true">→</span>
-        </a>
+          <span
+            class="text-xl transition-transform duration-180 group-hover:translate-x-1"
+            aria-hidden="true">→</span
+          >
+        </Button>
 
-        <a
-          class="hero__button hero__button--secondary"
+        <Button
           href="#soluciones"
+          variant="dark-secondary"
+          class="max-[520px]:w-full"
         >
           Explorar soluciones
-        </a>
+        </Button>
       </div>
     </div>
 
-    <div class="hero__visual" aria-hidden="true">
-      <div class="network">
+    <div
+      class="relative flex min-h-130 items-center justify-center -translate-x-5 max-[1050px]:min-h-110 max-[1050px]:-translate-x-1.5 max-[800px]:min-h-0 max-[800px]:translate-x-0 max-[520px]:mt-2.5"
+      aria-hidden="true"
+    >
+      <div
+        class="relative aspect-square w-[min(118%,610px)] max-[1050px]:w-[min(100%,480px)] max-[800px]:mx-auto max-[800px]:w-[min(100%,440px)]"
+      >
+        <div
+          class="absolute inset-[7%] bg-[radial-gradient(rgba(255,255,255,0.11)_0.8px,transparent_0.8px)] bg-size-[22px_22px] opacity-[0.22]"
+        >
+        </div>
 
-        <span class="network__line network__line--software"></span>
-        <span class="network__line network__line--ai"></span>
-        <span class="network__line network__line--infra"></span>
-        <span class="network__line network__line--automation"></span>
-        <span class="network__line network__line--data"></span>
+        <span
+          class="absolute left-1/2 top-1/2 z-1 h-px w-61.25 origin-left rotate-[-115deg] bg-white/[0.14] after:absolute after:-right-0.75 after:top-1/2 after:h-1.5 after:w-1.5 after:-translate-y-1/2 after:rounded-full after:bg-gray-600 after:content-['']"
+        ></span>
+        <span
+          class="absolute left-1/2 top-1/2 z-1 h-px w-60 origin-left rotate-[-34deg] bg-blue after:absolute after:-right-0.75 after:top-1/2 after:h-1.5 after:w-1.5 after:-translate-y-1/2 after:rounded-full after:bg-blue after:shadow-[0_0_10px_rgba(0,80,248,0.5)] after:content-['']"
+        ></span>
+        <span
+          class="absolute left-1/2 top-1/2 z-1 h-px w-58.75 origin-left rotate-151 bg-white/[0.14] after:absolute after:-right-0.75 after:top-1/2 after:h-1.5 after:w-1.5 after:-translate-y-1/2 after:rounded-full after:bg-gray-600 after:content-['']"
+        ></span>
+        <span
+          class="absolute left-1/2 top-1/2 z-1 h-px w-62.5 origin-left rotate-43 bg-white/[0.14] after:absolute after:-right-0.75 after:top-1/2 after:h-1.5 after:w-1.5 after:-translate-y-1/2 after:rounded-full after:bg-gray-600 after:content-['']"
+        ></span>
+        <span
+          class="absolute left-1/2 top-1/2 z-1 h-px w-58.75 origin-left rotate-91 bg-blue/65 after:absolute after:-right-0.75 after:top-1/2 after:h-1.5 after:w-1.5 after:-translate-y-1/2 after:rounded-full after:bg-blue after:content-['']"
+        ></span>
 
-        <div class="network__node network__node--software">
+        <div
+          class="absolute left-[26%] top-[5%] z-5 whitespace-nowrap rounded-[5px] border border-white/17 bg-black/86 px-2.25 py-1.5 text-[10px] font-bold leading-none tracking-wider text-gray-500 max-[520px]:text-[8px]"
+        >
           SOFTWARE
         </div>
-
-        <div class="network__node network__node--ai">
+        <div
+          class="absolute right-[1%] top-[29%] z-5 whitespace-nowrap rounded-[5px] border border-white/17 bg-black/86 px-2.25 py-1.5 text-[10px] font-bold leading-none tracking-wider text-gray-500 max-[520px]:text-[8px]"
+        >
           IA
         </div>
-
-        <div class="network__node network__node--infra">
+        <div
+          class="absolute bottom-[25%] left-0 z-5 whitespace-nowrap rounded-[5px] border border-white/17 bg-black/86 px-2.25 py-1.5 text-[10px] font-bold leading-none tracking-wider text-gray-500 max-[520px]:text-[8px]"
+        >
           INFRAESTRUCTURA
         </div>
-
-        <div class="network__node network__node--automation">
+        <div
+          class="absolute bottom-[13%] right-0 z-5 whitespace-nowrap rounded-[5px] border border-white/17 bg-black/86 px-2.25 py-1.5 text-[10px] font-bold leading-none tracking-wider text-gray-500 max-[520px]:text-[8px]"
+        >
           AUTOMATIZACIÓN
         </div>
-
-        <div class="network__node network__node--data">
+        <div
+          class="absolute bottom-[1%] left-[46%] z-5 whitespace-nowrap rounded-[5px] border border-white/17 bg-black/86 px-2.25 py-1.5 text-[10px] font-bold leading-none tracking-wider text-gray-500 max-[520px]:text-[8px]"
+        >
           DATOS
         </div>
 
-        <div class="core">
-          <span class="core__cube"></span>
-          <span class="core__cube"></span>
-          <span class="core__cube"></span>
-          <span class="core__cube core__cube--active"></span>
+        <div
+          class="absolute left-1/2 top-1/2 z-4 grid h-27 w-27 -translate-x-1/2 -translate-y-1/2 grid-cols-2 grid-rows-2 gap-2 max-[1050px]:h-24 max-[1050px]:w-24 max-[1050px]:gap-1.75 max-[800px]:h-22.5 max-[800px]:w-22.5 max-[520px]:h-20.5 max-[520px]:w-20.5 max-[520px]:gap-1.5"
+        >
+          <span
+            class="block rounded-[5px] border border-gray-700 bg-gray-900 shadow-[inset_0_0_18px_rgba(255,255,255,0.015),0_4px_18px_rgba(0,0,0,0.2)]"
+          ></span>
+          <span
+            class="block rounded-[5px] border border-gray-700 bg-gray-900 shadow-[inset_0_0_18px_rgba(255,255,255,0.015),0_4px_18px_rgba(0,0,0,0.2)]"
+          ></span>
+          <span
+            class="block rounded-[5px] border border-gray-700 bg-gray-900 shadow-[inset_0_0_18px_rgba(255,255,255,0.015),0_4px_18px_rgba(0,0,0,0.2)]"
+          ></span>
+          <span
+            class="block rounded-[5px] border border-blue bg-blue shadow-[0_0_24px_rgba(0,80,248,0.22)]"
+          ></span>
         </div>
       </div>
     </div>
-
   </div>
 
-  <div class="hero__scroll" aria-hidden="true">
+  <div
+    class="absolute bottom-6 left-1/2 z-3 flex -translate-x-1/2 flex-col items-center gap-2.5 text-[9px] font-semibold tracking-[0.12em] text-gray-500 max-[800px]:hidden"
+    aria-hidden="true"
+  >
     <span>SCROLL</span>
-    <span class="hero__scroll-line"></span>
+    <span class="block h-9 w-px bg-linear-to-b from-white/45 to-transparent"
+    ></span>
   </div>
 </section>
-
-<style>
-  .hero {
-    position: relative;
-
-    min-height: 100svh;
-
-    display: flex;
-    align-items: center;
-
-    overflow: hidden;
-
-    background:
-      radial-gradient(
-        circle at 76% 48%,
-        rgba(0, 80, 248, 0.045),
-        transparent 28%
-      ),
-      #0b0b0d;
-
-    color: #ffffff;
-  }
-
-  .hero::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    pointer-events: none;
-
-    background-image:
-      linear-gradient(
-        rgba(255, 255, 255, 0.018) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.018) 1px,
-        transparent 1px
-      );
-
-    background-size: 44px 44px;
-
-    mask-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(0, 0, 0, 0.45) 18%,
-      rgba(0, 0, 0, 1) 50%,
-      rgba(0, 0, 0, 0.5) 100%
-    );
-
-    opacity: 0.55;
-  }
-
-  .hero__container {
-    position: relative;
-    z-index: 2;
-
-    width: min(calc(100% - 48px), 1280px);
-
-    margin-inline: auto;
-
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-
-    gap: 60px;
-
-    align-items: center;
-
-    padding-top: 80px;
-    padding-bottom: 100px;
-
-    transform: translateY(-24px);
-  }
-
-  .hero__content {
-    max-width: 700px;
-  }
-
-  .hero__label {
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-
-    margin-bottom: 24px;
-
-    color: #8da7d9;
-
-    font-size: 12px;
-    font-weight: 700;
-
-    line-height: 1;
-
-    letter-spacing: 0.06em;
-  }
-
-  .hero__label-dot {
-    width: 7px;
-    height: 7px;
-
-    flex: 0 0 auto;
-
-    border-radius: 50%;
-
-    background: #0050f8;
-
-    box-shadow: 0 0 14px rgba(0, 80, 248, 0.65);
-  }
-
-  .hero__title {
-    max-width: 680px;
-
-    margin: 0;
-
-    color: #ffffff;
-
-    font-size: clamp(48px, 4.7vw, 68px);
-    font-weight: 700;
-
-    line-height: 1.02;
-
-    letter-spacing: -0.045em;
-
-    text-wrap: balance;
-  }
-
-  .hero__title span {
-    display: block;
-  }
-
-  .hero__description {
-    max-width: 590px;
-
-    margin: 28px 0 0;
-
-    color: #a8acb4;
-
-    font-size: 17px;
-
-    line-height: 1.6;
-  }
-
-  .hero__actions {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-
-    gap: 14px;
-
-    margin-top: 34px;
-  }
-
-  .hero__button {
-    min-height: 54px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 16px;
-
-    padding: 0 24px;
-
-    border-radius: 8px;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    line-height: 1;
-
-    text-decoration: none;
-
-    transition:
-      background-color 180ms ease,
-      border-color 180ms ease,
-      color 180ms ease,
-      transform 180ms ease;
-  }
-
-  .hero__button--primary {
-    background: #0050f8;
-
-    border: 1px solid #0050f8;
-
-    color: #ffffff;
-  }
-
-  .hero__button--primary:hover {
-    background: #0b5cff;
-
-    border-color: #0b5cff;
-
-    transform: translateY(-2px);
-  }
-
-  .hero__button--secondary {
-    background: transparent;
-
-    border: 1px solid #3c3f45;
-
-    color: #ffffff;
-  }
-
-  .hero__button--secondary:hover {
-    border-color: #777b84;
-
-    background: rgba(255, 255, 255, 0.035);
-
-    transform: translateY(-2px);
-  }
-
-  .hero__arrow {
-    font-size: 20px;
-
-    transition: transform 180ms ease;
-  }
-
-  .hero__button--primary:hover .hero__arrow {
-    transform: translateX(4px);
-  }
-
-  .hero__visual {
-    position: relative;
-
-    min-height: 520px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transform: translateX(-20px);
-  }
-
-  .network {
-    position: relative;
-
-    width: min(118%, 610px);
-
-    aspect-ratio: 1 / 1;
-  }
-
-  .network::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 7%;
-
-    background-image: radial-gradient(
-      rgba(255, 255, 255, 0.11) 0.8px,
-      transparent 0.8px
-    );
-
-    background-size: 22px 22px;
-
-    opacity: 0.22;
-  }
-
-  .core {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 108px;
-    height: 108px;
-
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-
-    gap: 8px;
-
-    transform: translate(-50%, -50%);
-
-    z-index: 4;
-  }
-
-  .core__cube {
-    display: block;
-
-    border: 1px solid #41444a;
-
-    border-radius: 5px;
-
-    background: #1a1c20;
-
-    box-shadow:
-      inset 0 0 18px rgba(255, 255, 255, 0.015),
-      0 4px 18px rgba(0, 0, 0, 0.2);
-  }
-
-  .core__cube--active {
-    border-color: #0050f8;
-
-    background: #0050f8;
-
-    box-shadow:
-      0 0 24px rgba(0, 80, 248, 0.22);
-  }
-
-  .network__node {
-    position: absolute;
-
-    z-index: 5;
-
-    padding: 6px 9px;
-
-    border: 1px solid rgba(255, 255, 255, 0.17);
-
-    border-radius: 5px;
-
-    background: rgba(11, 11, 13, 0.86);
-
-    color: #8f939b;
-
-    font-size: 10px;
-    font-weight: 700;
-
-    line-height: 1;
-
-    letter-spacing: 0.05em;
-
-    white-space: nowrap;
-  }
-
-  .network__node--software {
-    top: 5%;
-    left: 26%;
-  }
-
-  .network__node--ai {
-    top: 29%;
-    right: 1%;
-  }
-
-  .network__node--infra {
-    left: 0;
-    bottom: 25%;
-  }
-
-  .network__node--automation {
-    right: 0;
-    bottom: 13%;
-  }
-
-  .network__node--data {
-    left: 46%;
-    bottom: 1%;
-  }
-
-  .network__line {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    z-index: 1;
-
-    height: 1px;
-
-    background: rgba(255, 255, 255, 0.14);
-
-    transform-origin: left center;
-  }
-
-  .network__line::after {
-    content: "";
-
-    position: absolute;
-
-    right: -3px;
-    top: 50%;
-
-    width: 6px;
-    height: 6px;
-
-    border-radius: 50%;
-
-    background: #555a63;
-
-    transform: translateY(-50%);
-  }
-
-  .network__line--software {
-    width: 245px;
-
-    transform: rotate(-115deg);
-  }
-
-  .network__line--ai {
-    width: 240px;
-
-    background: #0050f8;
-
-    transform: rotate(-34deg);
-  }
-
-  .network__line--ai::after {
-    background: #0050f8;
-
-    box-shadow: 0 0 10px rgba(0, 80, 248, 0.5);
-  }
-
-  .network__line--infra {
-    width: 235px;
-
-    transform: rotate(151deg);
-  }
-
-  .network__line--automation {
-    width: 250px;
-
-    transform: rotate(43deg);
-  }
-
-  .network__line--data {
-    width: 235px;
-
-    background: rgba(0, 80, 248, 0.65);
-
-    transform: rotate(91deg);
-  }
-
-  .network__line--data::after {
-    background: #0050f8;
-  }
-
-  .hero__scroll {
-    position: absolute;
-
-    z-index: 3;
-
-    left: 50%;
-    bottom: 24px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 10px;
-
-    transform: translateX(-50%);
-
-    color: #777b84;
-
-    font-size: 9px;
-    font-weight: 600;
-
-    letter-spacing: 0.12em;
-  }
-
-  .hero__scroll-line {
-    display: block;
-
-    width: 1px;
-    height: 36px;
-
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.45),
-      rgba(255, 255, 255, 0)
-    );
-  }
-
-  @media (max-width: 1050px) {
-    .hero__container {
-      grid-template-columns: 1fr 0.78fr;
-
-      gap: 40px;
-    }
-
-    .hero__title {
-      font-size: clamp(46px, 5.5vw, 62px);
-    }
-
-    .hero__visual {
-      min-height: 440px;
-
-      transform: translateX(-6px);
-    }
-
-    .network {
-      width: min(100%, 480px);
-    }
-
-    .core {
-      width: 96px;
-      height: 96px;
-      gap: 7px;
-    }
-  }
-
-  @media (max-width: 800px) {
-    .hero {
-      min-height: auto;
-    }
-
-    .hero__container {
-      width: min(calc(100% - 36px), 1280px);
-
-      grid-template-columns: 1fr;
-
-      gap: 54px;
-
-      padding-top: 140px;
-      padding-bottom: 90px;
-
-      transform: none;
-    }
-
-    .hero__content {
-      max-width: 100%;
-    }
-
-    .hero__title {
-      max-width: 650px;
-
-      font-size: clamp(42px, 12vw, 58px);
-    }
-
-    .hero__description {
-      max-width: 560px;
-
-      font-size: 16px;
-    }
-
-    .hero__visual {
-      min-height: auto;
-
-      transform: none;
-    }
-
-    .network {
-      width: min(100%, 440px);
-
-      margin-inline: auto;
-    }
-
-    .core {
-      width: 90px;
-      height: 90px;
-    }
-
-    .hero__scroll {
-      display: none;
-    }
-  }
-
-  @media (max-width: 520px) {
-    .hero__container {
-      width: calc(100% - 32px);
-
-      padding-top: 125px;
-      padding-bottom: 70px;
-    }
-
-    .hero__label {
-      font-size: 10px;
-    }
-
-    .hero__title {
-      font-size: clamp(40px, 13vw, 50px);
-    }
-
-    .hero__actions {
-      align-items: stretch;
-      flex-direction: column;
-    }
-
-    .hero__button {
-      width: 100%;
-    }
-
-    .hero__visual {
-      margin-top: 10px;
-    }
-
-    .network__node {
-      font-size: 8px;
-    }
-
-    .core {
-      width: 82px;
-      height: 82px;
-      gap: 6px;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero__button,
-    .hero__arrow {
-      transition: none;
-    }
-  }
-</style>

@@ -1,0 +1,33 @@
+---
+import { CONTACT_EMAIL, CONTACT_LOCATION } from "../../consts";
+---
+
+<section class="relative overflow-hidden bg-black text-white">
+  <div class="relative z-[2] site-container pt-[170px] pb-[80px]">
+    <span class="block text-[11px] font-bold uppercase tracking-[0.1em] text-blue-light">
+      HABLEMOS
+    </span>
+
+    <h1 class="mt-6 max-w-[850px] text-[clamp(40px,4.5vw,64px)] font-bold leading-[1.02] tracking-[-0.05em] text-white">
+      Cuéntanos tu proyecto
+    </h1>
+
+    <p class="mt-6 max-w-[600px] text-base leading-[1.65] text-gray-500">
+      Cuéntanos qué está pasando en tu operación. Podemos ayudarte a
+      identificar dónde la tecnología puede generar mayor impacto.
+    </p>
+
+    <div class="mt-8 flex flex-col gap-2 text-sm text-gray-500">
+      <a
+        href={`mailto:${CONTACT_EMAIL}`}
+        class="w-fit font-semibold text-white underline underline-offset-[3px]"
+      >
+        {CONTACT_EMAIL}
+      </a>
+
+      <span>
+        {CONTACT_LOCATION}
+      </span>
+    </div>
+  </div>
+</section>

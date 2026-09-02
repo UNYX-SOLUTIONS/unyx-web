@@ -1,0 +1,148 @@
+---
+import { GA4_MEASUREMENT_ID, CLARITY_PROJECT_ID } from "../../consts";
+---
+
+<script define:vars={{ GA4_MEASUREMENT_ID, CLARITY_PROJECT_ID }}>
+  const gaEnabled = Boolean(GA4_MEASUREMENT_ID);
+  const clarityEnabled = Boolean(CLARITY_PROJECT_ID);
+
+  const push = (eventName, params = {}) => {
+    if (gaEnabled && typeof window.gtag === "function") {
+      window.gtag("event", eventName, params);
+    }
+    if (clarityEnabled && typeof window.clarity === "function") {
+      window.clarity("event", eventName);
+    }
+  };
+
+  if (gaEnabled) {
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () {
+      window.dataLayer.push(arguments);
+    };
+    window.gtag("js", new Date());
+    window.gtag("config", GA4_MEASUREMENT_ID, { send_page_view: true });
+  }
+
+  if (clarityEnabled) {
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.clarity.ms/tag/${CLARITY_PROJECT_ID}`;
+    document.head.appendChild(script);
+  }
+
+  const UTM_KEYS = [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_term",
+    "utm_content",
+  ];
+  const UTM_STORAGE_KEY = "unyx_utm";
+
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const utm = {};
+    UTM_KEYS.forEach((key) => {
+      const value = params.get(key);
+      if (value) {
+        utm[key] = value;
+      }
+    });
+    if (Object.keys(utm).length > 0) {
+      sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(utm));
+    }
+  } catch {
+    /* noop */
+  }
+
+  const savedUtm = (() => {
+    try {
+      const raw = sessionStorage.getItem(UTM_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  })();
+
+  const applyUtm = (url) => {
+    try {
+      const target = new URL(url, window.location.origin);
+      if (target.origin === window.location.origin && savedUtm) {
+        Object.entries(savedUtm).forEach(([key, value]) => {
+          target.searchParams.set(key, value);
+        });
+      }
+      return target.toString();
+    } catch {
+      return url;
+    }
+  };
+
+  document.addEventListener("click", (event) => {
+    const tracked = event.target.closest("[data-analytics]");
+    if (tracked) {
+      push(tracked.getAttribute("data-analytics"));
+    }
+
+    const anchor = event.target.closest("a[href]");
+    if (!anchor) {
+      return;
+    }
+
+    const href = anchor.getAttribute("href") || "";
+
+    if (
+      savedUtm &&
+      href &&
+      !href.startsWith("#") &&
+      !href.startsWith("mailto:") &&
+      !href.startsWith("tel:")
+    ) {
+      anchor.setAttribute("href", applyUtm(href));
+    }
+
+    if (!tracked) {
+      if (href.startsWith("mailto:")) {
+        push("contact_email_click");
+      } else if (href.startsWith("tel:")) {
+        push("contact_phone_click");
+      } else if (href.includes("wa.me") || href.includes("whatsapp")) {
+        push("contact_whatsapp_click");
+      } else if (href === "/contacto" || href.startsWith("/contacto")) {
+        push("contact_cta_click");
+      }
+    }
+  });
+
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", () => {
+      push("form_submit");
+    });
+  }
+
+  const firedDepths = new Set();
+  const onScroll = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollable =
+      document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollable <= 0) {
+      return;
+    }
+
+    const percent = Math.round((scrollTop / scrollable) * 100);
+    [25, 50, 75, 100].forEach((threshold) => {
+      if (percent >= threshold && !firedDepths.has(threshold)) {
+        firedDepths.add(threshold);
+        push("scroll_depth", { percent: threshold });
+      }
+    });
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+</script>

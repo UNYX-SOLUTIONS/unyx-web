@@ -1,95 +1,47 @@
-<header class="header">
-  <div class="header__container">
+---
+import { SITE_TITLE } from "../../consts";
+import { headerNav, headerCta } from "../../data/navigation";
+import Button from "../ui/Button.astro";
+---
 
-    <a href="/" class="logo">
-      UNYX Solutions
+<header class="sticky top-0 left-0 z-100 w-full text-white border-b border-white/8 bg-black *:backdrop-blur-[2px] *:backdrop-saturate-[1.8] *:backdrop-brightness-[0.9]">
+  <div class="grid w-[min(calc(100%-48px),1280px)] h-21 mx-auto grid-cols-[1fr_auto_1fr] items-center gap-10 max-[800px]:grid-cols-[1fr_auto_auto] max-[800px]:gap-6">
+
+    <a href="/" class="text-xl font-bold text-white">
+      {SITE_TITLE}
     </a>
 
-    <nav>
-      <a href="/soluciones">Soluciones</a>
-      <a href="/proyectos">Proyectos</a>
-      <a href="/nosotros">Nosotros</a>
-      <a href="/insights">Insights</a>
+    <nav class="flex gap-8.5 max-[800px]:hidden">
+      {
+        headerNav.map((item) => (
+          <a href={item.href} class="text-sm! text-gray-300! hover:text-white!">
+            {item.label}
+          </a>
+        ))
+      }
     </nav>
 
-    <a href="/contacto" class="cta">
-      Cuéntanos tu proyecto
-    </a>
+    <Button
+      href={headerCta.href}
+      variant="compact"
+      class="justify-self-end max-[480px]:hidden"
+      dataAnalytics="header_cta_click"
+    >
+      {headerCta.label}
+    </Button>
+
+    <button
+      type="button"
+      class="group hidden h-11 w-11 flex-col items-center justify-center gap-1.5 text-white! max-[800px]:flex!"
+      data-mobile-menu-toggle
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Abrir menú"
+    >
+      <span class="block h-0.5 w-6 bg-current! transition-transform duration-200 group-aria-expanded:translate-y-2 group-aria-expanded:rotate-45"></span>
+      <span class="block h-0.5 w-6 bg-current! transition-opacity duration-200 group-aria-expanded:opacity-0"></span>
+      <span class="block h-0.5 w-6 bg-current! transition-transform duration-200 group-aria-expanded:-translate-y-2 group-aria-expanded:-rotate-45"></span>
+    </button>
 
   </div>
 </header>
-
-<style>
-  .header {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-
-    z-index: 100;
-
-    color: white;
-
-    border-bottom: 1px solid rgba(255,255,255,.08);
-  }
-
-  .header__container {
-    width: min(calc(100% - 48px), 1280px);
-    height: 84px;
-
-    margin: auto;
-
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-
-    align-items: center;
-    gap: 40px;
-  }
-
-  .logo {
-    color: white;
-
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  nav {
-    display: flex;
-    gap: 34px;
-  }
-
-  nav a {
-    color: #a7abb3;
-
-    font-size: 14px;
-  }
-
-  nav a:hover {
-    color: white;
-  }
-
-  .cta {
-    justify-self: end;
-
-    background: #0050f8;
-    color: white;
-
-    padding: 13px 20px;
-
-    border-radius: 8px;
-
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  @media (max-width: 800px) {
-    nav {
-      display: none;
-    }
-
-    .header__container {
-      grid-template-columns: 1fr auto;
-    }
-  }
-</style>

@@ -2,33 +2,10 @@
 const {
   as: Tag = "span",
   class: className = "",
+  dark = false,
 } = Astro.props;
 ---
 
-<Tag class:list={["section-label", className]}>
+<Tag class:list={["inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.09em] before:block before:h-px before:w-5 before:bg-current before:content-['']", dark ? "text-blue-light" : "text-blue", className]}>
   <slot />
 </Tag>
-
-<style>
-  .section-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-
-    color: var(--color-blue);
-
-    font-size: var(--fs-xs);
-    font-weight: 700;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-  }
-
-  .section-label::before {
-    content: "";
-
-    width: 20px;
-    height: 1px;
-
-    background: currentColor;
-  }
-</style>

@@ -1,0 +1,57 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+const { entry } = Astro.props;
+---
+
+<article class="border-r border-gray-200 p-[48px_46px_0_0] max-[850px]:border-r-0 max-[850px]:pr-0">
+  <a href={`/insights/${entry.id}`} class="text-inherit">
+
+    {
+      entry.data.image ? (
+        <img
+          src={entry.data.image}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          width="1200"
+          height="675"
+          class="mb-[30px] aspect-[16/9] w-full border border-gray-200 object-cover"
+        />
+      ) : (
+        <div class="relative mb-[30px] h-[290px] overflow-hidden border border-gray-200 bg-[linear-gradient(#e3e6eb_1px,transparent_1px),linear-gradient(90deg,#e3e6eb_1px,transparent_1px)] bg-[length:30px_30px] max-[620px]:h-[220px]">
+          <div class="absolute left-[10%] right-[10%] top-1/2 flex items-center">
+            <span class="h-[7px] w-[7px] shrink-0 rounded-full bg-blue"></span>
+            <span class="h-px flex-1 border-t border-dashed border-[#9fb9ec]"></span>
+            <span class="h-[7px] w-[7px] shrink-0 rounded-full bg-gray-300"></span>
+            <span class="h-px flex-1 border-t border-dashed border-[#9fb9ec]"></span>
+            <span class="h-[7px] w-[7px] shrink-0 rounded-full bg-gray-300"></span>
+            <span class="h-px flex-1 border-t border-dashed border-[#9fb9ec]"></span>
+            <span class="h-[7px] w-[7px] shrink-0 rotate-45 rounded-none bg-blue"></span>
+          </div>
+
+          <div class="absolute left-[7%] right-[7%] top-[calc(50%+18px)] flex justify-between">
+            <span class="border border-gray-200 bg-white px-2 py-1 text-[7px] text-gray-600">LEAD</span>
+            <span class="border border-gray-200 bg-white px-2 py-1 text-[7px] text-gray-600">REGISTRO</span>
+            <span class="border border-gray-200 bg-white px-2 py-1 text-[7px] text-gray-600">SEGUIMIENTO</span>
+            <span class="border border-gray-200 bg-white px-2 py-1 text-[7px] text-gray-600">OPORTUNIDAD</span>
+          </div>
+        </div>
+      )
+    }
+
+    <div class="mb-[14px] flex gap-2.5 text-[9px] font-semibold text-gray-600">
+      <span class="font-bold text-blue">{entry.data.category}</span>
+      <span>·</span>
+      <span>{entry.data.type}</span>
+    </div>
+
+    <h3 class="mb-4 max-w-[620px] text-[clamp(25px,2.2vw,34px)] leading-[1.15] tracking-[-0.035em] text-black">
+      {entry.data.title}
+    </h3>
+
+    <p class="max-w-[600px] text-sm leading-[1.65] text-gray-600">
+      {entry.data.description}
+    </p>
+  </a>
+</article>

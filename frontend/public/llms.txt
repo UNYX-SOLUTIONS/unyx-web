@@ -1,3 +1,59 @@
 # UNYX Solutions
 
-Sitio oficial de UNYX Solutions.
+## Descripción oficial
+Tecnología aplicada a necesidades reales.
+UNYX diseña, integra y mantiene software, automatización, IA e infraestructura para mejorar operaciones empresariales. No vendemos tecnología por tecnología; primero entendemos la operación del cliente y luego conectamos sistemas, datos, personas y procesos.
+
+## Propuesta de valor
+- Entendemos antes de implementar.
+- Integramos sistemas, datos, personas y procesos.
+- Construimos soluciones que pueden evolucionar.
+- Acompañamos la adopción y la operación posterior.
+
+## Audiencias objetivo
+- Gerencia / Propietarios: Buscan resolver problemas sin saber qué tecnología necesitan.
+- Líderes comerciales / Operaciones: Necesitan CRM, automatización y seguimiento comercial.
+- Responsables de TI: Buscan integraciones con su entorno actual y arquitectura robusta.
+- Empresas evaluando proveedores: Necesitan casos, metodología y confianza.
+
+## Servicios (Soluciones)
+- Desarrollo de software a medida. Aplicaciones, plataformas y soluciones digitales adaptadas a cada operación. /soluciones/desarrollo-software
+- CRM y automatización comercial. Organizamos procesos comerciales, seguimiento y atención mediante plataformas conectadas. /soluciones/crm-automatizacion-comercial
+- Automatización e inteligencia artificial (IA). Reducimos tareas manuales mediante flujos automatizados y soluciones inteligentes. /soluciones/automatizacion-ia
+- Integraciones y APIs (conexión de sistemas heredados y modernos). /soluciones/integraciones-apis
+- Soporte y gestión tecnológica. Administración, mantenimiento y soporte de equipos, usuarios y entornos tecnológicos. /soluciones/soporte-gestion-tecnologica
+- Infraestructura y redes. Diseñamos e implementamos conectividad e infraestructura para operaciones confiables. /soluciones/infraestructura-redes
+- Cloud, datos y continuidad operativa. /soluciones/cloud-datos-continuidad
+- IoT y automatización industrial. Conectamos sensores, dispositivos, equipos y datos para digitalizar procesos físicos. /soluciones/iot-automatizacion-industrial
+- Integración OT / IT. Integramos sistemas operacionales e industriales con plataformas digitales y datos empresariales. /soluciones/integracion-ot-it
+
+## Cómo trabajamos
+1. Entendemos: Analizamos la operación, los procesos y las necesidades antes de proponer tecnología.
+2. Diseñamos: Definimos una solución clara, viable y adaptada a la realidad de cada empresa.
+3. Implementamos: Configuramos, desarrollamos e integramos los componentes necesarios para poner la solución en funcionamiento.
+4. Acompañamos: Apoyamos la adopción, evolución y mejora de la solución después de su implementación.
+
+## Proyectos
+- Luxviajes: Una operación comercial conectada de principio a fin (WEB · CRM · AUTOMATIZACIÓN · INTEGRACIONES · IA). /proyectos/luxviajes
+- Meditec: CRM, automatización y procesos comerciales. /proyectos/meditec
+- HSE Services: Software y digitalización. /proyectos/hse-services
+- Sismeing: Tecnología e integración. /proyectos/sismeing
+
+## Insights
+- ¿Cómo automatizar el seguimiento comercial de una empresa? /insights/automatizar-seguimiento-comercial
+- CRM vs ERP: ¿qué necesita realmente tu empresa? /insights/crm-vs-erp
+- ¿Cuándo tiene sentido implementar IA en un proceso? /insights/ia-en-procesos
+
+## Navegación
+- Inicio: /
+- Soluciones: /soluciones
+- Proyectos: /proyectos
+- Nosotros: /nosotros
+- Insights: /insights
+- Contacto: /contacto
+
+## Contacto comercial
+CTA principal: Cuéntanos tu proyecto.
+Email: info@unyxsolutions.com
+Ubicación: Guayaquil, Ecuador.
+Web: https://unyxsolutions.com

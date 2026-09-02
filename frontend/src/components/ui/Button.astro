@@ -2,98 +2,39 @@
 const {
   href,
   variant = "primary",
-  size = "md",
   class: className = "",
   type = "button",
+  dataAnalytics,
 } = Astro.props;
 
+const variantClasses = {
+  primary:
+    "gap-4 min-h-13.5 rounded-lg border border-blue bg-blue px-6 text-sm font-semibold leading-none text-white hover:border-blue-hover hover:bg-blue-hover",
+  secondary:
+    "min-h-13.5 rounded-lg border border-gray-300 bg-transparent px-6 text-sm font-semibold leading-none text-black hover:border-black",
+  "dark-secondary":
+    "min-h-13.5 rounded-lg border border-gray-700 bg-transparent px-6 text-sm font-semibold leading-none text-white hover:border-gray-500 hover:bg-white/[0.035]",
+  "dark-primary":
+    "gap-6 rounded-md bg-blue px-6 py-4.5 text-[13px] font-bold text-white hover:bg-blue-hover",
+  compact:
+    "rounded-lg bg-blue px-5 py-3.25 text-sm font-semibold text-white hover:bg-blue-hover",
+};
+
 const classes = [
-  "button",
-  `button--${variant}`,
-  `button--${size}`,
+  "group inline-flex items-center justify-center transition-[background-color,border-color,color,transform] duration-180 hover:-translate-y-0.5 disabled:opacity-60",
+  variantClasses[variant],
   className,
 ];
 ---
 
 {
   href ? (
-    <a href={href} class:list={classes}>
+    <a href={href} class:list={classes} data-analytics={dataAnalytics}>
       <slot />
     </a>
   ) : (
-    <button type={type} class:list={classes}>
+    <button type={type} class:list={classes} data-analytics={dataAnalytics}>
       <slot />
     </button>
   )
 }
-
-<style>
-  .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    min-height: 48px;
-
-    border: 1px solid transparent;
-    border-radius: var(--radius-sm);
-
-    font-weight: 600;
-    line-height: 1;
-
-    transition:
-      background-color var(--transition-fast),
-      color var(--transition-fast),
-      border-color var(--transition-fast),
-      transform var(--transition-fast);
-  }
-
-  .button:hover {
-    transform: translateY(-1px);
-  }
-
-  .button--primary {
-    background: var(--color-blue);
-    color: var(--color-white);
-  }
-
-  .button--primary:hover {
-    background: var(--color-blue-hover);
-  }
-
-  .button--secondary {
-    background: transparent;
-    color: var(--color-black);
-    border-color: var(--color-gray-300);
-  }
-
-  .button--secondary:hover {
-    border-color: var(--color-black);
-  }
-
-  .button--dark-secondary {
-    background: transparent;
-    color: var(--color-white);
-    border-color: rgba(255, 255, 255, 0.25);
-  }
-
-  .button--dark-secondary:hover {
-    border-color: rgba(255, 255, 255, 0.6);
-  }
-
-  .button--sm {
-    padding: 12px 18px;
-    font-size: var(--fs-sm);
-  }
-
-  .button--md {
-    padding: 15px 22px;
-    font-size: var(--fs-base);
-  }
-
-  .button--lg {
-    padding: 18px 28px;
-    font-size: var(--fs-md);
-  }
-</style>

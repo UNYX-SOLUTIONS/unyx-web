@@ -1,0 +1,44 @@
+---
+import { company } from "../../data/company";
+import SectionLabel from "../ui/SectionLabel.astro";
+
+const team = company.team;
+---
+
+{
+  team.length > 0 && (
+    <section class="w-full bg-white text-black">
+      <div class="site-container py-[80px]">
+
+        <SectionLabel class="mb-5">
+          EQUIPO
+        </SectionLabel>
+
+        <h2 class="max-w-[760px] text-[clamp(28px,3vw,44px)] font-bold leading-[1.04] tracking-[-0.045em] text-black">
+          Las personas detrás de UNYX.
+        </h2>
+
+        <div class="mt-12 grid grid-cols-3 gap-6 max-[800px]:grid-cols-1">
+          {
+            team.map((member) => (
+              <article class="rounded-xl border border-gray-200 p-8">
+                <h3 class="text-base font-bold tracking-[-0.02em] text-black">
+                  {member.name}
+                </h3>
+
+                <p class="mt-1 text-xs font-semibold text-blue">
+                  {member.role}
+                </p>
+
+                <p class="mt-4 text-sm leading-[1.6] text-gray-600">
+                  {member.bio}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+
+      </div>
+    </section>
+  )
+}

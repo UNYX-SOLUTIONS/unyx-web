@@ -1,0 +1,25 @@
+---
+import SectionLabel from "../ui/SectionLabel.astro";
+
+const { content = "" } = Astro.props;
+---
+
+{
+  content && (
+    <section class="w-full bg-white text-black">
+      <div class="site-container py-[70px]">
+
+        <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-[90px]">
+          <SectionLabel>
+            CONTEXTO
+          </SectionLabel>
+
+          <p class="max-w-[640px] text-[clamp(20px,1.8vw,26px)] font-semibold leading-[1.4] tracking-[-0.025em] text-black">
+            {content}
+          </p>
+        </div>
+
+      </div>
+    </section>
+  )
+}

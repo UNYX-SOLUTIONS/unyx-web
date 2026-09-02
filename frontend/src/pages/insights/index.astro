@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import InsightsHero from "../../components/insights/InsightsHero.astro";
+import FeaturedInsight from "../../components/insights/FeaturedInsight.astro";
+import InsightCard from "../../components/insights/InsightCard.astro";
+import JsonLd from "../../components/global/JsonLd.astro";
+import { breadcrumbListSchema } from "../../utils/schema";
+
+const allInsights = await getCollection("insights");
+const featured = allInsights.find((entry) => entry.data.featured) ?? allInsights[0];
+const secondary = allInsights.filter((entry) => entry !== featured);
+
+const breadcrumb = breadcrumbListSchema([
+  { name: "Inicio", path: "/" },
+  { name: "Insights", path: "/insights" },
+]);
+---
+
+<BaseLayout
+  title="Insights | UNYX Solutions"
+  description="Análisis, guías y perspectivas sobre tecnología aplicada a problemas reales de negocio."
+>
+  <JsonLd slot="head" schema={breadcrumb} />
+
+  <main>
+    <InsightsHero />
+
+    <section class="w-full bg-white text-black">
+      <div class="site-container py-[70px]">
+
+        <div class="grid grid-cols-[minmax(0,1.4fr)_minmax(340px,0.9fr)] max-[850px]:grid-cols-1">
+          <FeaturedInsight entry={featured} />
+
+          <div class="pl-[46px] max-[850px]:pl-0">
+            {
+              secondary.map((entry) => (
+                <InsightCard entry={entry} />
+              ))
+            }
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</BaseLayout>

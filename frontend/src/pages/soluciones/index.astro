@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Solutions from "../../components/home/Solutions.astro";
+import SolutionCTA from "../../components/solutions/SolutionCTA.astro";
+import JsonLd from "../../components/global/JsonLd.astro";
+import { breadcrumbListSchema } from "../../utils/schema";
+
+const breadcrumb = breadcrumbListSchema([
+  { name: "Inicio", path: "/" },
+  { name: "Soluciones", path: "/soluciones" },
+]);
+---
+
+<BaseLayout
+  title="Soluciones | UNYX Solutions"
+  description="Combinamos diferentes capacidades tecnológicas para diseñar soluciones que respondan a la realidad de cada operación."
+>
+  <JsonLd slot="head" schema={breadcrumb} />
+
+  <main>
+    <section class="relative overflow-hidden bg-black text-white">
+      <div class="relative z-[2] site-container pt-[170px] pb-[80px]">
+        <span class="block text-[11px] font-bold uppercase tracking-[0.08em] text-blue-light">
+          SOLUCIONES
+        </span>
+
+        <h1 class="mt-6 max-w-[850px] text-[clamp(40px,4.5vw,64px)] font-bold leading-[1.02] tracking-[-0.045em] text-white">
+          Un solo aliado para conectar tecnología y operación.
+        </h1>
+
+        <p class="mt-6 max-w-[620px] text-base leading-[1.65] text-gray-500">
+          Combinamos diferentes capacidades tecnológicas para diseñar
+          soluciones que respondan a la realidad de cada operación.
+        </p>
+      </div>
+    </section>
+
+    <Solutions />
+
+    <SolutionCTA />
+  </main>
+</BaseLayout>

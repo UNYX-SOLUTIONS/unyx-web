@@ -1,0 +1,46 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, DEFAULT_OG_IMAGE } from "../../consts";
+import { organizationSchema, websiteSchema } from "../../utils/schema";
+import JsonLd from "./JsonLd.astro";
+
+const {
+  title = SITE_TITLE,
+  description = SITE_DESCRIPTION,
+  canonical = SITE_URL,
+  image = DEFAULT_OG_IMAGE,
+  noindex = false,
+} = Astro.props;
+
+const currentUrl = new URL(Astro.url.pathname, canonical);
+
+const organization = organizationSchema();
+const website = websiteSchema();
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>{title}</title>
+
+<meta name="description" content={description} />
+
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<link rel="canonical" href={currentUrl} />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={currentUrl} />
+<meta property="og:image" content={new URL(image, canonical)} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image, canonical)} />
+
+<link rel="icon" href="/favicon.svg" />
+
+<JsonLd schema={organization} />
+<JsonLd schema={website} />

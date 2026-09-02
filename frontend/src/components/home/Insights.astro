@@ -1,123 +1,101 @@
 ---
-const insights = [
-  {
-    category: "AUTOMATIZACIÓN · CRM",
-    type: "GUÍA",
-    title: "¿Cómo automatizar el seguimiento comercial de una empresa?",
-    description:
-      "Una guía para identificar tareas repetitivas, conectar información y mejorar el seguimiento de oportunidades comerciales.",
-    href: "/insights/automatizar-seguimiento-comercial",
-    featured: true,
-  },
-  {
-    category: "GESTIÓN EMPRESARIAL",
-    type: "ANÁLISIS",
-    title: "CRM vs ERP: ¿qué necesita realmente tu empresa?",
-    description:
-      "Qué resuelve cada sistema y cómo identificar cuál tiene sentido según la operación.",
-    href: "/insights/crm-vs-erp",
-  },
-  {
-    category: "INTELIGENCIA ARTIFICIAL",
-    type: "GUÍA",
-    title: "¿Cuándo tiene sentido implementar IA en un proceso?",
-    description:
-      "Cómo identificar procesos donde la inteligencia artificial puede aportar valor real.",
-    href: "/insights/ia-en-procesos",
-  },
-];
+import { getCollection } from "astro:content";
+import ArrowLink from "../ui/ArrowLink.astro";
+
+const allInsights = await getCollection("insights");
+const featured = allInsights.find((entry) => entry.data.featured) ?? allInsights[0];
+const secondary = allInsights.filter((entry) => entry !== featured);
 ---
 
-<section class="insights" id="insights">
-  <div class="insights__container">
+<section class="w-full bg-white text-black" id="insights">
+  <div class="site-container pt-[82px] pb-[86px] max-[620px]:px-5 max-[620px]:py-[66px]">
 
-    <header class="insights__header">
+    <header class="flex items-end justify-between gap-[60px] border-b border-gray-200 pb-[46px] max-[850px]:flex-col max-[850px]:items-start">
       <div>
-        <span class="insights__eyebrow">
+        <span class="mb-5 block text-[11px] font-bold tracking-[0.08em] text-blue">
           INSIGHTS
         </span>
 
-        <h2>
+        <h2 class="text-[clamp(38px,3.5vw,54px)] leading-[1.05] tracking-[-0.04em] text-black">
           Ideas para tomar mejores<br />
           decisiones tecnológicas.
         </h2>
 
-        <p>
+        <p class="mt-[22px] max-w-[580px] text-sm leading-[1.65] text-gray-600">
           Análisis, guías y perspectivas sobre tecnología aplicada
           a problemas reales de negocio.
         </p>
       </div>
 
-      <a href="/insights">
+      <ArrowLink href="/insights" class="shrink-0 text-blue">
         Ver todos los insights
-        <span>→</span>
-      </a>
+      </ArrowLink>
     </header>
 
-    <div class="insights__content">
+    <div class="grid grid-cols-[minmax(0,1.4fr)_minmax(340px,0.9fr)] max-[850px]:grid-cols-1">
 
-      <article class="featured-insight">
-        <a href={insights[0].href}>
+      <article class="border-r border-gray-200 p-[48px_46px_0_0] max-[850px]:border-r-0 max-[850px]:pr-0">
+        <a href={`/insights/${featured.id}`} class="text-inherit">
 
-          <div class="featured-insight__visual">
-            <div class="flow">
-              <span class="flow__node active"></span>
-              <span class="flow__line"></span>
-              <span class="flow__node"></span>
-              <span class="flow__line"></span>
-              <span class="flow__node"></span>
-              <span class="flow__line"></span>
-              <span class="flow__node diamond"></span>
+          <div class="relative mb-[30px] h-[290px] overflow-hidden border border-gray-200 bg-[linear-gradient(#e3e6eb_1px,transparent_1px),linear-gradient(90deg,#e3e6eb_1px,transparent_1px)] bg-[length:30px_30px] max-[620px]:h-[220px]">
+            <div class="absolute left-[10%] right-[10%] top-1/2 flex items-center">
+              <span class="h-[7px] w-[7px] shrink-0 rounded-full bg-blue"></span>
+              <span class="h-px flex-1 border-t border-dashed border-[#9fb9ec]"></span>
+              <span class="h-[7px] w-[7px] shrink-0 rounded-full bg-gray-300"></span>
+              <span class="h-px flex-1 border-t border-dashed border-[#9fb9ec]"></span>
+              <span class="h-[7px] w-[7px] shrink-0 rounded-full bg-gray-300"></span>
+              <span class="h-px flex-1 border-t border-dashed border-[#9fb9ec]"></span>
+              <span class="h-[7px] w-[7px] shrink-0 rotate-45 rounded-none bg-blue"></span>
             </div>
 
-            <div class="flow-labels">
-              <span>LEAD</span>
-              <span>REGISTRO</span>
-              <span>SEGUIMIENTO</span>
-              <span>OPORTUNIDAD</span>
+            <div class="absolute left-[7%] right-[7%] top-[calc(50%+18px)] flex justify-between">
+              <span class="border border-gray-200 bg-white px-2 py-1 text-[7px] text-gray-600">LEAD</span>
+              <span class="border border-gray-200 bg-white px-2 py-1 text-[7px] text-gray-600">REGISTRO</span>
+              <span class="border border-gray-200 bg-white px-2 py-1 text-[7px] text-gray-600">SEGUIMIENTO</span>
+              <span class="border border-gray-200 bg-white px-2 py-1 text-[7px] text-gray-600">OPORTUNIDAD</span>
             </div>
           </div>
 
-          <div class="insight-meta">
-            <span>{insights[0].category}</span>
+          <div class="mb-[14px] flex gap-2.5 text-[9px] font-semibold text-gray-600">
+            <span class="font-bold text-blue">{featured.data.category}</span>
             <span>·</span>
-            <span>{insights[0].type}</span>
+            <span>{featured.data.type}</span>
           </div>
 
-          <h3>
-            {insights[0].title}
+          <h3 class="mb-4 max-w-[620px] text-[clamp(25px,2.2vw,34px)] leading-[1.15] tracking-[-0.035em] text-black">
+            {featured.data.title}
           </h3>
 
-          <p>
-            {insights[0].description}
+          <p class="max-w-[600px] text-sm leading-[1.65] text-gray-600">
+            {featured.data.description}
           </p>
         </a>
       </article>
 
-      <div class="insights__secondary">
+      <div class="pl-[46px] max-[850px]:pl-0">
         {
-          insights.slice(1).map((insight) => (
-            <article class="secondary-insight">
-              <a href={insight.href}>
+          secondary.map((insight) => (
+            <article class="border-b border-gray-200 py-12">
+              <a href={`/insights/${insight.id}`} class="text-inherit">
 
-                <div class="insight-meta">
-                  <span>{insight.category}</span>
+                <div class="mb-[14px] flex gap-2.5 text-[9px] font-semibold text-gray-600">
+                  <span class="font-bold text-blue">{insight.data.category}</span>
                   <span>·</span>
-                  <span>{insight.type}</span>
+                  <span>{insight.data.type}</span>
                 </div>
 
-                <div class="secondary-insight__heading">
-                  <h3>
-                    {insight.title}
+                <div class="flex justify-between gap-[30px]">
+                  <h3 class="mb-[14px] max-w-[430px] text-[22px] leading-[1.25] tracking-[-0.025em] text-black">
+                    {insight.data.title}
                   </h3>
 
-                  <span aria-hidden="true">
+                  <span class="text-gray-400" aria-hidden="true">
                     ↗
                   </span>
                 </div>
 
-                <p>
-                  {insight.description}
+                <p class="max-w-[440px] text-[13px] leading-[1.65] text-gray-600">
+                  {insight.data.description}
                 </p>
 
               </a>
@@ -130,325 +108,3 @@ const insights = [
 
   </div>
 </section>
-
-<style>
-  .insights {
-    width: 100%;
-
-    background: #ffffff;
-
-    color: #0a0a0c;
-  }
-
-  .insights__container {
-    width: min(100%, 1440px);
-
-    margin: 0 auto;
-
-    padding:
-      82px
-      clamp(32px, 5vw, 64px)
-      86px;
-  }
-
-  .insights__header {
-    display: flex;
-
-    align-items: end;
-
-    justify-content: space-between;
-
-    gap: 60px;
-
-    padding-bottom: 46px;
-
-    border-bottom: 1px solid #e2e5e9;
-  }
-
-  .insights__eyebrow {
-    display: block;
-
-    margin-bottom: 20px;
-
-    color: #075cff;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.08em;
-  }
-
-  .insights h2 {
-    margin: 0;
-
-    font-size: clamp(38px, 3.5vw, 54px);
-
-    line-height: 1.05;
-
-    letter-spacing: -0.04em;
-  }
-
-  .insights__header p {
-    max-width: 580px;
-
-    margin: 22px 0 0;
-
-    color: #505762;
-
-    font-size: 14px;
-
-    line-height: 1.65;
-  }
-
-  .insights__header > a {
-    display: flex;
-
-    gap: 10px;
-
-    flex-shrink: 0;
-
-    color: #075cff;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    text-decoration: none;
-  }
-
-  .insights__content {
-    display: grid;
-
-    grid-template-columns:
-      minmax(0, 1.4fr)
-      minmax(340px, 0.9fr);
-  }
-
-  .featured-insight {
-    padding:
-      48px
-      46px
-      0
-      0;
-
-    border-right: 1px solid #e2e5e9;
-  }
-
-  .featured-insight a,
-  .secondary-insight a {
-    color: inherit;
-
-    text-decoration: none;
-  }
-
-  .featured-insight__visual {
-    position: relative;
-
-    height: 290px;
-
-    margin-bottom: 30px;
-
-    border: 1px solid #e4e7eb;
-
-    overflow: hidden;
-
-    background-image:
-      linear-gradient(#f2f3f5 1px, transparent 1px),
-      linear-gradient(90deg, #f2f3f5 1px, transparent 1px);
-
-    background-size: 30px 30px;
-  }
-
-  .flow {
-    position: absolute;
-
-    left: 10%;
-    right: 10%;
-
-    top: 50%;
-
-    display: flex;
-
-    align-items: center;
-  }
-
-  .flow__node {
-    width: 7px;
-    height: 7px;
-
-    flex-shrink: 0;
-
-    border-radius: 50%;
-
-    background: #bfc5ce;
-  }
-
-  .flow__node.active,
-  .flow__node.diamond {
-    background: #075cff;
-  }
-
-  .flow__node.diamond {
-    border-radius: 0;
-
-    transform: rotate(45deg);
-  }
-
-  .flow__line {
-    flex: 1;
-
-    height: 1px;
-
-    border-top: 1px dashed #9fb9ec;
-  }
-
-  .flow-labels {
-    position: absolute;
-
-    left: 7%;
-    right: 7%;
-
-    top: calc(50% + 18px);
-
-    display: flex;
-
-    justify-content: space-between;
-  }
-
-  .flow-labels span {
-    padding: 4px 8px;
-
-    border: 1px solid #e2e5e9;
-
-    background: #ffffff;
-
-    color: #777e89;
-
-    font-size: 7px;
-  }
-
-  .insight-meta {
-    display: flex;
-
-    gap: 10px;
-
-    margin-bottom: 14px;
-
-    color: #7b818a;
-
-    font-size: 9px;
-
-    font-weight: 600;
-  }
-
-  .insight-meta span:first-child {
-    color: #075cff;
-
-    font-weight: 700;
-  }
-
-  .featured-insight h3 {
-    max-width: 620px;
-
-    margin: 0 0 16px;
-
-    font-size: clamp(25px, 2.2vw, 34px);
-
-    line-height: 1.15;
-
-    letter-spacing: -0.035em;
-  }
-
-  .featured-insight p {
-    max-width: 600px;
-
-    margin: 0;
-
-    color: #565d67;
-
-    font-size: 14px;
-
-    line-height: 1.65;
-  }
-
-  .insights__secondary {
-    padding-left: 46px;
-  }
-
-  .secondary-insight {
-    padding: 48px 0;
-
-    border-bottom: 1px solid #e2e5e9;
-  }
-
-  .secondary-insight__heading {
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 30px;
-  }
-
-  .secondary-insight h3 {
-    max-width: 430px;
-
-    margin: 0 0 14px;
-
-    font-size: 22px;
-
-    line-height: 1.25;
-
-    letter-spacing: -0.025em;
-  }
-
-  .secondary-insight__heading > span {
-    color: #adb2ba;
-  }
-
-  .secondary-insight p {
-    max-width: 440px;
-
-    margin: 0;
-
-    color: #565d67;
-
-    font-size: 13px;
-
-    line-height: 1.65;
-  }
-
-  @media (max-width: 850px) {
-    .insights__header {
-      align-items: flex-start;
-
-      flex-direction: column;
-    }
-
-    .insights__content {
-      grid-template-columns: 1fr;
-    }
-
-    .featured-insight {
-      padding-right: 0;
-
-      border-right: 0;
-    }
-
-    .insights__secondary {
-      padding-left: 0;
-    }
-  }
-
-  @media (max-width: 620px) {
-    .insights__container {
-      padding:
-        66px
-        20px;
-    }
-
-    .featured-insight__visual {
-      height: 220px;
-    }
-  }
-</style>

@@ -1,49 +1,27 @@
 ---
-const steps = [
-  {
-    number: "01",
-    title: "Entendemos",
-    description:
-      "Analizamos la operación, los procesos y las necesidades antes de proponer tecnología.",
-  },
-  {
-    number: "02",
-    title: "Diseñamos",
-    description:
-      "Definimos una solución clara, viable y adaptada a la realidad de cada empresa.",
-  },
-  {
-    number: "03",
-    title: "Implementamos",
-    description:
-      "Configuramos, desarrollamos e integramos los componentes necesarios para poner la solución en funcionamiento.",
-  },
-  {
-    number: "04",
-    title: "Acompañamos",
-    description:
-      "Apoyamos la adopción, evolución y mejora de la solución después de su implementación.",
-  },
-];
+import { company } from "../../data/company";
+import SectionLabel from "../ui/SectionLabel.astro";
+
+const steps = company.process;
 ---
 
-<section class="process" id="como-trabajamos">
-  <div class="process__container">
+<section class="w-full bg-white text-black" id="como-trabajamos">
+  <div class="site-container pt-[46px] pb-[72px] max-[900px]:px-7 max-[900px]:pt-11 max-[900px]:pb-[68px] max-[620px]:px-5 max-[620px]:pt-[42px] max-[620px]:pb-[62px]">
 
-    <header class="process__header">
-      <div class="process__heading">
-        <span class="process__eyebrow">
+    <header class="grid grid-cols-[minmax(0,1.55fr)_minmax(300px,0.65fr)] items-end gap-20 mb-[52px] max-[900px]:grid-cols-1 max-[900px]:gap-7 max-[900px]:mb-12 max-[620px]:mb-11">
+      <div class="max-w-[760px]">
+        <SectionLabel class="mb-[22px]">
           CÓMO TRABAJAMOS
-        </span>
+        </SectionLabel>
 
-        <h2>
-          Primero entendemos.<br />
+        <h2 class="text-[clamp(40px,3.8vw,58px)] font-bold leading-[1.04] tracking-[-0.045em] text-black">
+          Primero entendemos.<br class="max-[620px]:hidden" />
           Después construimos.
         </h2>
       </div>
 
-      <div class="process__intro">
-        <p>
+      <div class="max-w-[400px] pb-1 max-[900px]:max-w-[520px]">
+        <p class="text-sm leading-[1.65] text-gray-700">
           Cada proyecto comienza entendiendo la operación, sus necesidades y sus
           restricciones. A partir de ahí definimos la tecnología que realmente
           aporta valor.
@@ -51,42 +29,42 @@ const steps = [
       </div>
     </header>
 
-    <div class="process__flow">
+    <div class="relative grid grid-cols-4 gap-8 max-[900px]:grid-cols-2 max-[900px]:gap-[46px] max-[620px]:grid-cols-1 max-[620px]:gap-[34px]">
 
       <div
-        class="process__track"
+        class="absolute left-0 right-0 top-[7px] h-px bg-gray-200 max-[900px]:hidden"
         aria-hidden="true"
       >
-        <span class="process__track-progress"></span>
+        <span class="block h-full w-[2%] bg-blue"></span>
       </div>
 
       {
         steps.map((step, index) => (
-          <article class="process-step">
+          <article class="relative z-[2] max-[620px]:pl-[34px] max-[620px]:before:absolute max-[620px]:before:left-[7px] max-[620px]:before:top-[14px] max-[620px]:before:bottom-[-34px] max-[620px]:before:w-px max-[620px]:before:bg-gray-200 max-[620px]:before:content-[''] max-[620px]:last:before:hidden">
 
             <div
               class:list={[
-                "process-step__node",
-                index === 0 && "is-active",
+                "mb-6 h-[14px] w-[14px] rounded-full border border-gray-200 bg-white max-[620px]:absolute max-[620px]:left-0 max-[620px]:top-0 max-[620px]:m-0",
+                index === 0 && "border-4 border-blue",
               ]}
               aria-hidden="true"
             ></div>
 
-            <div class="process-step__heading">
-              <span class="process-step__number">
+            <div class="mb-[18px] flex items-center gap-1.5">
+              <span class:list={["text-[11px] font-bold", index === 0 ? "text-blue" : "text-black"]}>
                 {step.number}
               </span>
 
-              <span class="process-step__separator">
+              <span class="text-[10px] text-gray-500">
                 —
               </span>
 
-              <h3>
+              <h3 class="text-[11px] font-bold uppercase tracking-[0.02em] text-black">
                 {step.title}
               </h3>
             </div>
 
-            <p>
+            <p class="max-w-[280px] text-[13px] leading-[1.65] text-gray-700">
               {step.description}
             </p>
 
@@ -96,14 +74,14 @@ const steps = [
 
     </div>
 
-    <div class="process__statement">
+    <div class="mt-[58px] grid grid-cols-[1fr_minmax(420px,0.8fr)] items-center gap-[30px] max-[900px]:grid-cols-1 max-[900px]:mt-[54px] max-[620px]:mt-12">
 
       <div
-        class="process__statement-line"
+        class="h-px bg-gray-200 max-[900px]:w-full max-[620px]:w-11"
         aria-hidden="true"
       ></div>
 
-      <p>
+      <p class="max-w-[540px] text-[clamp(20px,1.8vw,26px)] font-semibold leading-[1.4] tracking-[-0.025em] text-black max-[620px]:text-[21px]">
         La tecnología es el medio.
         La solución empieza por entender el problema.
       </p>
@@ -112,363 +90,3 @@ const steps = [
 
   </div>
 </section>
-
-<style>
-  .process {
-    width: 100%;
-
-    background: #ffffff;
-    color: #0a0a0c;
-  }
-
-  .process__container {
-    width: min(100%, 1440px);
-
-    margin: 0 auto;
-
-    padding:
-      46px
-      clamp(32px, 5vw, 64px)
-      72px;
-  }
-
-  /* =========================================================
-     HEADER
-     ========================================================= */
-
-  .process__header {
-    display: grid;
-
-    grid-template-columns:
-      minmax(0, 1.55fr)
-      minmax(300px, 0.65fr);
-
-    gap: 80px;
-
-    align-items: end;
-
-    margin-bottom: 52px;
-  }
-
-  .process__heading {
-    max-width: 760px;
-  }
-
-  .process__eyebrow {
-    display: block;
-
-    margin-bottom: 22px;
-
-    color: #075cff;
-
-    font-size: 11px;
-    font-weight: 700;
-
-    letter-spacing: 0.08em;
-
-    text-transform: uppercase;
-  }
-
-  .process h2 {
-    margin: 0;
-
-    color: #0a0a0c;
-
-    font-size: clamp(40px, 3.8vw, 58px);
-
-    font-weight: 700;
-
-    line-height: 1.04;
-
-    letter-spacing: -0.045em;
-  }
-
-  .process__intro {
-    max-width: 400px;
-
-    padding-bottom: 4px;
-  }
-
-  .process__intro p {
-    margin: 0;
-
-    color: #4d5460;
-
-    font-size: 14px;
-
-    line-height: 1.65;
-  }
-
-  /* =========================================================
-     FLOW
-     ========================================================= */
-
-  .process__flow {
-    position: relative;
-
-    display: grid;
-
-    grid-template-columns:
-      repeat(4, minmax(0, 1fr));
-
-    gap: 32px;
-  }
-
-  .process__track {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-
-    top: 7px;
-
-    height: 1px;
-
-    background: #dfe3e8;
-  }
-
-  .process__track-progress {
-    display: block;
-
-    width: 2%;
-
-    height: 100%;
-
-    background: #075cff;
-  }
-
-  .process-step {
-    position: relative;
-
-    z-index: 2;
-  }
-
-  .process-step__node {
-    width: 14px;
-    height: 14px;
-
-    margin-bottom: 24px;
-
-    border: 1px solid #d7dbe2;
-
-    border-radius: 50%;
-
-    background: #ffffff;
-  }
-
-  .process-step__node.is-active {
-    border: 4px solid #075cff;
-  }
-
-  .process-step__heading {
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    margin-bottom: 18px;
-  }
-
-  .process-step__number {
-    color: #0a0a0c;
-
-    font-size: 11px;
-
-    font-weight: 700;
-  }
-
-  .process-step:first-of-type
-  .process-step__number {
-    color: #075cff;
-  }
-
-  .process-step__separator {
-    color: #9ba1aa;
-
-    font-size: 10px;
-  }
-
-  .process-step h3 {
-    margin: 0;
-
-    color: #0a0a0c;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.02em;
-  }
-
-  .process-step p {
-    max-width: 280px;
-
-    margin: 0;
-
-    color: #4f5662;
-
-    font-size: 13px;
-
-    line-height: 1.65;
-  }
-
-  /* =========================================================
-     STATEMENT
-     ========================================================= */
-
-  .process__statement {
-    display: grid;
-
-    grid-template-columns:
-      1fr
-      minmax(420px, 0.8fr);
-
-    gap: 30px;
-
-    align-items: center;
-
-    margin-top: 58px;
-  }
-
-  .process__statement-line {
-    height: 1px;
-
-    background: #e2e5e9;
-  }
-
-  .process__statement p {
-    max-width: 540px;
-
-    margin: 0;
-
-    color: #0a0a0c;
-
-    font-size: clamp(20px, 1.8vw, 26px);
-
-    font-weight: 600;
-
-    line-height: 1.4;
-
-    letter-spacing: -0.025em;
-  }
-
-  /* =========================================================
-     TABLET
-     ========================================================= */
-
-  @media (max-width: 900px) {
-    .process__container {
-      padding:
-        44px
-        28px
-        68px;
-    }
-
-    .process__header {
-      grid-template-columns: 1fr;
-
-      gap: 28px;
-
-      margin-bottom: 48px;
-    }
-
-    .process__intro {
-      max-width: 520px;
-    }
-
-    .process__flow {
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-      gap: 46px;
-    }
-
-    .process__track {
-      display: none;
-    }
-
-    .process__statement {
-      grid-template-columns: 1fr;
-
-      margin-top: 54px;
-    }
-
-    .process__statement-line {
-      width: 100%;
-    }
-  }
-
-  /* =========================================================
-     MOBILE
-     ========================================================= */
-
-  @media (max-width: 620px) {
-    .process__container {
-      padding:
-        42px
-        20px
-        62px;
-    }
-
-    .process h2 br {
-      display: none;
-    }
-
-    .process__header {
-      margin-bottom: 44px;
-    }
-
-    .process__flow {
-      grid-template-columns: 1fr;
-
-      gap: 34px;
-    }
-
-    .process-step {
-      padding-left: 34px;
-    }
-
-    .process-step::before {
-      content: "";
-
-      position: absolute;
-
-      left: 7px;
-
-      top: 14px;
-      bottom: -34px;
-
-      width: 1px;
-
-      background: #e0e3e8;
-    }
-
-    .process-step:last-child::before {
-      display: none;
-    }
-
-    .process-step__node {
-      position: absolute;
-
-      left: 0;
-      top: 0;
-
-      margin: 0;
-    }
-
-    .process__statement {
-      margin-top: 48px;
-    }
-
-    .process__statement-line {
-      width: 44px;
-    }
-
-    .process__statement p {
-      font-size: 21px;
-    }
-  }
-</style>

@@ -1,43 +1,48 @@
-<section class="final-cta" id="contacto">
+---
+import Button from "../ui/Button.astro";
+---
+
+<section class="relative w-full overflow-hidden bg-black text-white" id="contacto">
   <div
-    class="final-cta__grid-bg"
+    class="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[length:32px_32px]"
     aria-hidden="true"
   ></div>
 
-  <div class="final-cta__container">
+  <div class="relative z-[2] mx-auto grid w-full max-w-[1440px] min-h-[540px] grid-cols-[minmax(0,1.1fr)_minmax(350px,0.8fr)] items-center gap-[90px] px-[clamp(32px,5vw,64px)] py-[72px] max-[850px]:grid-cols-1 max-[850px]:min-h-0 max-[850px]:gap-[45px] max-[620px]:px-5 max-[620px]:py-16">
 
-    <div class="final-cta__content">
+    <div class="max-w-[650px]">
 
-      <span class="final-cta__eyebrow">
+      <span class="mb-6 block text-[11px] font-bold tracking-[0.1em] text-blue-light">
         HABLEMOS
       </span>
 
-      <h2>
+      <h2 class="text-[clamp(44px,4.5vw,68px)] font-bold leading-none tracking-[-0.05em] text-white">
         ¿Qué quieres resolver?
       </h2>
 
-      <p>
+      <p class="mt-6 max-w-[550px] text-base leading-[1.65] text-gray-500">
         Cuéntanos qué está pasando en tu operación. Podemos ayudarte a
         identificar dónde la tecnología puede generar mayor impacto.
       </p>
 
-      <div class="final-cta__actions">
+      <div class="mt-9 flex flex-col items-start gap-[22px]">
 
-        <a
-          class="final-cta__button"
+        <Button
+          variant="dark-primary"
           href="mailto:info@unyxsolutions.com"
+          dataAnalytics="final_cta_click"
         >
           Cuéntanos tu proyecto
 
-          <span aria-hidden="true">
+          <span class="transition-transform duration-[180ms] group-hover:translate-x-1" aria-hidden="true">
             →
           </span>
-        </a>
+        </Button>
 
-        <span class="final-cta__email">
+        <span class="text-[13px] text-gray-500">
           O escríbenos directamente:
 
-          <a href="mailto:info@unyxsolutions.com">
+          <a href="mailto:info@unyxsolutions.com" class="font-semibold text-white underline underline-offset-[3px]">
             info@unyxsolutions.com
           </a>
         </span>
@@ -47,323 +52,31 @@
     </div>
 
     <div
-      class="final-cta__visual"
+      class="relative mx-auto h-80 w-[420px] max-w-full max-[850px]:w-[380px] max-[620px]:h-[250px] max-[620px]:w-[300px]"
       aria-hidden="true"
     >
 
       <svg
         viewBox="0 0 420 320"
-        class="final-cta__network"
+        class="absolute inset-0 h-full w-full"
       >
-        <line
-          x1="210"
-          y1="60"
-          x2="120"
-          y2="145"
-        />
-
-        <line
-          x1="210"
-          y1="60"
-          x2="300"
-          y2="145"
-        />
-
-        <line
-          x1="120"
-          y1="145"
-          x2="210"
-          y2="235"
-        />
-
-        <line
-          x1="300"
-          y1="145"
-          x2="210"
-          y2="235"
-        />
+        <line class="stroke-gray-800 stroke-1 [stroke-dasharray:5_5]" x1="210" y1="60" x2="120" y2="145" />
+        <line class="stroke-gray-800 stroke-1 [stroke-dasharray:5_5]" x1="210" y1="60" x2="300" y2="145" />
+        <line class="stroke-gray-800 stroke-1 [stroke-dasharray:5_5]" x1="120" y1="145" x2="210" y2="235" />
+        <line class="stroke-gray-800 stroke-1 [stroke-dasharray:5_5]" x1="300" y1="145" x2="210" y2="235" />
 
         <path
-          class="active-path"
+          class="fill-none stroke-blue stroke-2"
           d="M120 145 C175 145 210 180 210 235"
         />
       </svg>
 
-      <span class="node node--top"></span>
-      <span class="node node--left"></span>
-      <span class="node node--right"></span>
-      <span class="node node--bottom active"></span>
+      <span class="absolute left-1/2 top-[18.75%] h-[30px] w-[30px] -translate-x-1/2 -translate-y-1/2 border border-gray-500 bg-gray-900"></span>
+      <span class="absolute left-[28.5%] top-[45%] h-[30px] w-[30px] -translate-x-1/2 -translate-y-1/2 border border-gray-500 bg-gray-900"></span>
+      <span class="absolute left-[71.5%] top-[45%] h-[30px] w-[30px] -translate-x-1/2 -translate-y-1/2 border border-gray-500 bg-gray-900"></span>
+      <span class="absolute left-1/2 top-[73.5%] h-[30px] w-[30px] -translate-x-1/2 -translate-y-1/2 border border-blue bg-gray-900 shadow-[0_0_0_5px_rgba(7,92,255,0.12)]"></span>
 
     </div>
 
   </div>
 </section>
-
-<style>
-  .final-cta {
-    position: relative;
-
-    width: 100%;
-
-    overflow: hidden;
-
-    background: #0b0b0d;
-
-    color: #ffffff;
-  }
-
-  .final-cta__grid-bg {
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    background-image:
-      linear-gradient(
-        rgba(255, 255, 255, 0.025) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.025) 1px,
-        transparent 1px
-      );
-
-    background-size: 32px 32px;
-  }
-
-  .final-cta__container {
-    position: relative;
-
-    z-index: 2;
-
-    display: grid;
-
-    grid-template-columns:
-      minmax(0, 1.1fr)
-      minmax(350px, 0.8fr);
-
-    gap: 90px;
-
-    align-items: center;
-
-    width: min(100%, 1440px);
-
-    min-height: 540px;
-
-    margin: 0 auto;
-
-    padding:
-      72px
-      clamp(32px, 5vw, 64px);
-  }
-
-  .final-cta__content {
-    max-width: 650px;
-  }
-
-  .final-cta__eyebrow {
-    display: block;
-
-    margin-bottom: 24px;
-
-    color: #075cff;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.1em;
-  }
-
-  .final-cta__content h2 {
-    margin: 0;
-
-    color: #ffffff;
-
-    font-size: clamp(44px, 4.5vw, 68px);
-
-    font-weight: 700;
-
-    line-height: 1;
-
-    letter-spacing: -0.05em;
-  }
-
-  .final-cta__content > p {
-    max-width: 550px;
-
-    margin: 24px 0 0;
-
-    color: #969ba5;
-
-    font-size: 16px;
-
-    line-height: 1.65;
-  }
-
-  .final-cta__actions {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 22px;
-
-    margin-top: 36px;
-  }
-
-  .final-cta__button {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 24px;
-
-    padding: 18px 24px;
-
-    border-radius: 6px;
-
-    background: #075cff;
-
-    color: #ffffff;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    text-decoration: none;
-  }
-
-  .final-cta__button span {
-    transition: transform 180ms ease;
-  }
-
-  .final-cta__button:hover span {
-    transform: translateX(4px);
-  }
-
-  .final-cta__email {
-    color: #7f858e;
-
-    font-size: 13px;
-  }
-
-  .final-cta__email a {
-    color: #ffffff;
-
-    font-weight: 600;
-
-    text-decoration: underline;
-
-    text-underline-offset: 3px;
-  }
-
-  /* VISUAL */
-
-  .final-cta__visual {
-    position: relative;
-
-    width: 420px;
-    height: 320px;
-
-    max-width: 100%;
-
-    margin: 0 auto;
-  }
-
-  .final-cta__network {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-  }
-
-  .final-cta__network line {
-    stroke: #343840;
-
-    stroke-width: 1;
-
-    stroke-dasharray: 5 5;
-  }
-
-  .final-cta__network .active-path {
-    fill: none;
-
-    stroke: #075cff;
-
-    stroke-width: 2;
-  }
-
-  .node {
-    position: absolute;
-
-    width: 30px;
-    height: 30px;
-
-    transform: translate(-50%, -50%);
-
-    border: 1px solid #8b9098;
-
-    background: #15171a;
-  }
-
-  .node--top {
-    left: 50%;
-    top: 18.75%;
-  }
-
-  .node--left {
-    left: 28.5%;
-    top: 45%;
-  }
-
-  .node--right {
-    left: 71.5%;
-    top: 45%;
-  }
-
-  .node--bottom {
-    left: 50%;
-    top: 73.5%;
-  }
-
-  .node.active {
-    border-color: #3b66bc;
-
-    box-shadow:
-      0 0 0 5px
-      rgba(7, 92, 255, 0.12);
-  }
-
-  @media (max-width: 850px) {
-    .final-cta__container {
-      grid-template-columns: 1fr;
-
-      gap: 45px;
-
-      min-height: auto;
-    }
-
-    .final-cta__visual {
-      width: 380px;
-    }
-  }
-
-  @media (max-width: 620px) {
-    .final-cta__container {
-      padding:
-        64px
-        20px;
-    }
-
-    .final-cta__visual {
-      width: 300px;
-      height: 250px;
-    }
-  }
-</style>
