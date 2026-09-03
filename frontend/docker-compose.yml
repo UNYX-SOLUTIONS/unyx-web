@@ -8,8 +8,22 @@ services:
 
     restart: unless-stopped
 
-    ports:
-      - "8085:80"
+    expose:
+      - "80"
+
+    labels:
+      - "traefik.enable=true"
+
+      # Router principal
+      - "traefik.http.routers.unyx-web.rule=Host(`unyxsolutions.com`) || Host(`www.unyxsolutions.com`)"
+
+      # HTTPS
+      - "traefik.http.routers.unyx-web.entrypoints=websecure"
+      - "traefik.http.routers.unyx-web.tls=true"
+      - "traefik.http.routers.unyx-web.tls.certresolver=letsencrypt"
+
+      # Puerto interno de Nginx
+      - "traefik.http.services.unyx-web.loadbalancer.server.port=80"
 
     networks:
       - unyx-network
