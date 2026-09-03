@@ -1,0 +1,19 @@
+services:
+  unyx-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: unyx-web
+
+    restart: unless-stopped
+
+    ports:
+      - "8085:80"
+
+    networks:
+      - unyx-network
+
+networks:
+  unyx-network:
+    name: unyx-network
