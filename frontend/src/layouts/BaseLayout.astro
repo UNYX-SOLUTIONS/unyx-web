@@ -7,7 +7,12 @@ import MobileMenu from "../components/global/MobileMenu.astro";
 import Footer from "../components/global/Footer.astro";
 import Analytics from "../components/global/Analytics.astro";
 
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, DEFAULT_OG_IMAGE } from "../consts";
+import {
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  SITE_URL,
+  DEFAULT_OG_IMAGE,
+} from "../consts";
 
 const {
   title = SITE_TITLE,
@@ -30,6 +35,18 @@ const {
       image={image}
       noindex={noindex}
     />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <!-- Apple -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- PWA / Web App -->
+    <meta name="apple-mobile-web-app-title" content="UNYX" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <slot name="head" />
   </head>
