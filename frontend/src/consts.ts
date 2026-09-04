@@ -9,8 +9,8 @@ export const CONTACT_LOCATION = "Guayaquil, Ecuador.";
 export const DEFAULT_OG_IMAGE = "/images/og/default-og.png";
 
 export const SOCIAL_LINKS = {
-  linkedin: "#",
-  instagram: "#",
+  linkedin: "https://www.linkedin.com/company/unyxsolutions/",
+  instagram: "https://www.instagram.com/unyx.ec?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==",
 };
 
 export const KOMHO_WEBHOOK_URL = "";

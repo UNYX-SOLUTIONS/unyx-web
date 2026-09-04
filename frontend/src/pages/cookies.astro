@@ -22,10 +22,178 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <section class="w-full bg-white text-black">
       <div class="site-container py-[70px]">
-        <div class="mx-auto max-w-3xl">
-          <p class="text-base leading-[1.65] text-gray-700">
-            Este documento está en revisión y será publicado próximamente.
+        <div class="article-body mx-auto max-w-3xl">
+
+          <h2>1. ¿Qué son las cookies?</h2>
+          <p>
+            Las cookies son pequeños archivos de texto que se almacenan en el dispositivo del Usuario (computadora, tableta, teléfono móvil) cuando accede a nuestro sitio web. Las cookies permiten recordar determinadas preferencias, recopilar información estadística sobre la navegación y mejorar la experiencia del Usuario.
           </p>
+
+          <h2>2. Tipos de cookies que utilizamos</h2>
+
+          <p>
+            <strong>2.1 Cookies estrictamente necesarias</strong>
+          </p>
+          <p>
+            Permiten el funcionamiento básico del sitio web y son indispensables para la prestación de los servicios solicitados por el Usuario. Estas cookies no requieren consentimiento del Usuario.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Cookie</th>
+                <th>Finalidad</th>
+                <th>Duración</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>session_id</code></td>
+                <td>Identificar la sesión del Usuario</td>
+                <td>Sesión</td>
+              </tr>
+              <tr>
+                <td><code>csrf_token</code></td>
+                <td>Prevención de ataques CSRF</td>
+                <td>Sesión</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>
+            <strong>2.2 Cookies funcionales</strong>
+          </p>
+          <p>
+            Permiten recordar determinadas preferencias del Usuario, como idioma, región u otras configuraciones que mejoran la experiencia de navegación.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Cookie</th>
+                <th>Finalidad</th>
+                <th>Duración</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>preferred_language</code></td>
+                <td>Recordar el idioma seleccionado</td>
+                <td>1 año</td>
+              </tr>
+              <tr>
+                <td><code>theme_preference</code></td>
+                <td>Recordar preferencias de visualización</td>
+                <td>1 año</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>
+            <strong>2.3 Cookies analíticas</strong>
+          </p>
+          <p>
+            Permiten recopilar información estadística sobre la utilización del sitio web con el propósito de evaluar su funcionamiento, identificar oportunidades de mejora y optimizar la experiencia del Usuario.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Cookie</th>
+                <th>Finalidad</th>
+                <th>Duración</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>_ga</code></td>
+                <td>Identificar usuarios únicos (Google Analytics)</td>
+                <td>2 años</td>
+              </tr>
+              <tr>
+                <td><code>_gid</code></td>
+                <td>Distinguir usuarios (Google Analytics)</td>
+                <td>24 horas</td>
+              </tr>
+              <tr>
+                <td><code>_gat</code></td>
+                <td>Limitar la tasa de solicitudes (Google Analytics)</td>
+                <td>1 minuto</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>
+            <strong>2.4 Cookies publicitarias</strong>
+          </p>
+          <p>
+            Se utilizan para mostrar publicidad personalizada y medir la eficacia de campañas comerciales, siempre que exista el consentimiento correspondiente.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Cookie</th>
+                <th>Finalidad</th>
+                <th>Duración</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>_fbp</code></td>
+                <td>Identificar navegadores (Meta/Facebook)</td>
+                <td>3 meses</td>
+              </tr>
+              <tr>
+                <td><code>_gcl_au</code></td>
+                <td>Conversión de Google Ads</td>
+                <td>3 meses</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>3. Gestión de cookies</h2>
+          <p>
+            El Usuario puede configurar su navegador para aceptar, bloquear o eliminar las cookies. A continuación, se indican los enlaces a las instrucciones de los navegadores más comunes:
+          </p>
+          <ul>
+            <li><a href="https://support.google.com/chrome/answer/95647">Google Chrome</a></li>
+            <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias">Mozilla Firefox</a></li>
+            <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac">Safari</a></li>
+            <li><a href="https://support.microsoft.com/es-es/help/4468242/microsoft-edge-browsing-data-and-privacy">Microsoft Edge</a></li>
+          </ul>
+          <p><strong>El Usuario también puede utilizar herramientas de terceros como:</strong></p>
+          <ul>
+            <li><a href="https://www.youronlinechoices.com/">Your Online Choices</a></li>
+            <li><a href="https://www.networkadvertising.org/choices/">Network Advertising Initiative</a></li>
+          </ul>
+
+          <h2>4. Consentimiento</h2>
+          <p>
+            Al acceder a nuestro sitio web, el Usuario acepta el uso de cookies conforme a la presente Política de Cookies, con excepción de aquellas que requieren consentimiento expreso (cookies analíticas y publicitarias).
+          </p>
+          <p>
+            En la primera visita al sitio web, se mostrará un banner informativo a través del cual el Usuario podrá:
+          </p>
+          <ul>
+            <li>Aceptar todas las cookies.</li>
+            <li>Rechazar las cookies opcionales (analíticas y publicitarias).</li>
+            <li>Configurar sus preferencias.</li>
+          </ul>
+
+          <h2>5. Actualizaciones de la política de cookies</h2>
+          <p>
+            UNYX podrá actualizar la presente Política de Cookies cuando sea necesario para reflejar cambios en las cookies utilizadas, modificaciones normativas o mejoras en el sitio web. Las actualizaciones serán publicadas en esta misma página.
+          </p>
+
+          <h2>6. Contacto</h2>
+          <p>
+            Si tiene alguna pregunta sobre el uso de cookies en nuestro sitio web, puede contactarnos en:
+          </p>
+          <p>
+            <strong>Correo electrónico:</strong> <a href="mailto:info@unyxsolutions.com">info@unyxsolutions.com</a>
+          </p>
+
+          <p class="mt-12 text-sm text-gray-600">
+            Versión: 1.0 · Fecha de vigencia: 09/04/2026 · UNYX Solutions
+          </p>
+
         </div>
       </div>
     </section>

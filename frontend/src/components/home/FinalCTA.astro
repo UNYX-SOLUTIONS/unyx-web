@@ -8,24 +8,24 @@ import Button from "../ui/Button.astro";
     aria-hidden="true"
   ></div>
 
-  <div class="relative z-[2] mx-auto grid w-full max-w-[1440px] min-h-[540px] grid-cols-[minmax(0,1.1fr)_minmax(350px,0.8fr)] items-center gap-[90px] px-[clamp(32px,5vw,64px)] py-[72px] max-[850px]:grid-cols-1 max-[850px]:min-h-0 max-[850px]:gap-[45px] max-[620px]:px-5 max-[620px]:py-16">
+  <div class="relative z-2 mx-auto grid w-full max-w-360 min-h-135 grid-cols-[minmax(0,1.1fr)_minmax(350px,0.8fr)] items-center gap-[90px] px-[clamp(32px,5vw,64px)] py-[72px] max-[850px]:grid-cols-1 max-[850px]:min-h-0 max-[850px]:gap-[45px] max-[620px]:px-5 max-[620px]:py-16">
 
-    <div class="max-w-[650px]">
+    <div class="max-w-162.5">
 
-      <span class="mb-6 block text-[11px] font-bold tracking-[0.1em] text-blue-light">
+      <span class="mb-6 block text-[11px] font-bold tracking-widest text-blue-light">
         HABLEMOS
       </span>
 
-      <h2 class="text-[clamp(44px,4.5vw,68px)] font-bold leading-none tracking-[-0.05em] text-white">
+      <h2 class="text-[clamp(44px,4.5vw,68px)] font-bold leading-none tracking-tighter text-white">
         ¿Qué quieres resolver?
       </h2>
 
-      <p class="mt-6 max-w-[550px] text-base leading-[1.65] text-gray-500">
+      <p class="mt-6 max-w-137.5 text-base leading-[1.65] text-gray-500">
         Cuéntanos qué está pasando en tu operación. Podemos ayudarte a
         identificar dónde la tecnología puede generar mayor impacto.
       </p>
 
-      <div class="mt-9 flex flex-col items-start gap-[22px]">
+      <div class="mt-9 flex flex-col items-start gap-5.5">
 
         <Button
           variant="dark-primary"
@@ -34,7 +34,7 @@ import Button from "../ui/Button.astro";
         >
           Cuéntanos tu proyecto
 
-          <span class="transition-transform duration-[180ms] group-hover:translate-x-1" aria-hidden="true">
+          <span class="transition-transform duration-180 group-hover:translate-x-1" aria-hidden="true">
             →
           </span>
         </Button>
@@ -52,7 +52,7 @@ import Button from "../ui/Button.astro";
     </div>
 
     <div
-      class="relative mx-auto h-80 w-[420px] max-w-full max-[850px]:w-[380px] max-[620px]:h-[250px] max-[620px]:w-[300px]"
+      class="relative mx-auto h-80 w-105 max-w-full max-[850px]:w-95 max-[620px]:h-62.5 max-[620px]:w-75"
       aria-hidden="true"
     >
 
@@ -71,10 +71,10 @@ import Button from "../ui/Button.astro";
         />
       </svg>
 
-      <span class="absolute left-1/2 top-[18.75%] h-[30px] w-[30px] -translate-x-1/2 -translate-y-1/2 border border-gray-500 bg-gray-900"></span>
-      <span class="absolute left-[28.5%] top-[45%] h-[30px] w-[30px] -translate-x-1/2 -translate-y-1/2 border border-gray-500 bg-gray-900"></span>
-      <span class="absolute left-[71.5%] top-[45%] h-[30px] w-[30px] -translate-x-1/2 -translate-y-1/2 border border-gray-500 bg-gray-900"></span>
-      <span class="absolute left-1/2 top-[73.5%] h-[30px] w-[30px] -translate-x-1/2 -translate-y-1/2 border border-blue bg-gray-900 shadow-[0_0_0_5px_rgba(7,92,255,0.12)]"></span>
+      <span class="absolute left-1/2 top-[18.75%] h-7.5 w-7.5 -translate-x-1/2 -translate-y-1/2 border border-gray-500 bg-gray-900"></span>
+      <span class="absolute left-[28.5%] top-[45%] h-7.5 w-7.5 -translate-x-1/2 -translate-y-1/2 border border-gray-500 bg-gray-900"></span>
+      <span class="absolute left-[71.5%] top-[45%] h-7.5 w-7.5 -translate-x-1/2 -translate-y-1/2 border border-gray-500 bg-gray-900"></span>
+      <span class="absolute left-1/2 top-[73.5%] h-7.5 w-7.5 -translate-x-1/2 -translate-y-1/2 border border-blue bg-gray-900 shadow-[0_0_0_5px_rgba(7,92,255,0.12)]"></span>
 
     </div>
 
