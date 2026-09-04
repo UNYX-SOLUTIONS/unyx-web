@@ -1,13 +1,20 @@
 ---
 import "../styles/global.css";
 
+import { ClientRouter } from "astro:transitions";
+
 import SEO from "../components/global/SEO.astro";
 import Header from "../components/global/Header.astro";
 import MobileMenu from "../components/global/MobileMenu.astro";
 import Footer from "../components/global/Footer.astro";
 import Analytics from "../components/global/Analytics.astro";
 
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, DEFAULT_OG_IMAGE } from "../consts";
+import {
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  SITE_URL,
+  DEFAULT_OG_IMAGE,
+} from "../consts";
 
 const {
   title = SITE_TITLE,
@@ -23,6 +30,8 @@ const {
 <!doctype html>
 <html lang="es">
   <head>
+    <ClientRouter />
+
     <SEO
       title={title}
       description={description}
@@ -43,5 +52,65 @@ const {
     {showFooter && <Footer />}
 
     <Analytics />
+
+    <div transition:persist="kommo-chat-slot" id="kommo-chat-slot"></div>
+
+    <script is:inline>
+      if (
+        !window.crmPlugin ||
+        (document.getElementById("kommo-chat-slot") &&
+          document.getElementById("kommo-chat-slot").children.length === 0)
+      ) {
+        (function (a, m, o, c, r, m) {
+          a[m] = {
+            id: "1080279",
+            hash: "3ca98cd68d546747aded7ab8191a79527a5bd29557e364fd66ad5683d33102b1",
+            locale: "es",
+            setMeta: function (p) {
+              this.params = (this.params || []).concat([p]);
+            },
+          };
+          a[o] =
+            a[o] ||
+            function () {
+              (a[o].q = a[o].q || []).push(arguments);
+            };
+          var d = a.document,
+            s = d.createElement("script");
+          s.async = true;
+          s.id = m + "_script";
+          s.src = "https://gso.kommo.com/js/button.js";
+          if (d.head && !d.getElementById(m + "_script")) {
+            d.head.appendChild(s);
+          }
+        })(window, 0, "crmPlugin", 0, 0, "crm_plugin");
+      }
+    </script>
+
+    <script is:inline>
+      if (!window.__kommoChatMover) {
+        window.__kommoChatMover = true;
+
+        const moveWidget = () => {
+          const slot = document.getElementById("kommo-chat-slot");
+          if (!slot) {
+            return;
+          }
+
+          document
+            .querySelectorAll("body > [class*='styles_']")
+            .forEach((node) => {
+              if (node.parentElement !== slot) {
+                slot.appendChild(node);
+              }
+            });
+        };
+
+        moveWidget();
+        new MutationObserver(moveWidget).observe(document.body, {
+          childList: true,
+        });
+      }
+    </script>
   </body>
 </html>

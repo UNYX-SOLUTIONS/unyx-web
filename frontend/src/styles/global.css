@@ -39,6 +39,11 @@ main {
   outline-offset: 3px;
 }
 
+  /* Ocultar el pie de página con la marca de agua de Kommo */
+  .amoforms-footer-copyright {
+    display: none !important;
+  }
+
 @layer components {
   .section {
     padding-block: var(--section-padding-y);
@@ -166,4 +171,15 @@ main {
     color: var(--color-black);
     font-size: 0.85em;
   }
+}
+
+[class*="styles_copyright"] {
+  display: none !important;
+}
+
+[class*="styles_button"],
+[class*="styles_launcher"],
+#kommo-chat-slot > [class*="styles_"]:not([class*="styles_messages"]) {
+  bottom: 12px !important;
+  right: 12px !important;
 }

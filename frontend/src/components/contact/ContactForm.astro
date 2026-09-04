@@ -1,149 +1,60 @@
 ---
-import { KOMHO_WEBHOOK_URL, CONTACT_EMAIL } from "../../consts";
-import Button from "../ui/Button.astro";
 import SectionLabel from "../ui/SectionLabel.astro";
-
-const fields = [
-  { id: "nombre", label: "Nombre", type: "text", required: true },
-  { id: "empresa", label: "Empresa", type: "text", required: false },
-  { id: "email", label: "Email", type: "email", required: true },
-  { id: "telefono", label: "Teléfono", type: "tel", required: false },
-];
 ---
 
 <section class="w-full bg-white text-black">
-  <div class="site-container py-[70px]">
-    <div class="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-[90px]">
-
+  <div class="site-container py-17.5">
+    <div class="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-22.5">
       <div>
-        <SectionLabel class="mb-5">
-          ESCRÍBENOS
-        </SectionLabel>
+        <SectionLabel class="mb-5"> ESCRÍBENOS </SectionLabel>
 
-        <h2 class="text-[clamp(28px,3vw,40px)] font-bold leading-[1.04] tracking-[-0.04em] text-black">
+        <h2
+          class="text-[clamp(28px,3vw,40px)] font-bold leading-[1.04] tracking-[-0.04em] text-black"
+        >
           Completa el formulario y te contactaremos.
         </h2>
 
-        <p class="mt-5 max-w-[440px] text-sm leading-[1.65] text-gray-600">
+        <p class="mt-5 max-w-110 text-sm leading-[1.65] text-gray-600">
           No necesitas tener todo resuelto: cuéntanos qué está pasando en tu
           operación y analizamos juntos por dónde empezar.
         </p>
       </div>
 
-      <form
-        id="contact-form"
-        data-webhook={KOMHO_WEBHOOK_URL}
-        class="flex flex-col gap-5"
-      >
-        <div class="hidden" aria-hidden="true">
-          <label for="website">No completar</label>
-          <input
-            type="text"
-            id="website"
-            name="website"
-            tabindex="-1"
-            autocomplete="off"
-          />
+      <div class="min-h-100 overflow-hidden">
+        <div class="-mb-11">
+          <script is:inline>
+          !(function (a, m, o, c, r, m) {
+            ((a[o + c] = a[o + c] || {
+              setMeta: function (p) {
+                this.params = (this.params || []).concat([p]);
+              },
+            }),
+              (a[o + r] =
+                a[o + r] ||
+                function (f) {
+                  a[o + r].f = (a[o + r].f || []).concat([f]);
+                }),
+              a[o + r]({
+                id: "1727923",
+                hash: "1a15546a9d55b780dd12f385c27b2143",
+                locale: "es",
+              }),
+              (a[o + m] =
+                a[o + m] ||
+                function (f, k) {
+                  a[o + m].f = (a[o + m].f || []).concat([[f, k]]);
+                }));
+          })(window, 0, "amo_forms_", "params", "load", "loaded");
+        </script>
+        <script
+          is:inline
+          id="amoforms_script_1727923"
+          async="async"
+          charset="utf-8"
+          src="https://forms.kommo.com/forms/assets/js/amoforms.js?1788558988"
+        ></script>
         </div>
-
-        {
-          fields.map((field) => (
-            <div class="flex flex-col gap-2">
-              <label for={field.id} class="text-xs font-semibold text-gray-700">
-                {field.label}
-                {field.required && " *"}
-              </label>
-
-              <input
-                type={field.type}
-                id={field.id}
-                name={field.id}
-                required={field.required}
-                class="min-h-12 rounded-lg border border-gray-200 bg-white px-4 text-sm text-black transition-colors duration-[160ms] focus:border-blue focus:outline-none"
-              />
-            </div>
-          ))
-        }
-
-        <div class="flex flex-col gap-2">
-          <label for="mensaje" class="text-xs font-semibold text-gray-700">
-            Mensaje *
-          </label>
-
-          <textarea
-            id="mensaje"
-            name="mensaje"
-            rows="5"
-            required
-            class="resize-y rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-black transition-colors duration-[160ms] focus:border-blue focus:outline-none"
-          ></textarea>
-        </div>
-
-        <Button type="submit" variant="primary" class="mt-2">
-          Enviar mensaje
-        </Button>
-
-        <p id="form-status" class="hidden text-sm font-semibold text-blue" role="status"></p>
-      </form>
-
+      </div>
     </div>
   </div>
 </section>
-
-<script define:vars={{ CONTACT_EMAIL }}>
-  const form = document.getElementById("contact-form");
-  const status = document.getElementById("form-status");
-
-  if (form && status) {
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      const honeypot = form.querySelector("[name='website']");
-      if (honeypot && honeypot.value) {
-        return;
-      }
-
-      const data = Object.fromEntries(new FormData(form).entries());
-      delete data.website;
-
-      const webhook = form.dataset.webhook;
-      const button = form.querySelector("button[type='submit']");
-
-      if (button) {
-        button.disabled = true;
-      }
-
-      try {
-        if (webhook) {
-          const response = await fetch(webhook, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-          });
-
-          if (!response.ok) {
-            throw new Error("Request failed");
-          }
-
-          form.reset();
-          status.textContent = "Mensaje enviado. Te contactaremos pronto.";
-          status.classList.remove("hidden");
-        } else {
-          const subject = encodeURIComponent(`Proyecto de ${data.nombre ?? ""}`);
-          const body = encodeURIComponent(
-            `${data.mensaje ?? ""}\n\n${data.nombre ?? ""} - ${data.empresa ?? ""}\n${data.email ?? ""}${data.telefono ? `\n${data.telefono}` : ""}`
-          );
-
-          window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-        }
-      } catch {
-        status.textContent = "Ocurrió un error. Escríbenos directamente a info@unyxsolutions.com";
-        status.classList.remove("hidden");
-      } finally {
-        if (button) {
-          button.disabled = false;
-        }
-      }
-    });
-  }
-</script>
