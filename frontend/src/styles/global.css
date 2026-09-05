@@ -173,13 +173,12 @@ main {
   }
 }
 
-[class*="styles_copyright"] {
+[class*="styles_copyright"],
+.amo-brand {
   display: none !important;
 }
 
-[class*="styles_button"],
-[class*="styles_launcher"],
-#kommo-chat-slot > [class*="styles_"]:not([class*="styles_messages"]) {
-  bottom: 12px !important;
+.amo-button-holder {
   right: 12px !important;
+  bottom: 12px !important;
 }

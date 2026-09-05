@@ -56,11 +56,7 @@ const {
     <div transition:persist="kommo-chat-slot" id="kommo-chat-slot"></div>
 
     <script is:inline>
-      if (
-        !window.crmPlugin ||
-        (document.getElementById("kommo-chat-slot") &&
-          document.getElementById("kommo-chat-slot").children.length === 0)
-      ) {
+      if (!document.querySelector(".amo-button-holder")) {
         (function (a, m, o, c, r, m) {
           a[m] = {
             id: "1080279",
@@ -80,7 +76,11 @@ const {
           s.async = true;
           s.id = m + "_script";
           s.src = "https://gso.kommo.com/js/button.js";
-          if (d.head && !d.getElementById(m + "_script")) {
+          if (d.head) {
+            var stale = d.getElementById(m + "_script");
+            if (stale) {
+              stale.remove();
+            }
             d.head.appendChild(s);
           }
         })(window, 0, "crmPlugin", 0, 0, "crm_plugin");
@@ -98,7 +98,9 @@ const {
           }
 
           document
-            .querySelectorAll("body > [class*='styles_']")
+            .querySelectorAll(
+              "body > .amo-button-holder, body > [class*='styles_']"
+            )
             .forEach((node) => {
               if (node.parentElement !== slot) {
                 slot.appendChild(node);
