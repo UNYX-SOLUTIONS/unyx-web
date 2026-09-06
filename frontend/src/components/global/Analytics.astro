@@ -16,27 +16,34 @@ import { GA4_MEASUREMENT_ID, CLARITY_PROJECT_ID } from "../../consts";
   };
 
   if (gaEnabled) {
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`;
-    document.head.appendChild(script);
+    if (!document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`;
+      document.head.appendChild(script);
+    }
 
     window.dataLayer = window.dataLayer || [];
-    window.gtag = function () {
-      window.dataLayer.push(arguments);
-    };
+    if (!window.gtag) {
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+    }
     window.gtag("js", new Date());
     window.gtag("config", GA4_MEASUREMENT_ID, { send_page_view: true });
   }
 
-  if (clarityEnabled) {
+  if (clarityEnabled && !document.querySelector('script[src*="clarity.ms/tag"]')) {
     const script = document.createElement("script");
     script.async = true;
     script.src = `https://www.clarity.ms/tag/${CLARITY_PROJECT_ID}`;
     document.head.appendChild(script);
   }
 
-  const UTM_KEYS = [
+  if (!window.__unyxAnalyticsInit) {
+    window.__unyxAnalyticsInit = true;
+
+    const UTM_KEYS = [
     "utm_source",
     "utm_medium",
     "utm_campaign",
@@ -145,4 +152,5 @@ import { GA4_MEASUREMENT_ID, CLARITY_PROJECT_ID } from "../../consts";
     });
   };
   window.addEventListener("scroll", onScroll, { passive: true });
+  }
 </script>
