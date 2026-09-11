@@ -280,7 +280,7 @@ pubDate: 2026-09-11
 </p>
 
 <div class="unyx-formula">
-  <code>Costo mensual de servicio ≈ mensajes de servicio entregados × USD 0,0113</code>
+  <code class="text-black!">Costo mensual de servicio ≈ mensajes de servicio entregados × USD 0,0113</code>
 </div>
 
 <p>Por ejemplo, para una operación en Ecuador:</p>
