@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import ArticleContent from "../../components/insights/ArticleContent.astro";
+import WaPricingArticle from "../../components/insights/WaPricingArticle.astro";
 
 export async function getStaticPaths() {
   const insights = await getCollection("insights");
@@ -27,4 +28,5 @@ const { Content } = await render(entry);
   <ArticleContent>
     <Content />
   </ArticleContent>
+  {entry.id === "precios-kommo" && <WaPricingArticle />}
 </ArticleLayout>

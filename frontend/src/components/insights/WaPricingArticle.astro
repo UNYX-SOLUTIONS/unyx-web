@@ -1,0 +1,579 @@
+---
+// Mejoras para el insight precios-kommo: estilos del artículo
+// y script de la calculadora de precios de WhatsApp API.
+// Se incluye solo en /insights/precios-kommo.
+---
+
+<style is:global>
+  .unyx-article {
+    --unyx-bg: #ffffff;
+    --unyx-text: #111318;
+    --unyx-muted: #5d6470;
+    --unyx-line: #e7e9ee;
+    --unyx-soft: #f7f8fa;
+    --unyx-blue: #1769ff;
+    --unyx-blue-soft: #eef4ff;
+    --unyx-dark: #0c0d0f;
+    --unyx-green: #14804a;
+    --unyx-orange: #a85b00;
+    --unyx-red: #b42318;
+
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: var(--unyx-bg);
+    color: var(--unyx-text);
+    line-height: 1.7;
+  }
+
+  .unyx-article .unyx-lead {
+    max-width: 850px;
+    margin: 0 0 18px;
+    font-size: 1.22rem;
+    color: #434a55;
+  }
+
+  .unyx-article .unyx-summary {
+    margin: 40px 0;
+    padding: 24px;
+    border: 1px solid var(--unyx-line);
+    border-radius: 18px;
+    background: linear-gradient(135deg, #fff 0%, #f8fbff 100%);
+  }
+
+  .unyx-article .unyx-summary strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+  }
+
+  .unyx-article h2 {
+    margin: 56px 0 18px;
+    font-size: clamp(1.55rem, 3vw, 2.25rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--unyx-text);
+  }
+
+  .unyx-article h3 {
+    margin: 30px 0 10px;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    color: var(--unyx-text);
+  }
+
+  .unyx-article p {
+    margin: 0 0 18px;
+    color: var(--unyx-text);
+  }
+
+  .unyx-article a {
+    color: var(--unyx-blue);
+    text-decoration: none;
+  }
+
+  .unyx-article a:hover {
+    text-decoration: underline;
+  }
+
+  .unyx-article .unyx-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 26px 0;
+  }
+
+  .unyx-article .unyx-card {
+    padding: 22px;
+    border: 1px solid var(--unyx-line);
+    border-radius: 16px;
+    background: #fff;
+  }
+
+  .unyx-article .unyx-card .eyebrow {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--unyx-muted);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .unyx-article .unyx-card .eyebrow::before {
+    content: none;
+  }
+
+  .unyx-article .unyx-card .big {
+    display: block;
+    font-size: 1.7rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--unyx-text);
+  }
+
+  .unyx-article .unyx-card p {
+    margin: 10px 0 0;
+    color: var(--unyx-muted);
+    font-size: 0.94rem;
+  }
+
+  .unyx-article .unyx-table-wrap {
+    overflow-x: auto;
+    margin: 24px 0 14px;
+    border: 1px solid var(--unyx-line);
+    border-radius: 16px;
+  }
+
+  .unyx-article table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    background: #fff;
+  }
+
+  .unyx-article th,
+  .unyx-article td {
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--unyx-line);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .unyx-article th {
+    background: var(--unyx-soft);
+    font-size: 0.83rem;
+    text-transform: uppercase;
+    letter-spacing: 0.055em;
+    color: var(--unyx-text);
+  }
+
+  .unyx-article tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .unyx-article .positive {
+    color: var(--unyx-green);
+    font-weight: 700;
+  }
+
+  .unyx-article .warning {
+    color: var(--unyx-orange);
+    font-weight: 700;
+  }
+
+  .unyx-article .negative {
+    color: var(--unyx-red);
+    font-weight: 700;
+  }
+
+  .unyx-article .unyx-callout {
+    margin: 28px 0;
+    padding: 22px 24px;
+    border-left: 4px solid var(--unyx-blue);
+    background: var(--unyx-blue-soft);
+    border-radius: 0 14px 14px 0;
+  }
+
+  .unyx-article .unyx-callout p:last-child {
+    margin-bottom: 0;
+  }
+
+  .unyx-article .unyx-formula {
+    margin: 22px 0;
+    padding: 22px;
+    border-radius: 14px;
+    background: var(--unyx-dark);
+    color: #fff;
+    font-size: 1.08rem;
+  }
+
+  .unyx-article .unyx-formula code {
+    color: #dbe7ff;
+    font-family: "SFMono-Regular", Consolas, monospace;
+    white-space: normal;
+  }
+
+  .unyx-article .unyx-list {
+    margin: 16px 0 24px;
+    padding-left: 22px;
+    list-style: disc;
+  }
+
+  .unyx-article .unyx-list li {
+    margin: 10px 0;
+    color: var(--unyx-text);
+  }
+
+  .unyx-article .unyx-steps {
+    counter-reset: steps;
+    margin: 24px 0;
+    display: grid;
+    gap: 14px;
+  }
+
+  .unyx-article .unyx-step {
+    position: relative;
+    padding: 20px 20px 20px 64px;
+    border: 1px solid var(--unyx-line);
+    border-radius: 16px;
+  }
+
+  .unyx-article .unyx-step:before {
+    counter-increment: steps;
+    content: counter(steps);
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--unyx-dark);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.85rem;
+  }
+
+  .unyx-article .unyx-step strong {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .unyx-article .unyx-note {
+    margin: 18px 0;
+    padding: 18px 20px;
+    border: 1px dashed #c7ccd4;
+    border-radius: 14px;
+    color: #4b525d;
+    background: #fbfbfc;
+    font-size: 0.94rem;
+  }
+
+  .unyx-article .unyx-cta {
+    margin-top: 56px;
+    padding: 34px;
+    border-radius: 22px;
+    background: var(--unyx-dark);
+    color: #fff;
+  }
+
+  .unyx-article .unyx-cta h2 {
+    margin: 0 0 12px;
+    color: #fff;
+  }
+
+  .unyx-article .unyx-cta p {
+    color: #c8ccd3;
+  }
+
+  .unyx-article .unyx-cta a {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: #fff;
+    color: #111;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .unyx-article .unyx-sources {
+    margin-top: 50px;
+    padding-top: 28px;
+    border-top: 1px solid var(--unyx-line);
+    color: var(--unyx-muted);
+    font-size: 0.9rem;
+  }
+
+  .unyx-article .unyx-sources li {
+    margin: 8px 0;
+    color: var(--unyx-muted);
+  }
+
+  .unyx-article .unyx-calculator {
+    margin: 26px 0 36px;
+    padding: 26px;
+    border: 1px solid var(--unyx-line);
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 12px 40px rgba(17, 19, 24, 0.06);
+  }
+
+  .unyx-article .unyx-calc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .unyx-article .unyx-calc-grid label span {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--unyx-muted);
+    font-size: 0.84rem;
+    font-weight: 700;
+  }
+
+  .unyx-article .unyx-calc-grid select,
+  .unyx-article .unyx-calc-grid input {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #d9dde5;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--unyx-text);
+    font: inherit;
+  }
+
+  .unyx-article .unyx-rate-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .unyx-article .unyx-rate-row div {
+    padding: 14px;
+    border-radius: 12px;
+    background: var(--unyx-soft);
+  }
+
+  .unyx-article .unyx-rate-row small,
+  .unyx-article .unyx-calc-result small {
+    display: block;
+    color: var(--unyx-muted);
+    font-size: 0.76rem;
+    font-weight: 700;
+  }
+
+  .unyx-article .unyx-rate-row strong {
+    font-size: 1.02rem;
+    color: var(--unyx-text);
+  }
+
+  .unyx-article .unyx-calc-result {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding-top: 18px;
+    border-top: 1px solid var(--unyx-line);
+  }
+
+  .unyx-article .unyx-calc-result > div {
+    padding: 18px;
+    border-radius: 14px;
+    background: var(--unyx-dark);
+    color: #fff;
+  }
+
+  .unyx-article .unyx-calc-result small {
+    color: #abb2be;
+  }
+
+  .unyx-article .unyx-calc-result strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 1.8rem;
+    line-height: 1.1;
+    color: #fff !important;
+  }
+
+  .unyx-article .unyx-calc-foot {
+    margin: 16px 0 0;
+    color: var(--unyx-muted);
+    font-size: 0.82rem;
+  }
+
+  .unyx-article .unyx-fep {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    gap: 10px;
+    align-items: stretch;
+    margin: 26px 0;
+  }
+
+  .unyx-article .unyx-fep-step {
+    padding: 18px;
+    border: 1px solid var(--unyx-line);
+    border-radius: 14px;
+    background: #fff;
+  }
+
+  .unyx-article .unyx-fep-step > span {
+    display: inline-grid;
+    place-items: center;
+    min-width: 30px;
+    height: 30px;
+    padding: 0 8px;
+    margin-bottom: 10px;
+    border-radius: 999px;
+    background: var(--unyx-dark);
+    color: #fff;
+    font-size: 0.76rem;
+    font-weight: 800;
+  }
+
+  .unyx-article .unyx-fep-step p {
+    margin: 5px 0 0;
+    color: var(--unyx-muted);
+    font-size: 0.86rem;
+    line-height: 1.45;
+  }
+
+  .unyx-article .unyx-fep-arrow {
+    align-self: center;
+    color: #8e96a3;
+    font-size: 1.3rem;
+  }
+
+  .unyx-article .unyx-figure {
+    margin: 26px 0;
+  }
+
+  .unyx-article .unyx-figure img {
+    width: 100%;
+    border: 1px solid var(--unyx-line);
+    border-radius: 16px;
+  }
+
+  .unyx-article .unyx-figure figcaption {
+    margin-top: 10px;
+    color: var(--unyx-muted);
+    font-size: 0.86rem;
+    text-align: center;
+  }
+
+  @media (max-width: 760px) {
+    .unyx-article .unyx-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .unyx-article .unyx-calc-grid,
+    .unyx-article .unyx-calc-result {
+      grid-template-columns: 1fr;
+    }
+
+    .unyx-article .unyx-rate-row {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .unyx-article .unyx-fep {
+      grid-template-columns: 1fr;
+    }
+
+    .unyx-article .unyx-fep-arrow {
+      display: none;
+    }
+
+    .unyx-article .unyx-cta {
+      padding: 26px 22px;
+    }
+  }
+</style>
+
+<script is:inline data-astro-rerun>
+  const waRates = [
+    { name: "Ecuador", note: "Rest of Latin America", m: 0.074, u: 0.0113, a: 0.0113, s: 0.0113 },
+    { name: "Argentina", m: 0.0618, u: 0.026, a: 0.026, s: 0.026 },
+    { name: "Bangladesh", m: 0.0732, u: 0.0037, a: 0.0037, s: 0.0037 },
+    { name: "Brazil", m: 0.0625, u: 0.0068, a: 0.0068, s: 0.0068 },
+    { name: "Chile", m: 0.0889, u: 0.02, a: 0.02, s: 0.02 },
+    { name: "Colombia", m: 0.0125, u: 0.0008, a: 0.0008, s: 0.0008 },
+    { name: "Egypt", m: 0.0644, u: 0.0036, a: 0.0036, s: 0.0036 },
+    { name: "France", m: 0.0859, u: 0.03, a: 0.03, s: 0.03 },
+    { name: "Germany", m: 0.1365, u: 0.055, a: 0.055, s: 0.055 },
+    { name: "Hong Kong", m: 0.0732, u: 0.026, a: 0.026, s: 0.026 },
+    { name: "Hungary", m: 0.086, u: 0.035, a: 0.035, s: 0.035 },
+    { name: "India", m: 0.0118, u: 0.0014, a: 0.0014, s: 0.0014 },
+    { name: "Indonesia", m: 0.0411, u: 0.025, a: 0.025, s: 0.025 },
+    { name: "Iraq", m: 0.0341, u: 0.0079, a: 0.0079, s: 0.0079 },
+    { name: "Israel", m: 0.0353, u: 0.0053, a: 0.0053, s: 0.0053 },
+    { name: "Italy", m: 0.0795, u: 0.03, a: 0.03, s: 0.03 },
+    { name: "Kazakhstan", m: 0.0604, u: 0.018, a: 0.018, s: 0.018 },
+    { name: "Kuwait", m: 0.0792, u: 0.044, a: 0.044, s: 0.044 },
+    { name: "Malaysia", m: 0.086, u: 0.014, a: 0.014, s: 0.014 },
+    { name: "Mexico", m: 0.0397, u: 0.0085, a: 0.0085, s: 0.0085 },
+    { name: "Morocco", m: 0.0414, u: 0.023, a: 0.023, s: 0.023 },
+    { name: "Netherlands", m: 0.1597, u: 0.05, a: 0.05, s: 0.05 },
+    { name: "Nepal", m: 0.0732, u: 0.0034, a: 0.0034, s: 0.0034 },
+    { name: "Nigeria", m: 0.0516, u: 0.0067, a: 0.0067, s: 0.0067 },
+    { name: "Oman", m: 0.0341, u: 0.0247, a: 0.0247, s: 0.0247 },
+    { name: "Pakistan", m: 0.0473, u: 0.015, a: 0.015, s: 0.015 },
+    { name: "Peru", m: 0.0703, u: 0.03, a: 0.03, s: 0.03 },
+    { name: "Poland", m: 0.0366, u: 0.0122, a: 0.0122, s: 0.0122 },
+    { name: "Qatar", m: 0.0341, u: 0.012, a: 0.012, s: 0.012 },
+    { name: "Romania", m: 0.086, u: 0.029, a: 0.029, s: 0.029 },
+    { name: "Russia", m: 0.0802, u: 0.04, a: 0.04, s: 0.04 },
+    { name: "Saudi Arabia", m: 0.0576, u: 0.0107, a: 0.0107, s: 0.0107 },
+    { name: "Singapore", m: 0.0732, u: 0.016, a: 0.016, s: 0.016 },
+    { name: "South Africa", m: 0.0379, u: 0.0095, a: 0.0095, s: 0.0095 },
+    { name: "Spain", m: 0.0707, u: 0.02, a: 0.02, s: 0.02 },
+    { name: "Sri Lanka", m: 0.0732, u: 0.002, a: 0.002, s: 0.002 },
+    { name: "Turkey", m: 0.0109, u: 0.0009, a: 0.0009, s: 0.0009 },
+    { name: "Ukraine", m: 0.086, u: 0.0298, a: 0.0298, s: 0.0298 },
+    { name: "United Arab Emirates", m: 0.0576, u: 0.0157, a: 0.0157, s: 0.0157 },
+    { name: "United Kingdom", m: 0.0635, u: 0.022, a: 0.022, s: 0.022 },
+    { name: "North America", m: 0.025, u: 0.0034, a: 0.0034, s: 0.0034 },
+    { name: "Rest of Africa", m: 0.0225, u: 0.004, a: 0.004, s: 0.004 },
+    { name: "Rest of Asia Pacific", m: 0.0842, u: 0.0113, a: 0.0113, s: 0.0113 },
+    { name: "Rest of Central & Eastern Europe", m: 0.086, u: 0.0212, a: 0.0212, s: 0.0212 },
+    { name: "Rest of Latin America", m: 0.074, u: 0.0113, a: 0.0113, s: 0.0113 },
+    { name: "Rest of Middle East", m: 0.0392, u: 0.0091, a: 0.0091, s: 0.0091 },
+    { name: "Rest of Western Europe", m: 0.0592, u: 0.0171, a: 0.0171, s: 0.0171 },
+    { name: "Other", m: 0.0604, u: 0.0077, a: 0.0077, s: 0.0077 },
+  ];
+
+  const country = document.getElementById("waCountry");
+
+  if (country) {
+    waRates.forEach((r, i) => {
+      const opt = document.createElement("option");
+      opt.value = String(i);
+      opt.textContent = r.note ? `${r.name} (${r.note})` : r.name;
+      country.appendChild(opt);
+    });
+  }
+
+  const money = (n) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(n);
+
+  const rate = (n) => "$" + Number(n).toFixed(4);
+
+  function calculateWA() {
+    if (!country) return;
+
+    const r = waRates[Number(country.value) || 0];
+    const m = Math.max(0, Number(document.getElementById("waMarketing").value) || 0);
+    const u = Math.max(0, Number(document.getElementById("waUtility").value) || 0);
+    const a = Math.max(0, Number(document.getElementById("waAuth").value) || 0);
+    const s = Math.max(0, Number(document.getElementById("waService").value) || 0);
+    const free =
+      Math.min(100, Math.max(0, Number(document.getElementById("waFreePct").value) || 0)) / 100;
+
+    const full = m * r.m + u * r.u + a * r.a + s * r.s;
+    const savings = s * r.s * free;
+    const total = full - savings;
+
+    document.getElementById("rateMarketing").textContent = rate(r.m);
+    document.getElementById("rateUtility").textContent = rate(r.u);
+    document.getElementById("rateAuth").textContent = rate(r.a);
+    document.getElementById("rateService").textContent = rate(r.s);
+    document.getElementById("waTotal").textContent = money(total);
+    document.getElementById("waSavings").textContent = money(savings);
+  }
+
+  if (country) {
+    ["waCountry", "waMarketing", "waUtility", "waAuth", "waService", "waFreePct"].forEach((id) => {
+      document.getElementById(id).addEventListener("input", calculateWA);
+      document.getElementById(id).addEventListener("change", calculateWA);
+    });
+    calculateWA();
+  }
+</script>
