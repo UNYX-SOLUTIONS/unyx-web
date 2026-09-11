@@ -468,6 +468,50 @@ pubDate: 2026-09-11
   A escala, sin embargo, el diseño de la operación puede marcar una diferencia de cientos o miles de dólares al año.
 </p>
 
+<h2>11. Tres soluciones para afrontar el nuevo cobro</h2>
+
+<p>
+  Si ya operas por WhatsApp Business Platform, estas son las tres medidas que recomendamos implementar
+  antes del 1 de octubre para proteger tu cuenta y contener el costo por mensaje.
+</p>
+
+<h3>1. No regreses a WhatsApp Business App</h3>
+
+<p>
+  Volver a la aplicación gratuita puede parecer una salida rápida para evitar el nuevo cobro,
+  pero no es seguro: las cuentas que migran volúmenes de automatización o utilizan herramientas
+  no oficiales para replicar funciones de la API corren un riesgo real de bloqueo por parte de Meta.
+  Perder el número implica perder clientes, historial y conversaciones activas.
+</p>
+
+<div class="unyx-callout">
+  <p><strong>Advertencia:</strong> un bloqueo de cuenta de Meta no es recuperable de forma sencilla
+  y puede dejar fuera de operación tu canal principal de ventas y atención.</p>
+</div>
+
+<figure class="unyx-figure">
+  <img src="/images/insights/advertencia_meta.jpg" alt="Advertencia de Meta sobre el bloqueo de cuentas de WhatsApp" loading="lazy" decoding="async">
+  <figcaption>El uso de herramientas no oficiales puede provocar el bloqueo de la cuenta.</figcaption>
+</figure>
+
+<h3>2. Usa el correo electrónico para toda la documentación</h3>
+
+<p>
+  Envía por email todo lo que sea documentación: brochures, catálogos, cotizaciones, comprobantes,
+  facturas y contratos. WhatsApp debe quedar reservado para la conversación y el seguimiento,
+  no para transportar archivos que igualmente pueden viajar por correo. Esto reduce la cantidad de
+  mensajes facturables y, de paso, deja una trazabilidad formal de cada documento.
+</p>
+
+<h3>3. Aprovecha la ventana gratuita de 72 horas</h3>
+
+<p>
+  Pauta anuncios de Instagram y Facebook con Click-to-WhatsApp. Cuando el lead llega desde un anuncio
+  y tu equipo responde antes de 24 horas, Meta habilita la Free Entry Point de 72 horas durante la cual
+  la mensajería no genera cargo. Así, la publicidad absorbe el costo de adquisición y, a la vez,
+  reduce el costo de conversación, tal como se explica en la sección 4 de este artículo.
+</p>
+
 <div class="unyx-cta">
   <h2>¿Tu empresa usa WhatsApp para ventas o atención?</h2>
   <p>
