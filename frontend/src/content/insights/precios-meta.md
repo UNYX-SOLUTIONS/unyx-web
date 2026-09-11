@@ -279,7 +279,7 @@ pubDate: 2026-09-11
   <strong>mensajes enviados por conversación resuelta</strong> pasan a ser importantes.
 </p>
 
-<div class="unyx-formula">
+<div class="unyx-formula bg-white!">
   <code class="text-black!">Costo mensual de servicio ≈ mensajes de servicio entregados × USD 0,0113</code>
 </div>
 
